@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand Colors — Nós Cabo Verde */
+  --color-ncv-blue: #082B5C;
+  --color-ncv-night: #031A36;
+  --color-ncv-gold: #C9A05E;
+  --color-ncv-red: #D6332C;
+  --color-ncv-salt: #F8F6F0;
+  --color-ncv-sand: #D8C4A3;
+  --color-ncv-basalt: #1A1A1A;
+
+  /* Typography */
+  --font-serif: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  /* Spacing / sizing extras */
+  --spacing-section: 6rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F8F6F0;
+  color: #1A1A1A;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #031A36;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A05E;
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: #C9A05E;
+  color: #031A36;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ═══ Premium Button System ═══
+   Pill-shaped CTAs. Variants: gold (primary), glass (secondary on dark),
+   line (secondary on light), night (solid dark on light), gold-line (gold outline on dark). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    filter 0.25s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:focus-visible {
+  outline: 2px solid #C9A05E;
+  outline-offset: 3px;
+}
+
+.btn-gold {
+  background: linear-gradient(140deg, #E5C68A 0%, #C9A05E 52%, #B0854A 100%);
+  color: #031A36;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 10px 26px -10px rgba(201, 160, 94, 0.55);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 16px 34px -10px rgba(201, 160, 94, 0.65);
+}
+.btn-gold:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-glass {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.btn-glass:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 160, 94, 0.55);
+  color: #C9A05E;
+  background: rgba(201, 160, 94, 0.08);
+  box-shadow: 0 12px 26px -12px rgba(201, 160, 94, 0.35);
+}
+
+.btn-line {
+  border: 1px solid rgba(3, 26, 54, 0.15);
+  color: rgba(3, 26, 54, 0.6);
+  background: transparent;
+}
+.btn-line:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 160, 94, 0.7);
+  color: #031A36;
+  background: rgba(201, 160, 94, 0.08);
+  box-shadow: 0 10px 24px -12px rgba(201, 160, 94, 0.3);
+}
+
+.btn-night {
+  background: #031A36;
+  color: #C9A05E;
+  box-shadow: 0 10px 26px -12px rgba(3, 26, 54, 0.5);
+}
+.btn-night:hover {
+  transform: translateY(-2px);
+  background: #082B5C;
+  box-shadow: 0 16px 32px -12px rgba(3, 26, 54, 0.55);
+}
+
+.btn-gold-line {
+  border: 1px solid rgba(201, 160, 94, 0.45);
+  color: #C9A05E;
+  background: rgba(201, 160, 94, 0.05);
+}
+.btn-gold-line:hover {
+  transform: translateY(-2px);
+  background: #C9A05E;
+  color: #031A36;
+  border-color: #C9A05E;
+  box-shadow: 0 14px 30px -10px rgba(201, 160, 94, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn:hover,
+  .btn:active {
+    transition-duration: 0.01ms;
+    transform: none;
+  }
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C9A05E 0%, #e8c88a 50%, #C9A05E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.5); }
 }
