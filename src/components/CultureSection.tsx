@@ -31,7 +31,7 @@ export function CultureSection() {
                 Identidade
               </span>
             </div>
-            <h2 className="font-serif text-5xl lg:text-6xl text-white leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
               Cultura
               <br />
               <span className="text-ncv-gold">em Movimento</span>
@@ -112,7 +112,7 @@ export function CultureSection() {
         >
           <a
             href="#"
-            className="btn btn-gold-line px-10 py-4 text-sm"
+            className="btn btn-gold-line w-full sm:w-auto px-8 sm:px-10 py-4 text-sm"
           >
             Explorar toda a Cultura Cabo-Verdiana
           </a>

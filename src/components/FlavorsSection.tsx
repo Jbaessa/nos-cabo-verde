@@ -34,7 +34,7 @@ export function FlavorsSection() {
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <h2 className="font-serif text-5xl lg:text-6xl text-white leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
               Sabores de
               <br />
               <span className="text-ncv-gold">Cabo Verde</span>
@@ -62,7 +62,7 @@ export function FlavorsSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/80 via-ncv-night/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-ncv-night/50 to-transparent" />
 
-          <div className="absolute bottom-0 left-0 p-8 lg:p-12">
+          <div className="absolute bottom-0 left-0 p-5 sm:p-8 lg:p-12">
             <span
               className={`inline-block text-xs font-sans font-bold tracking-widest uppercase px-3.5 py-1 mb-4 rounded-full ${categoryColors[featured.category]}`}
             >

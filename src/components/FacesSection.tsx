@@ -23,7 +23,7 @@ export function FacesSection() {
                 O Povo
               </span>
             </div>
-            <h2 className="font-serif text-5xl lg:text-6xl text-ncv-night leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
               Rostos de
               <br />
               <span className="text-gradient-gold">Cabo Verde</span>
@@ -72,7 +72,7 @@ export function FacesSection() {
                   </div>
 
                   {/* Quote — appears on hover */}
-                  <div className="overflow-hidden max-h-0 group-hover:max-h-28 transition-all duration-400">
+                  <div className="overflow-hidden max-h-28 lg:max-h-0 lg:group-hover:max-h-28 transition-all duration-400">
                     <div className="pt-3 border-t border-white/10 mt-3">
                       <Quote size={12} className="text-ncv-gold mb-1.5" />
                       <p className="text-white/70 text-xs font-sans leading-relaxed italic">

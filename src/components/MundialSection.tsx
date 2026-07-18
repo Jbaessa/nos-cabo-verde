@@ -30,7 +30,7 @@ export function MundialSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="lg:col-span-2 relative overflow-hidden rounded-2xl min-h-[360px] lg:min-h-[560px]"
+            className="lg:col-span-2 relative overflow-hidden rounded-2xl min-h-[240px] sm:min-h-[360px] lg:min-h-[560px]"
           >
             <img
               src="/images/mundial-fans.jpg"
@@ -83,7 +83,7 @@ export function MundialSection() {
               <img
                 src="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png"
                 alt="FIFA World Cup 2026"
-                className="h-14 lg:h-16 w-auto opacity-85"
+                className="h-10 sm:h-14 lg:h-16 w-auto opacity-85"
               />
               <div className="h-10 w-px bg-white/10" />
               <div>
@@ -104,10 +104,10 @@ export function MundialSection() {
               transition={{ duration: 0.9, delay: 0.1 }}
             >
               <h2 className="font-serif leading-[0.88] mb-5">
-                <span className="block text-7xl lg:text-8xl xl:text-9xl text-white">
+                <span className="block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-white">
                   Cabo
                 </span>
-                <span className="block text-7xl lg:text-8xl xl:text-9xl text-gradient-gold">
+                <span className="block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-gradient-gold">
                   Verde
                 </span>
               </h2>
@@ -160,18 +160,18 @@ export function MundialSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
             >
               <a
                 href="#"
-                className="btn btn-gold inline-flex items-center gap-3 text-xs font-bold tracking-widest uppercase px-7 py-3.5"
+                className="btn btn-gold inline-flex items-center justify-center gap-3 text-xs font-bold tracking-widest uppercase px-7 py-3.5"
               >
                 Acompanhar os Tubarões Azuis
                 <ArrowRight size={15} />
               </a>
               <a
                 href="#"
-                className="btn btn-glass inline-flex items-center gap-2 text-xs font-sans text-white/50 hover:text-white px-5 py-3.5 transition-colors"
+                className="btn btn-glass inline-flex items-center justify-center gap-2 text-xs font-sans text-white/50 hover:text-white px-5 py-3.5 transition-colors"
               >
                 Ver calendário
               </a>

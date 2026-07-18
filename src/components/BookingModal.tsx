@@ -104,7 +104,7 @@ export function BookingModal({ experience, onClose }: Props) {
           className="relative z-10 w-full max-w-lg bg-ncv-night border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10">
             <div className="flex items-center gap-3">
               <img src={experience.image} alt="" className="w-10 h-10 rounded-lg object-cover" />
               <div>
@@ -144,7 +144,7 @@ export function BookingModal({ experience, onClose }: Props) {
           )}
 
           {/* Body */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div
@@ -155,7 +155,7 @@ export function BookingModal({ experience, onClose }: Props) {
                   transition={{ duration: 0.2 }}
                   className="space-y-4"
                 >
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-white/60 text-xs font-sans mb-1.5">Data de início</label>
                       <input
@@ -230,7 +230,7 @@ export function BookingModal({ experience, onClose }: Props) {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-white/60 text-xs font-sans mb-1.5">Email</label>
                       <input

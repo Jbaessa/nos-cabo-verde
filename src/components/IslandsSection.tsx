@@ -196,7 +196,7 @@ export function IslandsSection() {
               O Arquipélago
             </span>
           </div>
-          <h2 className="font-serif text-5xl lg:text-6xl text-white leading-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
             As Dez Ilhas
             <br />
             <span className="text-ncv-gold">do Atlântico</span>
@@ -362,7 +362,7 @@ export function IslandsSection() {
 
                 {/* Stats footer */}
                 <div className="pt-6 border-t border-white/8">
-                  <div className="flex gap-8">
+                  <div className="grid grid-cols-4 gap-3">
                     <div className="text-center">
                       <div className="font-serif text-2xl text-ncv-gold leading-none mb-1">10</div>
                       <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">Ilhas</div>

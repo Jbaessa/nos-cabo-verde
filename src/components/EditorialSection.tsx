@@ -25,7 +25,7 @@ export function EditorialSection() {
                 Editorial
               </span>
             </div>
-            <h2 className="font-serif text-5xl lg:text-6xl text-ncv-night leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
               Em Destaque
             </h2>
           </div>
@@ -41,7 +41,7 @@ export function EditorialSection() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Featured large card */}
           <div className="lg:col-span-2 group cursor-pointer">
-            <div className="relative h-[460px] lg:h-[540px] overflow-hidden rounded-2xl mb-5">
+            <div className="relative h-[300px] sm:h-[380px] lg:h-[540px] overflow-hidden rounded-2xl mb-5">
               <img
                 src={featured.image}
                 alt={featured.title}
@@ -49,7 +49,7 @@ export function EditorialSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ncv-night/90 via-ncv-night/30 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-8">
+              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-8">
                 <span
                   className={`inline-block text-xs font-sans font-bold tracking-widest uppercase px-3.5 py-1 mb-4 rounded-full ${typeColors[featured.type]}`}
                 >

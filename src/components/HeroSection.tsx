@@ -75,13 +75,13 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.9 }}
             className="font-serif leading-none mb-6"
           >
-            <span className="block text-white text-6xl sm:text-7xl lg:text-[88px] xl:text-[104px]">
+            <span className="block text-white text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px]">
               Cabo Verde
             </span>
-            <span className="block text-6xl sm:text-7xl lg:text-[88px] xl:text-[104px] text-gradient-gold">
+            <span className="block text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px] text-gradient-gold">
               não se visita.
             </span>
-            <span className="block text-white text-6xl sm:text-7xl lg:text-[88px] xl:text-[104px]">
+            <span className="block text-white text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px]">
               Sente-se.
             </span>
           </motion.h1>
@@ -156,7 +156,7 @@ export function HeroSection() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.5 }}
         onClick={() => setSoundOn(!soundOn)}
-        className="absolute bottom-24 right-6 lg:right-12 z-20 flex items-center gap-3 bg-white/5 border border-white/15 text-white rounded-full px-5 py-3 hover:bg-ncv-gold/10 hover:border-ncv-gold/40 transition-all backdrop-blur-sm group"
+        className="absolute bottom-16 right-6 lg:bottom-24 lg:right-12 z-20 flex items-center gap-3 bg-white/5 border border-white/15 text-white rounded-full px-5 py-3 hover:bg-ncv-gold/10 hover:border-ncv-gold/40 transition-all backdrop-blur-sm group"
       >
         <span className="text-xs font-sans tracking-wider text-white/60 group-hover:text-white transition-colors">
           Escuta Cabo Verde

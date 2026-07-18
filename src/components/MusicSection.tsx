@@ -37,7 +37,7 @@ export function MusicSection() {
                 Música
               </span>
             </div>
-            <h2 className="font-serif text-5xl lg:text-6xl text-ncv-night leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
               A Nossa
               <br />
               <span className="text-gradient-gold">Música</span>

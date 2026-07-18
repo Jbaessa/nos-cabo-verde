@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Calendar, ArrowRight, ExternalLink } from "lucide-react";
+import { MapPin, ArrowRight, ExternalLink } from "lucide-react";
 import { events } from "@/lib/data";
 
 const categories = ["Todos", "Música", "Festival", "Gastronomia", "Arte"];
@@ -41,7 +41,7 @@ export function AgendaSection() {
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <h2 className="font-serif text-5xl lg:text-6xl text-ncv-night leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
               Agenda
               <br />
               Cultural

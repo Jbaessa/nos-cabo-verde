@@ -42,7 +42,7 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 relative">
@@ -64,7 +64,7 @@ export function Navbar() {
                 })}
               </svg>
             </div>
-            <span className="font-serif text-xl text-white">Nós Cabo Verde</span>
+            <span className="font-serif text-base lg:text-xl text-white">Nós Cabo Verde</span>
           </Link>
 
           {/* Desktop nav */}
@@ -145,7 +145,7 @@ export function Navbar() {
             transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 z-[100] bg-ncv-night flex flex-col"
           >
-            <div className="flex items-center justify-between px-6 h-20 border-b border-white/10">
+            <div className="flex items-center justify-between px-6 h-16 lg:h-20 border-b border-white/10">
               <span className="font-serif text-xl text-white">Nós Cabo Verde</span>
               <button onClick={() => setMenuOpen(false)} className="text-white/60 hover:text-white">
                 <X size={24} />
@@ -157,7 +157,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block font-serif text-3xl text-white/80 hover:text-ncv-gold py-3 border-b border-white/5 transition-colors"
+                    className="block font-serif text-2xl sm:text-3xl text-white/80 hover:text-ncv-gold py-3 border-b border-white/5 transition-colors"
                   >
                     <motion.span
                       initial={{ opacity: 0, x: 20 }}

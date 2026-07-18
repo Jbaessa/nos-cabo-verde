@@ -89,7 +89,7 @@ export function Footer() {
             </p>
           </div>
           <form
-            className="flex items-center gap-1.5 w-full md:w-auto min-w-[360px] bg-white/5 border border-white/10 rounded-full p-1.5 focus-within:border-ncv-gold/50 transition-colors"
+            className="flex items-center gap-1.5 w-full md:w-auto bg-white/5 border border-white/10 rounded-full p-1.5 focus-within:border-ncv-gold/50 transition-colors"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
@@ -109,7 +109,7 @@ export function Footer() {
 
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
