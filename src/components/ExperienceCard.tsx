@@ -33,7 +33,7 @@ const difficultyColor: Record<string, string> = {
 
 export function ExperienceCard({ experience, onBook }: Props) {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 hover:bg-white/8 transition-all duration-300 border border-white/5 hover:border-white/15">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 hover:bg-white/8 transition-all duration-300 border border-white/5 hover:border-ncv-gold/25 hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.35),0_4px_20px_rgba(0,0,0,0.25)]">
       {/* Image */}
       <div className="relative h-52 overflow-hidden">
         <img

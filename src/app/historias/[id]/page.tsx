@@ -5,6 +5,10 @@ import { ArrowLeft, Clock, MapPin } from "lucide-react";
 import { editorialFeatures } from "@/lib/data";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+
+const BASE = "https://noscaboverde.cv";
 
 const typeColors: Record<string, string> = {
   "história": "bg-ncv-blue text-white",
@@ -25,13 +29,27 @@ export async function generateMetadata({
   const { id } = await params;
   const article = editorialFeatures.find((a) => a.id === id);
   if (!article) return {};
+
+  const imageUrl = article.image.startsWith("http") ? article.image : `${BASE}${article.image}`;
+
   return {
-    title: `${article.title} — Nós Cabo Verde`,
+    title: article.title,
     description: article.subtitle,
+    alternates: { canonical: `${BASE}/historias/${article.id}` },
     openGraph: {
       title: article.title,
       description: article.subtitle,
-      images: [article.image],
+      url: `${BASE}/historias/${article.id}`,
+      type: "article",
+      locale: "pt_CV",
+      siteName: "Nós Cabo Verde",
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.subtitle,
+      images: [imageUrl],
     },
   };
 }
@@ -46,9 +64,41 @@ export default async function ArticlePage({
   if (!article) notFound();
 
   const others = editorialFeatures.filter((a) => a.id !== id);
+  const imageUrl = article.image.startsWith("http") ? article.image : `${BASE}${article.image}`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${BASE}/historias/${article.id}`,
+    headline: article.title,
+    description: article.subtitle,
+    image: [imageUrl],
+    url: `${BASE}/historias/${article.id}`,
+    datePublished: "2026-01-01T00:00:00Z",
+    dateModified: "2026-07-19T00:00:00Z",
+    author: {
+      "@type": "Organization",
+      name: "Nós Cabo Verde",
+      url: BASE,
+    },
+    publisher: {
+      "@id": `${BASE}/#organization`,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE}/historias/${article.id}`,
+    },
+    about: {
+      "@type": "Place",
+      name: article.island,
+      containedInPlace: { "@type": "Country", name: "Cabo Verde" },
+    },
+    isPartOf: { "@id": `${BASE}/#website` },
+  };
 
   return (
     <>
+      <StructuredData data={articleJsonLd} />
       <Navbar />
       <main className="bg-ncv-salt min-h-screen">
         {/* Hero */}
@@ -84,7 +134,7 @@ export default async function ArticlePage({
             <p className="text-white/55 text-base lg:text-lg font-sans mb-7 max-w-2xl">
               {article.subtitle}
             </p>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 flex-wrap">
               <div className="flex items-center gap-1.5 text-white/35 text-xs font-sans">
                 <Clock size={12} />
                 {article.readTime} de leitura
@@ -98,8 +148,19 @@ export default async function ArticlePage({
           </div>
         </div>
 
+        {/* Breadcrumbs */}
+        <div className="max-w-2xl mx-auto px-6 pt-8 pb-2">
+          <Breadcrumbs
+            items={[
+              { label: "Início", href: "/" },
+              { label: "Histórias", href: "/#editorial" },
+              { label: article.title },
+            ]}
+          />
+        </div>
+
         {/* Article body */}
-        <div className="max-w-2xl mx-auto px-6 pt-16 pb-28">
+        <div className="max-w-2xl mx-auto px-6 pt-10 pb-28">
           {"body" in article && article.body ? (
             article.body.map((section, i) => (
               <div key={i}>

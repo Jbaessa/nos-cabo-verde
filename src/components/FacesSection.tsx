@@ -44,7 +44,7 @@ export function FacesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`group relative cursor-pointer overflow-hidden ${
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.35),0_4px_20px_rgba(0,0,0,0.15)] transition-shadow duration-300 ${
                 i === 0 ? "sm:col-span-2 lg:col-span-1" : ""
               } ${i === 3 ? "lg:col-span-2" : ""}`}
             >

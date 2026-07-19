@@ -12,12 +12,13 @@ const navLinks = [
   { label: "Música", href: "/#musica" },
   { label: "Gastronomia", href: "/#sabores" },
   { label: "Experiências", href: "/experiencias" },
+  { label: "Diáspora", href: "/diaspora" },
   { label: "Parceiros", href: "/parceiros" },
-  { label: "Agenda", href: "/#agenda" },
 ];
 
 const mobileLinks = [
   ...navLinks,
+  { label: "Agenda", href: "/#agenda" },
   { label: "Favoritos", href: "/favoritos" },
   { label: "Perfil", href: "/perfil" },
 ];

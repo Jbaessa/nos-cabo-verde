@@ -81,7 +81,7 @@ export function AgendaSection() {
               animate={{ opacity: 1, y: 0 }}
               className="lg:col-span-1 group cursor-pointer"
             >
-              <div className="relative h-72 overflow-hidden mb-4">
+              <div className="relative h-72 overflow-hidden mb-4 rounded-xl">
                 <img
                   src={featured.image}
                   alt={featured.name}
@@ -134,7 +134,7 @@ export function AgendaSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group flex gap-4 border border-ncv-basalt/8 bg-white/50 hover:border-ncv-gold/20 hover:bg-white/80 transition-all p-4 cursor-pointer"
+                className="group flex gap-4 border border-ncv-basalt/8 bg-white/50 hover:border-ncv-gold/25 hover:bg-white/80 hover:shadow-[0_0_18px_-4px_rgba(201,160,94,0.28),0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 rounded-xl p-4 cursor-pointer"
               >
                 {/* Date */}
                 <div className="flex-shrink-0 w-16 text-center border-r border-ncv-basalt/10 pr-4">
@@ -183,7 +183,7 @@ export function AgendaSection() {
             ))}
 
             {/* CTA */}
-            <div className="border border-ncv-night/8 bg-ncv-night p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="border border-ncv-night/8 bg-ncv-night rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="text-ncv-gold text-xs font-sans tracking-widest uppercase mb-1">
                   Nunca perdes um evento

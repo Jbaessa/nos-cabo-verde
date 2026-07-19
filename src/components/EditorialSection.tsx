@@ -40,7 +40,7 @@ export function EditorialSection() {
         {/* Editorial grid */}
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Featured large card */}
-          <div className="lg:col-span-2 group cursor-pointer">
+          <div className="lg:col-span-2 group cursor-pointer hover:shadow-[0_0_32px_-4px_rgba(201,160,94,0.25),0_4px_24px_rgba(0,0,0,0.08)] transition-shadow duration-300 rounded-2xl">
             <div className="relative h-[300px] sm:h-[380px] lg:h-[540px] overflow-hidden rounded-2xl mb-5">
               <img
                 src={featured.image}
@@ -82,8 +82,8 @@ export function EditorialSection() {
           {/* Secondary cards */}
           <div className="flex flex-col gap-6">
             {secondary.map((item) => (
-              <div key={item.id} className="group cursor-pointer flex gap-4 items-start">
-                <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden">
+              <div key={item.id} className="group cursor-pointer flex gap-4 items-center rounded-xl border border-ncv-basalt/8 bg-white/40 hover:bg-white/70 hover:border-ncv-gold/20 hover:shadow-[0_0_16px_-4px_rgba(201,160,94,0.22),0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-300 p-3">
+                <div className="relative w-20 h-20 flex-shrink-0 overflow-hidden rounded-lg">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -108,7 +108,7 @@ export function EditorialSection() {
             ))}
 
             {/* Promotional card */}
-            <div className="bg-ncv-night p-6 mt-auto">
+            <div className="bg-ncv-night rounded-2xl p-6 mt-auto">
               <p className="text-ncv-gold text-xs font-sans tracking-widest uppercase mb-3">
                 Comunidade
               </p>

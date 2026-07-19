@@ -52,7 +52,7 @@ export function FlavorsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="group relative h-72 lg:h-96 mb-6 overflow-hidden cursor-pointer"
+          className="group relative h-72 lg:h-96 mb-6 overflow-hidden cursor-pointer rounded-2xl hover:shadow-[0_0_30px_-4px_rgba(201,160,94,0.35),0_4px_24px_rgba(0,0,0,0.3)] transition-shadow duration-300"
         >
           <img
             src={featured.image}
@@ -97,7 +97,7 @@ export function FlavorsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.09 }}
-              className="group relative cursor-pointer overflow-hidden"
+              className="group relative cursor-pointer overflow-hidden rounded-xl hover:shadow-[0_0_22px_-4px_rgba(201,160,94,0.3),0_4px_16px_rgba(0,0,0,0.25)] transition-shadow duration-300"
             >
               <div className="relative h-48 lg:h-56">
                 <img

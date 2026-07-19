@@ -67,7 +67,7 @@ export function CultureSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group relative flex-shrink-0 w-72 cursor-pointer"
+              className="group relative flex-shrink-0 w-72 cursor-pointer rounded-2xl overflow-hidden hover:shadow-[0_0_28px_-4px_rgba(201,160,94,0.4),0_4px_24px_rgba(0,0,0,0.35)] transition-shadow duration-300"
             >
               {/* Image */}
               <div className="relative h-[380px] overflow-hidden">

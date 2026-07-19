@@ -22,7 +22,7 @@ const typeColors: Record<string, string> = {
 
 export function PartnerCard({ partner }: Props) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-white/15 transition-all duration-300">
+    <div className="group flex flex-col overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-ncv-gold/25 hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.35),0_4px_20px_rgba(0,0,0,0.25)] transition-all duration-300">
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <img

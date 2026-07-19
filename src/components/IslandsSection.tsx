@@ -414,9 +414,9 @@ export function IslandsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className="group flex-shrink-0 w-52 cursor-pointer"
+                className="group flex-shrink-0 w-52 cursor-pointer rounded-2xl overflow-hidden border border-white/6 hover:border-ncv-gold/30 hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.45),0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-300"
               >
-                <div className="relative h-64 overflow-hidden rounded-2xl mb-3">
+                <div className="relative h-52 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={island.image}
@@ -434,12 +434,14 @@ export function IslandsSection() {
                     <span className="text-ncv-gold text-xs font-sans">{i + 1}</span>
                   </div>
                 </div>
-                <h4 className="text-white font-serif text-lg group-hover:text-ncv-gold transition-colors">
-                  {island.name}
-                </h4>
-                <p className="text-white/35 text-xs font-sans mt-0.5 leading-tight">
-                  {island.tagline}
-                </p>
+                <div className="px-3.5 py-3 bg-ncv-night/60">
+                  <h4 className="text-white font-serif text-base group-hover:text-ncv-gold transition-colors leading-snug">
+                    {island.name}
+                  </h4>
+                  <p className="text-white/35 text-xs font-sans mt-0.5 leading-tight">
+                    {island.tagline}
+                  </p>
+                </div>
               </motion.a>
             ))}
           </div>
