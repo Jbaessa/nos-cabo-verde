@@ -173,7 +173,7 @@ export const islands = [
     tagline: "A ilha das flores e da saudade.",
     description:
       "A menor ilha habitada. Famosa pelas flores, pela poesia e pela diáspora americana.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    image: "/images/brava.png",
     temperature: "24°C",
     highlights: [
       { name: "Ilha das Flores", description: "Hibiscos, bougainvíleas e jardins em terraços perfumados. A mais verde e florida de todas as ilhas do arquipélago." },
