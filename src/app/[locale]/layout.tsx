@@ -45,6 +45,15 @@ export async function generateMetadata({
     authors: [{ name: "Nós Cabo Verde", url: BASE }],
     creator: "Nós Cabo Verde",
     publisher: "Nós Cabo Verde",
+    icons: {
+      icon: [
+        { url: "/images/favicon.png", type: "image/png" },
+      ],
+      apple: [
+        { url: "/images/favicon.png", sizes: "180x180", type: "image/png" },
+      ],
+      shortcut: "/images/favicon.png",
+    },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
     alternates: {
       canonical: isEn ? `${BASE}/en` : BASE,
@@ -79,7 +88,7 @@ const organizationJsonLd = {
   "@id": `${BASE}/#organization`,
   name: "Nós Cabo Verde",
   url: BASE,
-  logo: { "@type": "ImageObject", url: `${BASE}/images/logo.png`, width: 400, height: 120 },
+  logo: { "@type": "ImageObject", url: `${BASE}/images/favicon.png`, width: 512, height: 512 },
   sameAs: ["https://www.instagram.com/noscaboverde", "https://www.facebook.com/noscaboverde", "https://twitter.com/noscaboverde"],
   description: "Digital portal dedicated to the culture, identity and tourism of Cape Verde.",
   areaServed: { "@type": "Country", name: "Cabo Verde" },
