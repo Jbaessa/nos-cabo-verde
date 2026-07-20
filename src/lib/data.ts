@@ -61,7 +61,7 @@ export const islands = [
     tagline: "Horizonte, vento e liberdade.",
     description:
       "Praias de areia branca, kitesurf e mergulho. Onde o deserto encontra o oceano atlântico.",
-    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+    image: "/images/sal.png",
     temperature: "28°C",
     highlights: ["Kitesurf", "Santa Maria", "Mergulho", "Salinas"],
     duration: "3–7 dias",
