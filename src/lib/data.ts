@@ -3,8 +3,7 @@ export const islands = [
     id: "santo-antao",
     name: "Santo Antão",
     tagline: "Onde as montanhas encontram a alma.",
-    description:
-      "A ilha mais a oeste, com picos vulcânicos, vales profundos e trilhos de montanha únicos no mundo.",
+    description: "A ilha mais a oeste, com picos vulcânicos, vales profundos e trilhos de montanha únicos no mundo.",
     image: "/images/santoAntao.png",
     temperature: "24°C",
     highlights: [
@@ -13,6 +12,16 @@ export const islands = [
       { name: "Grogue", description: "A aguardente de cana-de-açúcar cabo-verdiana. Visita às destilarias artesanais do vale — tradição viva desde o séc. XVII." },
       { name: "Ribeira Grande", description: "Principal cidade da ilha, com mercado local autêntico, praça colonial e o melhor ponto de partida para os trilhos." },
     ],
+    en: {
+      tagline: "Where the mountains meet the soul.",
+      description: "The westernmost island, with volcanic peaks, deep valleys and mountain trails unlike anywhere else in the world.",
+      highlights: [
+        { name: "Trekking", description: "The most dramatic trails in the archipelago, through Paul Valley and volcanic ridges with direct ocean views." },
+        { name: "Paul Valley", description: "Lush valley of coconut and banana trees with century-old water channels and villages hidden in the mountains." },
+        { name: "Grogue", description: "Cape Verde's sugarcane spirit. Visit the artisanal distilleries of the valley — a living tradition since the 17th century." },
+        { name: "Ribeira Grande", description: "The island's main town, with an authentic local market, colonial square and the best starting point for the trails." },
+      ],
+    },
     duration: "3–5 dias",
     color: "#1a4a3a",
     svgX: 88,
@@ -22,8 +31,7 @@ export const islands = [
     id: "sao-vicente",
     name: "São Vicente",
     tagline: "A ilha que canta.",
-    description:
-      "Mindelo, a capital cultural de Cabo Verde. Uma cidade de música, arte, carnaval e morabeza.",
+    description: "Mindelo, a capital cultural de Cabo Verde. Uma cidade de música, arte, carnaval e morabeza.",
     image: "/images/saovicente.png",
     temperature: "26°C",
     highlights: [
@@ -32,6 +40,16 @@ export const islands = [
       { name: "Morna", description: "O género musical Património Imaterial da UNESCO. Nasceu aqui, na voz imortal de Cesária Évora." },
       { name: "Porto Grande", description: "Um dos maiores portos naturais da África Ocidental. Ponto de encontro histórico de navios, culturas e histórias." },
     ],
+    en: {
+      tagline: "The island that sings.",
+      description: "Mindelo, Cape Verde's cultural capital. A city of music, art, carnival and morabeza.",
+      highlights: [
+        { name: "Mindelo", description: "Cape Verde's cultural capital. Colourful streets, live morna bars and an energy that exists nowhere else." },
+        { name: "Carnival", description: "Cape Verde's biggest Carnival, compared to Notting Hill. Costume parades, colour and pure identity every February." },
+        { name: "Morna", description: "The musical genre that is UNESCO Intangible Heritage. Born here, in the immortal voice of Cesária Évora." },
+        { name: "Porto Grande", description: "One of the largest natural harbours in West Africa. A historic meeting point of ships, cultures and stories." },
+      ],
+    },
     duration: "2–4 dias",
     color: "#0d3a6e",
     svgX: 138,
@@ -41,8 +59,7 @@ export const islands = [
     id: "santa-luzia",
     name: "Santa Luzia",
     tagline: "O último paraíso desabitado.",
-    description:
-      "A única ilha desabitada do arquipélago. Natureza intocada, tartarugas e silêncio absoluto.",
+    description: "A única ilha desabitada do arquipélago. Natureza intocada, tartarugas e silêncio absoluto.",
     image: "/images/santaluzia.png",
     temperature: "25°C",
     highlights: [
@@ -50,6 +67,15 @@ export const islands = [
       { name: "Tartarugas", description: "Nidificação de tartarugas-careta nas praias remotas. Uma das mais importantes áreas de desova da Macaronésia." },
       { name: "Mergulho", description: "Águas cristalinas sem perturbação humana. Biodiversidade marinha excepcional com visibilidade de 25m+ o ano todo." },
     ],
+    en: {
+      tagline: "The last uninhabited paradise.",
+      description: "The only uninhabited island in the archipelago. Untouched nature, sea turtles and absolute silence.",
+      highlights: [
+        { name: "Virgin nature", description: "The only uninhabited island in the archipelago. Access by boat only, no roads or electricity — the world as it once was." },
+        { name: "Sea turtles", description: "Loggerhead turtle nesting on remote beaches. One of the most important nesting areas in Macaronesia." },
+        { name: "Diving", description: "Crystal-clear waters undisturbed by humans. Exceptional marine biodiversity with 25m+ visibility year-round." },
+      ],
+    },
     duration: "Excursão de dia",
     color: "#1a5c3a",
     svgX: 190,
@@ -59,8 +85,7 @@ export const islands = [
     id: "sao-nicolau",
     name: "São Nicolau",
     tagline: "Beleza que guarda segredos.",
-    description:
-      "Ilha montanhosa e serena, com um interior verde e uma cultura profundamente enraizada.",
+    description: "Ilha montanhosa e serena, com um interior verde e uma cultura profundamente enraizada.",
     image: "/images/sao-nicolau.png",
     temperature: "25°C",
     highlights: [
@@ -68,6 +93,15 @@ export const islands = [
       { name: "Monte Gordo", description: "Pico verde no centro da ilha com vistas de 360° para o oceano. Trekking acessível para todos os níveis." },
       { name: "Artesanato", description: "Cerâmica, bordados e cestaria produzidos segundo técnicas tradicionais. O melhor artesanato local do arquipélago." },
     ],
+    en: {
+      tagline: "Beauty that keeps secrets.",
+      description: "A mountainous, serene island with a green interior and a deeply rooted culture.",
+      highlights: [
+        { name: "Ribeira Brava", description: "The most picturesque town in the Northern Barlavento, with colourful hillside houses and a timeless atmosphere." },
+        { name: "Monte Gordo", description: "Green peak at the island's centre with 360° ocean views. Accessible trekking for all levels." },
+        { name: "Handicrafts", description: "Ceramics, embroidery and basketry made using traditional techniques. The archipelago's finest local crafts." },
+      ],
+    },
     duration: "2–3 dias",
     color: "#2d5a1a",
     svgX: 282,
@@ -77,8 +111,7 @@ export const islands = [
     id: "sal",
     name: "Sal",
     tagline: "Horizonte, vento e liberdade.",
-    description:
-      "Praias de areia branca, kitesurf e mergulho. Onde o deserto encontra o oceano atlântico.",
+    description: "Praias de areia branca, kitesurf e mergulho. Onde o deserto encontra o oceano atlântico.",
     image: "/images/sal.png",
     temperature: "28°C",
     highlights: [
@@ -87,6 +120,16 @@ export const islands = [
       { name: "Mergulho", description: "Recifes de coral, grutas submarinas e tartarugas. Visibilidade de 20m+ em águas a 24°C durante todo o ano." },
       { name: "Salinas", description: "As antigas salinas que deram nome à ilha. Hoje um ecossistema de flamingos e aves migratórias de todo o Atlântico." },
     ],
+    en: {
+      tagline: "Horizon, wind and freedom.",
+      description: "White sand beaches, kitesurfing and diving. Where the desert meets the Atlantic ocean.",
+      highlights: [
+        { name: "Kitesurfing", description: "Santa Maria is one of the world's best kitesurfing spots. Constant trade winds year-round with an IKO-certified school." },
+        { name: "Santa Maria", description: "Sal's most vibrant village. The Rua Direita packed with restaurants, sunset bars and surf shops by the sea." },
+        { name: "Diving", description: "Coral reefs, underwater caves and sea turtles. 20m+ visibility in 24°C waters throughout the year." },
+        { name: "Salt pans", description: "The ancient salt pans that gave the island its name. Today an ecosystem of flamingos and migratory birds from across the Atlantic." },
+      ],
+    },
     duration: "3–7 dias",
     color: "#5c3a1a",
     svgX: 548,
@@ -96,8 +139,7 @@ export const islands = [
     id: "boa-vista",
     name: "Boa Vista",
     tagline: "Dunas e mar sem fim.",
-    description:
-      "Deserto de dunas de areia dourada que mergulham no Atlântico. Tartarugas que desovam nas praias.",
+    description: "Deserto de dunas de areia dourada que mergulham no Atlântico. Tartarugas que desovam nas praias.",
     image: "/images/boavista.png",
     temperature: "27°C",
     highlights: [
@@ -106,6 +148,16 @@ export const islands = [
       { name: "Kitesurf", description: "Ventos alísios constantes e uma lagoa de água azul-turquesa tornam Boa Vista num paraíso do kitesurf e windsurf." },
       { name: "Sal Rei", description: "A única cidade da ilha. Mercado de peixe ao amanhecer, praças coloniais e os melhores pratos de lagosta fresca." },
     ],
+    en: {
+      tagline: "Dunes and endless sea.",
+      description: "Desert of golden sand dunes plunging into the Atlantic. Sea turtles nesting on the beaches.",
+      highlights: [
+        { name: "Sand dune desert", description: "Sahara sand dunes meeting the Atlantic. A lunar landscape found nowhere else in the archipelago." },
+        { name: "Sea turtles", description: "Ervatão Beach: one of the world's largest loggerhead turtle nesting areas. Guided night walks from June to October." },
+        { name: "Kitesurfing", description: "Constant trade winds and a turquoise lagoon make Boa Vista a paradise for kitesurfing and windsurfing." },
+        { name: "Sal Rei", description: "The island's only town. Dawn fish market, colonial squares and the freshest lobster dishes you'll find anywhere." },
+      ],
+    },
     duration: "3–5 dias",
     color: "#6b4a1a",
     svgX: 572,
@@ -115,8 +167,7 @@ export const islands = [
     id: "maio",
     name: "Maio",
     tagline: "Calma, sal e identidade.",
-    description:
-      "A ilha mais tranquila. Salinas, praias desertas e uma comunidade que vive ao ritmo do mar.",
+    description: "A ilha mais tranquila. Salinas, praias desertas e uma comunidade que vive ao ritmo do mar.",
     image: "/images/maio.png",
     temperature: "26°C",
     highlights: [
@@ -124,6 +175,15 @@ export const islands = [
       { name: "Salinas", description: "Paisagem de sapal e salineiras em actividade. Flamingos cor-de-rosa em grandes bandos — um espectáculo raro no Atlântico." },
       { name: "Aldeias tradicionais", description: "Ribeira Dom João e Calheta: aldeias piscatórias onde o tempo parou e a hospitalidade cabo-verdiana está na sua forma mais pura." },
     ],
+    en: {
+      tagline: "Calm, salt and identity.",
+      description: "The quietest island. Salt pans, deserted beaches and a community that lives at the rhythm of the sea.",
+      highlights: [
+        { name: "Deserted beaches", description: "Kilometres of white sand beach without a single sunlounger. Pau Seco Beach is practically a kept secret." },
+        { name: "Salt pans", description: "Salt marsh and active saltworks landscape. Pink flamingos in large flocks — a rare spectacle in the Atlantic." },
+        { name: "Traditional villages", description: "Ribeira Dom João and Calheta: fishing villages where time stood still and Cape Verdean hospitality is at its purest." },
+      ],
+    },
     duration: "2–3 dias",
     color: "#3a5c1a",
     svgX: 500,
@@ -133,8 +193,7 @@ export const islands = [
     id: "santiago",
     name: "Santiago",
     tagline: "Onde a história criou raízes.",
-    description:
-      "A maior ilha. Cidade Velha, patrimônio da UNESCO, a capital Praia, e a alma crioula de Cabo Verde.",
+    description: "A maior ilha. Cidade Velha, patrimônio da UNESCO, a capital Praia, e a alma crioula de Cabo Verde.",
     image: "/images/santiago.png",
     temperature: "27°C",
     highlights: [
@@ -143,6 +202,16 @@ export const islands = [
       { name: "Tarrafal", description: "A norte da ilha, com uma das mais belas baías de Cabo Verde e o histórico campo de concentração do Estado Novo." },
       { name: "Platô", description: "Centro histórico da capital. Ruas calcetadas, Praça Alexandre Albuquerque e a vista do escarpado basáltico para o porto." },
     ],
+    en: {
+      tagline: "Where history took root.",
+      description: "The largest island. Cidade Velha, a UNESCO World Heritage Site, the capital Praia, and the Creole soul of Cape Verde.",
+      highlights: [
+        { name: "Cidade Velha", description: "First European urban settlement in the tropics. UNESCO World Heritage — the birthplace of Cape Verdean civilisation and the Creole language." },
+        { name: "Praia", description: "The country's capital. Urban beaches, nightlife, the Sucupira market and the bay at sunset with views of the Plateau." },
+        { name: "Tarrafal", description: "In the north of the island, with one of Cape Verde's most beautiful bays and the historic Estado Novo concentration camp." },
+        { name: "Plateau", description: "The historic city centre. Cobblestone streets, Praça Alexandre Albuquerque and views from the basalt escarpment over the harbour." },
+      ],
+    },
     duration: "4–7 dias",
     color: "#1a3a6e",
     svgX: 408,
@@ -152,8 +221,7 @@ export const islands = [
     id: "fogo",
     name: "Fogo",
     tagline: "Uma ilha nascida do fogo.",
-    description:
-      "O vulcão Pico do Fogo domina a paisagem. Vinho produzido em solos vulcânicos e uma cultura única.",
+    description: "O vulcão Pico do Fogo domina a paisagem. Vinho produzido em solos vulcânicos e uma cultura única.",
     image: "/images/fogo.png",
     temperature: "25°C",
     highlights: [
@@ -162,6 +230,16 @@ export const islands = [
       { name: "Chã das Caldeiras", description: "Aldeia de mil habitantes dentro de um vulcão activo. Uma das comunidades mais extraordinárias e resilientes do planeta." },
       { name: "Trekking", description: "Percursos pela orla da caldeira com vistas de 360° sobre o mar de nuvens e a sensação de estar num mundo perdido no tempo." },
     ],
+    en: {
+      tagline: "An island born of fire.",
+      description: "The Pico do Fogo volcano dominates the landscape. Wine produced on volcanic soils and a truly unique culture.",
+      highlights: [
+        { name: "Pico do Fogo", description: "Cape Verde's highest point (2,829m). Ascent to the active cone with a local guide — one of the rarest experiences in the Atlantic." },
+        { name: "Fogo Wine", description: "Wine produced in volcanic lava soils inside the caldera. A unique flavour that exists nowhere else in the world." },
+        { name: "Chã das Caldeiras", description: "A thousand-person village inside an active volcano. One of the most extraordinary and resilient communities on the planet." },
+        { name: "Trekking", description: "Trails along the caldera rim with 360° views over the sea of clouds, feeling like a world lost in time." },
+      ],
+    },
     duration: "2–4 dias",
     color: "#6e1a1a",
     svgX: 252,
@@ -171,8 +249,7 @@ export const islands = [
     id: "brava",
     name: "Brava",
     tagline: "A ilha das flores e da saudade.",
-    description:
-      "A menor ilha habitada. Famosa pelas flores, pela poesia e pela diáspora americana.",
+    description: "A menor ilha habitada. Famosa pelas flores, pela poesia e pela diáspora americana.",
     image: "/images/brava.png",
     temperature: "24°C",
     highlights: [
@@ -181,12 +258,40 @@ export const islands = [
       { name: "Diáspora", description: "A ilha com maior percentagem de emigrantes — muitos na Nova Inglaterra, EUA. Música de saudade que atravessa o Atlântico." },
       { name: "Segredo preservado", description: "Sem resorts, sem turismo de massa. Brava é o segredo que os cabo-verdianos guardam para si próprios. Chegue antes dos outros." },
     ],
+    en: {
+      tagline: "The island of flowers and longing.",
+      description: "The smallest inhabited island. Famous for its flowers, its poetry and its American diaspora.",
+      highlights: [
+        { name: "Island of Flowers", description: "Hibiscus, bougainvillea and perfumed terraced gardens. The greenest and most flowery of all the archipelago's islands." },
+        { name: "Nova Sintra", description: "Cape Verde's most enchanting village. Silence, colourful houses wrapped in clouds and the best Creole coffee on the island." },
+        { name: "Diaspora", description: "The island with the highest proportion of emigrants — many in New England, USA. Music of longing that crosses the Atlantic." },
+        { name: "Preserved secret", description: "No resorts, no mass tourism. Brava is the secret Cape Verdeans keep for themselves. Arrive before the others do." },
+      ],
+    },
     duration: "2–3 dias",
     color: "#3a1a6e",
     svgX: 175,
     svgY: 342,
   },
 ];
+
+export type IslandHighlight = { name: string; description: string };
+export type Island = (typeof islands)[number] & {
+  tagline: string;
+  description: string;
+  highlights: IslandHighlight[];
+};
+
+export function localizeIsland(island: typeof islands[number], locale: string): Island {
+  if (locale === "en" && island.en) {
+    return { ...island, tagline: island.en.tagline, description: island.en.description, highlights: island.en.highlights };
+  }
+  return island as Island;
+}
+
+export function getLocalizedIslands(locale: string): Island[] {
+  return islands.map((island) => localizeIsland(island, locale));
+}
 
 export const cultureItems = [
   {

@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "islands": "Islands",
+    "culture": "Culture",
+    "music": "Music",
+    "flavors": "Cuisine",
+    "experiences": "Experiences",
+    "diaspora": "Diaspora",
+    "partners": "Partners",
+    "agenda": "Events",
+    "favorites": "Favourites",
+    "profile": "Profile",
+    "discover": "Discover",
+    "slogan": "DISCOVER · FEEL · BELONG"
+  },
+  "hero": {
+    "eyebrow": "Ten islands · One people · One soul",
+    "line1": "Cape Verde",
+    "line2": "is not visited.",
+    "line3": "It's felt.",
+    "subtitle": "Ten islands at the heart of the Atlantic. A people shaped by music, history, sea and morabeza.",
+    "cta": "Discover Cape Verde",
+    "ctaIslands": "Explore the Islands",
+    "ctaMusic": "Listen to Our Music",
+    "presentIn": "Present in",
+    "listen": "Listen to Cape Verde"
+  },
+  "islands": {
+    "sectionTag": "The Archipelago",
+    "title": "Ten Islands of the",
+    "titleHighlight": "Atlantic",
+    "subtitle": "From Barlavento to Sotavento, each island is a world. Choose yours and start discovering.",
+    "barlavento": "Barlavento — Northern Islands",
+    "sotavento": "Sotavento — Southern Islands",
+    "temperature": "Temperature",
+    "duration": "Ideal stay",
+    "explore": "Explore the island",
+    "allIslands": "View all islands"
+  },
+  "islandDetail": {
+    "allIslands": "All Islands",
+    "notToMiss": "Must See",
+    "planTrip": "Plan Your Trip",
+    "viewMap": "View on Map",
+    "prevIsland": "Previous island",
+    "nextIsland": "Next island"
+  },
+  "islandsPage": {
+    "sectionTag": "The Archipelago",
+    "title": "Ten Islands of the",
+    "titleHighlight": "Atlantic",
+    "subtitle": "From Barlavento to Sotavento, each island is a world. Choose yours and start discovering."
+  },
+  "experiences": {
+    "sectionTag": "Experiences",
+    "title": "Live Cape Verde",
+    "titleHighlight": "From Within",
+    "book": "Book Now",
+    "from": "From",
+    "perPerson": "per person",
+    "days": "days",
+    "rating": "Rating",
+    "duration": "Duration",
+    "available": "Available",
+    "viewAll": "View all experiences"
+  },
+  "diaspora": {
+    "sectionTag": "Diaspora",
+    "title": "A People",
+    "titleHighlight": "Spread Across the World",
+    "subtitle": "Over 700,000 Cape Verdeans live outside the archipelago. The diaspora is part of the country's soul."
+  },
+  "culture": {
+    "sectionTag": "Identity",
+    "title": "The Soul of",
+    "titleHighlight": "Cape Verde"
+  },
+  "music": {
+    "sectionTag": "Music",
+    "title": "The Sound That",
+    "titleHighlight": "Crosses the Atlantic"
+  },
+  "flavors": {
+    "sectionTag": "Cuisine",
+    "title": "Flavours That",
+    "titleHighlight": "Tell Stories"
+  },
+  "editorial": {
+    "sectionTag": "Stories",
+    "title": "Discover",
+    "titleHighlight": "Cape Verde"
+  },
+  "agenda": {
+    "sectionTag": "Events",
+    "title": "Events &",
+    "titleHighlight": "Festivals"
+  },
+  "footer": {
+    "tagline": "Ten islands. One people. One soul.",
+    "description": "Digital portal dedicated to the culture, identity and tourism of Cape Verde.",
+    "exploreTitle": "Explore",
+    "cultureTitle": "Culture",
+    "infoTitle": "Information",
+    "allRights": "All rights reserved.",
+    "madeWith": "Made with"
+  },
+  "common": {
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "close": "Close",
+    "book": "Book",
+    "free": "Free",
+    "group": "Group",
+    "archipelago": "Archipelago",
+    "capeVerde": "Cape Verde",
+    "island": "Island"
+  },
+  "meta": {
+    "homeTitle": "Nós Cabo Verde — Ten islands. One people. One soul.",
+    "homeDesc": "Digital portal of Cape Verdean culture, beauty and identity. Discover the ten islands, music, cuisine, people and authentic experiences of Cape Verde.",
+    "islandsTitle": "The Ten Islands of Cape Verde: complete guide to Barlavento and Sotavento",
+    "islandsDesc": "Explore the ten islands of Cape Verde: Santo Antão, São Vicente, São Nicolau, Sal, Boa Vista, Maio, Santiago, Fogo and Brava. Each island has its own personality, music and unique culture.",
+    "experiencesTitle": "Experiences in Cape Verde: trekking, kitesurfing, diving and culture",
+    "experiencesDesc": "Book authentic experiences in Cape Verde: trekking in Paul Valley, kitesurfing in Sal, diving in Santa Luzia, climbing Pico do Fogo and much more.",
+    "diasporaTitle": "Cape Verdean Diaspora: stories, communities and roots",
+    "diasporaDesc": "Discover the Cape Verdean diaspora: 700,000 Cape Verdeans spread across the world. Stories from Portugal, USA, France, the Netherlands and more."
+  }
+}

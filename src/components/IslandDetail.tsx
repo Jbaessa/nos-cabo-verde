@@ -22,14 +22,32 @@ export function IslandDetail({
   prev,
   next,
   index,
+  locale = "pt",
 }: {
   island: Island;
   prev: Island;
   next: Island;
   index: number;
+  locale?: string;
 }) {
   const group = islandGroup(island.id);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isEn = locale === "en";
+  const t = {
+    allIslands: isEn ? "All Islands" : "Todas as Ilhas",
+    notToMiss: isEn ? "Must See" : "Não Percas",
+    planTrip: isEn ? "Plan Your Trip" : "Planear a Viagem",
+    viewMap: isEn ? "View on Map" : "Ver no Mapa",
+    prevIsland: isEn ? "Previous island" : "Ilha anterior",
+    nextIsland: isEn ? "Next island" : "Próxima ilha",
+    islandNum: isEn ? "Island" : "Ilha",
+    discoverIsland: isEn ? `Discover ${island.name}` : `Descobre ${island.name}`,
+    barlavento: isEn ? "Barlavento" : "Barlavento",
+    sotavento: isEn ? "Sotavento" : "Sotavento",
+    temperature: isEn ? "Avg. temperature" : "Temperatura média",
+    duration: isEn ? "Ideal stay" : "Estadia ideal",
+    archipelago: isEn ? "Archipelago" : "Arquipélago",
+  };
 
   return (
     <div className="bg-ncv-night">
@@ -51,10 +69,10 @@ export function IslandDetail({
             transition={{ duration: 0.7 }}
           >
             <Link
-              href="/#ilhas"
+              href={isEn ? "/en/#ilhas" : "/#ilhas"}
               className="inline-flex items-center gap-2 text-white/50 hover:text-ncv-gold text-xs font-sans tracking-widest uppercase mb-6 transition-colors"
             >
-              <ArrowLeft size={13} /> Todas as Ilhas
+              <ArrowLeft size={13} /> {t.allIslands}
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
@@ -62,7 +80,7 @@ export function IslandDetail({
                 {group}
               </span>
               <span className="text-white/40 text-xs font-sans tracking-widest uppercase">
-                Ilha {String(index + 1).padStart(2, "0")} / 10
+                {t.islandNum} {String(index + 1).padStart(2, "0")} / 10
               </span>
             </div>
 
@@ -88,7 +106,7 @@ export function IslandDetail({
             <Thermometer size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Temperatura média
+                {t.temperature}
               </p>
               <p className="text-white text-sm font-sans">{island.temperature}</p>
             </div>
@@ -97,7 +115,7 @@ export function IslandDetail({
             <Clock size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Estadia ideal
+                {t.duration}
               </p>
               <p className="text-white text-sm font-sans">{island.duration}</p>
             </div>
@@ -115,9 +133,9 @@ export function IslandDetail({
             <MapPin size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Arquipélago
+                {t.archipelago}
               </p>
-              <p className="text-white text-sm font-sans">Cabo Verde</p>
+              <p className="text-white text-sm font-sans">{isEn ? "Cape Verde" : "Cabo Verde"}</p>
             </div>
           </div>
         </div>
@@ -137,22 +155,22 @@ export function IslandDetail({
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                A Ilha
+                {isEn ? "The Island" : "A Ilha"}
               </span>
             </div>
             <h2 className="font-serif text-3xl lg:text-4xl text-white leading-snug mb-6">
-              Descobre {island.name}
+              {t.discoverIsland}
             </h2>
             <p className="text-white/60 text-base lg:text-lg font-sans leading-relaxed mb-10">
               {island.description}
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a href="/#planear" className="btn btn-gold px-8 py-4 text-sm font-bold tracking-wide">
-                Planear a Viagem
+              <a href={isEn ? "/en/#planear" : "/#planear"} className="btn btn-gold px-8 py-4 text-sm font-bold tracking-wide">
+                {t.planTrip}
               </a>
-              <Link href="/#ilhas" className="btn btn-glass px-8 py-4 text-sm">
-                Ver no Mapa
+              <Link href={isEn ? "/en/#ilhas" : "/#ilhas"} className="btn btn-glass px-8 py-4 text-sm">
+                {t.viewMap}
               </Link>
             </div>
           </motion.div>
@@ -167,7 +185,7 @@ export function IslandDetail({
             <div className="border border-white/8 rounded-2xl overflow-hidden">
               <div className="px-8 pt-8 pb-4">
                 <p className="text-ncv-gold/60 text-[10px] font-sans tracking-[0.3em] uppercase">
-                  Não Percas
+                  {t.notToMiss}
                 </p>
               </div>
               {island.highlights.map((h, i) => {
@@ -218,12 +236,12 @@ export function IslandDetail({
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2">
           {[
-            { island: prev, label: "Ilha anterior", dir: "prev" as const },
-            { island: next, label: "Próxima ilha", dir: "next" as const },
+            { island: prev, label: t.prevIsland, dir: "prev" as const },
+            { island: next, label: t.nextIsland, dir: "next" as const },
           ].map(({ island: nav, label, dir }) => (
             <Link
               key={dir}
-              href={`/ilhas/${nav.id}`}
+              href={isEn ? `/en/ilhas/${nav.id}` : `/ilhas/${nav.id}`}
               className={`group relative h-56 overflow-hidden flex items-center ${
                 dir === "next" ? "justify-end text-right md:border-l md:border-white/8" : ""
               }`}

@@ -1,28 +1,39 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume2, VolumeX, ChevronDown, Play } from "lucide-react";
 
-const diasporaCountries = [
+const diasporaCountriesPt = [
   "Portugal", "Angola", "Estados Unidos", "França", "Países Baixos",
   "Luxemburgo", "Itália", "Senegal", "Brasil", "São Tomé e Príncipe",
   "Suíça", "Suécia", "Alemanha", "Reino Unido", "Bélgica",
 ];
 
+const diasporaCountriesEn = [
+  "Portugal", "Angola", "United States", "France", "Netherlands",
+  "Luxembourg", "Italy", "Senegal", "Brazil", "São Tomé and Príncipe",
+  "Switzerland", "Sweden", "Germany", "United Kingdom", "Belgium",
+];
+
 export function HeroSection() {
+  const t = useTranslations("hero");
   const [soundOn, setSoundOn] = useState(false);
   const [currentCountry, setCurrentCountry] = useState(0);
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 600], [1, 0]);
   const y = useTransform(scrollY, [0, 600], [0, 120]);
 
+  const isEn = t("line1") === "Cape Verde";
+  const countries = isEn ? diasporaCountriesEn : diasporaCountriesPt;
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCountry((prev) => (prev + 1) % diasporaCountries.length);
+      setCurrentCountry((prev) => (prev + 1) % countries.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [countries.length]);
 
   return (
     <section className="relative h-screen min-h-[700px] overflow-hidden">
@@ -33,14 +44,11 @@ export function HeroSection() {
           alt="Cabo Verde"
           className="w-full h-full object-cover object-center"
         />
-        {/* Layered gradients for depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-ncv-night/75 via-ncv-night/35 to-ncv-night/85" />
         <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/60 via-transparent to-ncv-night/30" />
-        {/* Subtle blue tint overlay */}
         <div className="absolute inset-0 bg-ncv-blue/15" />
       </div>
 
-      {/* Animated noise texture */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -64,7 +72,7 @@ export function HeroSection() {
           >
             <div className="h-px w-12 bg-ncv-gold" />
             <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-              Dez ilhas · Um povo · Uma alma
+              {t("eyebrow")}
             </span>
           </motion.div>
 
@@ -76,13 +84,13 @@ export function HeroSection() {
             className="font-serif leading-none mb-6"
           >
             <span className="block text-white text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px]">
-              Cabo Verde
+              {t("line1")}
             </span>
             <span className="block text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px] text-gradient-gold">
-              não se visita.
+              {t("line2")}
             </span>
             <span className="block text-white text-4xl sm:text-6xl lg:text-[88px] xl:text-[104px]">
-              Sente-se.
+              {t("line3")}
             </span>
           </motion.h1>
 
@@ -93,7 +101,7 @@ export function HeroSection() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-white/65 text-lg lg:text-xl font-sans leading-relaxed max-w-xl mb-10"
           >
-            Dez ilhas no coração do Atlântico. Um povo feito de música, história, mar e morabeza.
+            {t("subtitle")}
           </motion.p>
 
           {/* CTAs */}
@@ -103,18 +111,12 @@ export function HeroSection() {
             transition={{ delay: 1.0, duration: 0.8 }}
             className="flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#ilhas"
-              className="group btn btn-gold px-8 py-4 font-bold text-sm tracking-wide"
-            >
-              Descobrir Cabo Verde
+            <a href="#ilhas" className="group btn btn-gold px-8 py-4 font-bold text-sm tracking-wide">
+              {t("cta")}
               <ChevronDown size={16} className="group-hover:translate-y-1 transition-transform" />
             </a>
-            <a
-              href="#ilhas"
-              className="btn btn-glass px-8 py-4 font-semibold text-sm tracking-wide"
-            >
-              Explorar as Ilhas
+            <a href="#ilhas" className="btn btn-glass px-8 py-4 font-semibold text-sm tracking-wide">
+              {t("ctaIslands")}
             </a>
             <a
               href="#musica"
@@ -123,7 +125,7 @@ export function HeroSection() {
               <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-ncv-gold transition-colors">
                 <Play size={12} className="ml-0.5" />
               </div>
-              Ouvir a Nossa Música
+              {t("ctaMusic")}
             </a>
           </motion.div>
         </div>
@@ -137,7 +139,7 @@ export function HeroSection() {
         className="absolute bottom-24 left-6 lg:left-12 z-20"
       >
         <p className="text-white/30 text-xs font-sans mb-1.5 tracking-widest uppercase">
-          Presente em
+          {t("presentIn")}
         </p>
         <motion.p
           key={currentCountry}
@@ -146,7 +148,7 @@ export function HeroSection() {
           exit={{ opacity: 0, y: -6 }}
           className="text-ncv-gold text-sm font-sans font-medium"
         >
-          {diasporaCountries[currentCountry]}
+          {countries[currentCountry]}
         </motion.p>
       </motion.div>
 
@@ -159,7 +161,7 @@ export function HeroSection() {
         className="absolute bottom-16 right-6 lg:bottom-24 lg:right-12 z-20 flex items-center gap-3 bg-white/5 border border-white/15 text-white rounded-full px-5 py-3 hover:bg-ncv-gold/10 hover:border-ncv-gold/40 transition-all backdrop-blur-sm group"
       >
         <span className="text-xs font-sans tracking-wider text-white/60 group-hover:text-white transition-colors">
-          Escuta Cabo Verde
+          {t("listen")}
         </span>
         <div className="w-7 h-7 rounded-full bg-ncv-gold/20 flex items-center justify-center">
           {soundOn ? (
@@ -168,7 +170,6 @@ export function HeroSection() {
             <VolumeX size={13} className="text-white/50" />
           )}
         </div>
-        {/* Pulse ring */}
         {soundOn && (
           <span className="absolute inset-0 rounded-full border border-ncv-gold/30 animate-ping" />
         )}
@@ -186,9 +187,7 @@ export function HeroSection() {
           transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
           className="w-px h-10 bg-gradient-to-b from-white/0 via-white/40 to-white/0"
         />
-        <span className="text-white/25 text-[10px] font-sans tracking-[0.25em] uppercase">
-          Scroll
-        </span>
+        <span className="text-white/25 text-[10px] font-sans tracking-[0.25em] uppercase">Scroll</span>
       </motion.div>
 
       {/* Diagonal decorative line */}

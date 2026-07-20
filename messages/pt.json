@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "islands": "Ilhas",
+    "culture": "Cultura",
+    "music": "Música",
+    "flavors": "Gastronomia",
+    "experiences": "Experiências",
+    "diaspora": "Diáspora",
+    "partners": "Parceiros",
+    "agenda": "Agenda",
+    "favorites": "Favoritos",
+    "profile": "Perfil",
+    "discover": "Descobrir",
+    "slogan": "DESCOBRIR · SENTIR · PERTENCER"
+  },
+  "hero": {
+    "eyebrow": "Dez ilhas · Um povo · Uma alma",
+    "line1": "Cabo Verde",
+    "line2": "não se visita.",
+    "line3": "Sente-se.",
+    "subtitle": "Dez ilhas no coração do Atlântico. Um povo feito de música, história, mar e morabeza.",
+    "cta": "Descobrir Cabo Verde",
+    "ctaIslands": "Explorar as Ilhas",
+    "ctaMusic": "Ouvir a Nossa Música",
+    "presentIn": "Presente em",
+    "listen": "Escuta Cabo Verde"
+  },
+  "islands": {
+    "sectionTag": "O Arquipélago",
+    "title": "Dez Ilhas do",
+    "titleHighlight": "Atlântico",
+    "subtitle": "Do Barlavento ao Sotavento, cada ilha é um mundo. Escolhe a tua e começa a descobrir.",
+    "barlavento": "Barlavento — Ilhas do Norte",
+    "sotavento": "Sotavento — Ilhas do Sul",
+    "temperature": "Temperatura",
+    "duration": "Estadia ideal",
+    "explore": "Explorar a ilha",
+    "allIslands": "Ver todas as ilhas"
+  },
+  "islandDetail": {
+    "allIslands": "Todas as Ilhas",
+    "notToMiss": "Não Percas",
+    "planTrip": "Planear a Viagem",
+    "viewMap": "Ver no Mapa",
+    "prevIsland": "Ilha anterior",
+    "nextIsland": "Próxima ilha"
+  },
+  "islandsPage": {
+    "sectionTag": "O Arquipélago",
+    "title": "As Dez Ilhas",
+    "titleHighlight": "do Atlântico",
+    "subtitle": "Do Barlavento ao Sotavento, cada ilha é um mundo. Escolhe a tua e começa a descobrir."
+  },
+  "experiences": {
+    "sectionTag": "Experiências",
+    "title": "Vive Cabo Verde",
+    "titleHighlight": "por Dentro",
+    "book": "Reservar",
+    "from": "A partir de",
+    "perPerson": "por pessoa",
+    "days": "dias",
+    "rating": "Avaliação",
+    "duration": "Duração",
+    "available": "Disponível",
+    "viewAll": "Ver todas as experiências"
+  },
+  "diaspora": {
+    "sectionTag": "Diáspora",
+    "title": "Um Povo",
+    "titleHighlight": "Espalhado pelo Mundo",
+    "subtitle": "Mais de 700 000 cabo-verdianos vivem fora do arquipélago. A diáspora é parte da alma do país."
+  },
+  "culture": {
+    "sectionTag": "Identidade",
+    "title": "A Alma de",
+    "titleHighlight": "Cabo Verde"
+  },
+  "music": {
+    "sectionTag": "Música",
+    "title": "O Som que",
+    "titleHighlight": "Atravessa o Atlântico"
+  },
+  "flavors": {
+    "sectionTag": "Gastronomia",
+    "title": "Sabores que",
+    "titleHighlight": "Contam Histórias"
+  },
+  "editorial": {
+    "sectionTag": "Histórias",
+    "title": "Descobre",
+    "titleHighlight": "Cabo Verde"
+  },
+  "agenda": {
+    "sectionTag": "Agenda",
+    "title": "Eventos e",
+    "titleHighlight": "Festivais"
+  },
+  "footer": {
+    "tagline": "Dez ilhas. Um povo. Uma alma.",
+    "description": "Portal digital dedicado à cultura, identidade e turismo de Cabo Verde.",
+    "exploreTitle": "Explorar",
+    "cultureTitle": "Cultura",
+    "infoTitle": "Informação",
+    "allRights": "Todos os direitos reservados.",
+    "madeWith": "Feito com"
+  },
+  "common": {
+    "readMore": "Ler mais",
+    "learnMore": "Saber mais",
+    "close": "Fechar",
+    "book": "Reservar",
+    "free": "Grátis",
+    "group": "Grupo",
+    "archipelago": "Arquipélago",
+    "capeVerde": "Cabo Verde",
+    "island": "Ilha"
+  },
+  "meta": {
+    "homeTitle": "Nós Cabo Verde — Dez ilhas. Um povo. Uma alma.",
+    "homeDesc": "Portal digital da cultura, beleza e identidade cabo-verdiana. Descobre as dez ilhas, a música, a gastronomia, o povo e as experiências autênticas de Cabo Verde.",
+    "islandsTitle": "As Dez Ilhas de Cabo Verde: guia completo de Barlavento e Sotavento",
+    "islandsDesc": "Explora as dez ilhas de Cabo Verde: Santo Antão, São Vicente, São Nicolau, Sal, Boa Vista, Maio, Santiago, Fogo e Brava. Cada ilha tem a sua personalidade, música e cultura única.",
+    "experiencesTitle": "Experiências em Cabo Verde: trekking, kitesurf, mergulho e cultura",
+    "experiencesDesc": "Reserva experiências autênticas em Cabo Verde: trekking no Vale de Paul, kitesurf no Sal, mergulho em Santa Luzia, ascensão ao Pico do Fogo e muito mais.",
+    "diasporaTitle": "Diáspora Cabo-Verdiana: histórias, comunidades e raízes",
+    "diasporaDesc": "Descobre a diáspora cabo-verdiana: 700 000 cabo-verdianos espalhados pelo mundo. Histórias de Portugal, EUA, França, Holanda e muito mais."
+  }
+}
