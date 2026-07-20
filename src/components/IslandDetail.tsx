@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,6 +10,7 @@ import {
   Clock,
   MapPin,
   Compass,
+  ChevronDown,
 } from "lucide-react";
 import { islands } from "@/lib/data";
 import { islandGroup } from "@/lib/island-groups";
@@ -27,6 +29,7 @@ export function IslandDetail({
   index: number;
 }) {
   const group = islandGroup(island.id);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="bg-ncv-night">
@@ -161,21 +164,51 @@ export function IslandDetail({
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <div className="border border-white/8 rounded-2xl p-8">
-              <p className="text-ncv-gold/60 text-[10px] font-sans tracking-[0.3em] uppercase mb-6">
-                Não Percas
-              </p>
-              {island.highlights.map((h, i) => (
-                <div
-                  key={h}
-                  className="flex items-center gap-4 py-3.5 border-b border-white/5 last:border-0"
-                >
-                  <span className="text-ncv-gold/40 text-[10px] font-mono tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-white/70 text-sm font-sans">{h}</span>
-                </div>
-              ))}
+            <div className="border border-white/8 rounded-2xl overflow-hidden">
+              <div className="px-8 pt-8 pb-4">
+                <p className="text-ncv-gold/60 text-[10px] font-sans tracking-[0.3em] uppercase">
+                  Não Percas
+                </p>
+              </div>
+              {island.highlights.map((h, i) => {
+                const isOpen = openIndex === i;
+                return (
+                  <div key={h.name} className="border-t border-white/5">
+                    <button
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                      className="w-full flex items-center gap-4 px-8 py-4 hover:bg-white/3 transition-colors text-left group"
+                    >
+                      <span className="text-ncv-gold/40 text-[10px] font-mono tabular-nums shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-white/80 text-sm font-sans flex-1 group-hover:text-white transition-colors">
+                        {h.name}
+                      </span>
+                      <ChevronDown
+                        size={14}
+                        className={`text-ncv-gold/50 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <p className="px-8 pb-5 pt-1 text-white/50 text-xs font-sans leading-relaxed border-t border-white/5">
+                            {h.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+              <div className="pb-4" />
             </div>
           </motion.div>
         </div>

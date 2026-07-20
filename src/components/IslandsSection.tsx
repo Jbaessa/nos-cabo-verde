@@ -283,10 +283,10 @@ export function IslandsSection() {
                 <div className="flex flex-wrap gap-2 mb-6">
                   {activeData.highlights.map((h) => (
                     <span
-                      key={h}
+                      key={h.name}
                       className="border border-ncv-gold/20 text-ncv-gold/60 text-xs font-sans px-3.5 py-1 rounded-full"
                     >
-                      {h}
+                      {h.name}
                     </span>
                   ))}
                 </div>

@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!island) return {};
 
   const title = `${island.name}, Cabo Verde: o que visitar, praias, cultura e roteiro`;
-  const description = `Descobre ${island.name}: ${island.description} ${island.highlights.join(", ")} e muito mais. Roteiro completo para visitar ${island.name}.`;
+  const description = `Descobre ${island.name}: ${island.description} ${island.highlights.map((h) => h.name).join(", ")} e muito mais. Roteiro completo para visitar ${island.name}.`;
   const imageUrl = island.image.startsWith("http") ? island.image : `${BASE}${island.image}`;
 
   return {
@@ -70,7 +70,7 @@ export default async function IslandPage({
     description: island.description,
     url: `${BASE}/ilhas/${island.id}`,
     image: imageUrl,
-    touristType: island.highlights.map((h) => ({ "@type": "Audience", audienceType: h })),
+    touristType: island.highlights.map((h) => ({ "@type": "Audience", audienceType: h.name })),
     geo: {
       "@type": "GeoCoordinates",
       addressCountry: "CV",
