@@ -75,7 +75,7 @@ export const islands = [
     tagline: "Dunas e mar sem fim.",
     description:
       "Deserto de dunas de areia dourada que mergulham no Atlântico. Tartarugas que desovam nas praias.",
-    image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80",
+    image: "/images/boavista.png",
     temperature: "27°C",
     highlights: ["Deserto", "Tartarugas", "Kitesurf", "Sal Rei"],
     duration: "3–5 dias",
