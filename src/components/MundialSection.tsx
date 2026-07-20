@@ -1,12 +1,15 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export function MundialSection() {
+  const t = useTranslations("mundialSection");
+
   return (
     <section className="bg-ncv-night relative overflow-hidden">
-      {/* Ghost background — match photo esbatido */}
+      {/* Ghost background */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <img
           src="/images/mundial-match.jpg"
@@ -24,7 +27,7 @@ export function MundialSection() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-stretch">
 
-          {/* ── LEFT: fans photo ─────────────────────── */}
+          {/* LEFT: fans photo */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,14 +41,11 @@ export function MundialSection() {
               className="w-full h-full object-cover object-top"
             />
 
-            {/* Gradient from bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-ncv-night via-ncv-night/20 to-transparent" />
 
-            {/* Flag strip + label */}
             <div className="absolute bottom-6 left-6 right-6">
               <div className="h-px w-full bg-white/10 mb-4" />
               <div className="flex items-center gap-3">
-                {/* Cabo Verde flag mini */}
                 <div className="flex items-center h-4 w-8 overflow-hidden rounded-sm flex-shrink-0">
                   <div className="w-full h-full flex flex-col">
                     <div className="flex-[3] bg-ncv-blue" />
@@ -61,7 +61,6 @@ export function MundialSection() {
               </div>
             </div>
 
-            {/* "Cabo Verde" overlay text (esbatido) */}
             <div className="absolute top-6 left-6 right-6 pointer-events-none">
               <span className="font-serif text-7xl font-bold text-white/[0.04] leading-none select-none">
                 CV
@@ -69,7 +68,7 @@ export function MundialSection() {
             </div>
           </motion.div>
 
-          {/* ── RIGHT: text content ──────────────────── */}
+          {/* RIGHT: text content */}
           <div className="lg:col-span-3 flex flex-col justify-center lg:pl-6">
 
             {/* FIFA 2026 logo + hosts */}
@@ -88,10 +87,10 @@ export function MundialSection() {
               <div className="h-10 w-px bg-white/10" />
               <div>
                 <p className="text-white/25 text-[9px] font-sans tracking-[0.3em] uppercase mb-1">
-                  EUA · Canadá · México
+                  {t("hosts")}
                 </p>
                 <p className="text-white/40 text-xs font-sans tracking-[0.2em] uppercase">
-                  Copa do Mundo FIFA
+                  {t("fifaCup")}
                 </p>
               </div>
             </motion.div>
@@ -112,7 +111,7 @@ export function MundialSection() {
                 </span>
               </h2>
               <p className="text-white/30 text-xs lg:text-sm font-sans tracking-[0.35em] uppercase mb-10">
-                no palco do mundo
+                {t("worldStage")}
               </p>
             </motion.div>
 
@@ -127,12 +126,10 @@ export function MundialSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-white/45 text-sm lg:text-[15px] font-sans leading-[1.9] mb-10 max-w-md"
             >
-              Dez ilhas. Um povo. Um sonho que atravessou o Atlântico.
-              Os Tubarões Azuis escreveram história e levaram a bandeira
-              azul das estrelas ao maior palco do futebol mundial.
+              {t("desc")}
             </motion.p>
 
-            {/* Match photo strip — esbatido */}
+            {/* Match photo strip */}
             <motion.div
               initial={{ opacity: 0, scaleX: 0.95 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
@@ -149,7 +146,7 @@ export function MundialSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/80 via-transparent to-ncv-night/80" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-white/35 text-[10px] font-sans tracking-[0.4em] uppercase">
-                  FIFA World Cup 2026 · Grupo de Fase Final
+                  {t("groupPhase")}
                 </span>
               </div>
             </motion.div>
@@ -166,14 +163,14 @@ export function MundialSection() {
                 href="#"
                 className="btn btn-gold inline-flex items-center justify-center gap-3 text-xs font-bold tracking-widest uppercase px-7 py-3.5"
               >
-                Acompanhar os Tubarões Azuis
+                {t("followBtn")}
                 <ArrowRight size={15} />
               </a>
               <a
                 href="#"
                 className="btn btn-glass inline-flex items-center justify-center gap-2 text-xs font-sans text-white/50 hover:text-white px-5 py-3.5 transition-colors"
               >
-                Ver calendário
+                {t("calendarBtn")}
               </a>
             </motion.div>
           </div>

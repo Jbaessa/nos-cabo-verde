@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Users, MapPin, Globe } from "lucide-react";
 import { diasporaCommunities, diasporaStories, diasporaEvents } from "@/lib/data";
@@ -28,9 +29,16 @@ export function CommunityDetail({
   next: Community;
   index: number;
 }) {
+  const t = useTranslations("communityDetail");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
   const stories = diasporaStories.filter((s) => s.country === community.country);
   const events = diasporaEvents.filter((e) => e.country === community.country);
   const total = diasporaCommunities.length;
+
+  const diasporaHref = isEn ? "/en/diaspora" : "/diaspora";
+  const diasporaRegisterHref = isEn ? "/en/diaspora#registo" : "/diaspora#registo";
 
   return (
     <div className="bg-ncv-night">
@@ -52,15 +60,15 @@ export function CommunityDetail({
             transition={{ duration: 0.7 }}
           >
             <Link
-              href="/diaspora"
+              href={diasporaHref}
               className="inline-flex items-center gap-2 text-white/50 hover:text-ncv-gold text-xs font-sans tracking-widest uppercase mb-6 transition-colors"
             >
-              <ArrowLeft size={13} /> A Diáspora
+              <ArrowLeft size={13} /> {t("back")}
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
               <span className="text-ncv-gold text-xs font-sans tracking-widest uppercase border border-ncv-gold/30 bg-ncv-night/50 backdrop-blur-sm px-3.5 py-1 rounded-full">
-                Comunidade {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                {t("community")} {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
               </span>
             </div>
 
@@ -89,7 +97,7 @@ export function CommunityDetail({
             <Users size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Cabo-verdianos
+                {t("capeVerdeans")}
               </p>
               <p className="text-white text-sm font-sans font-semibold">{community.population}</p>
             </div>
@@ -98,7 +106,7 @@ export function CommunityDetail({
             <MapPin size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Principais cidades
+                {t("mainCities")}
               </p>
               <p className="text-white text-sm font-sans">{community.city}</p>
             </div>
@@ -107,7 +115,7 @@ export function CommunityDetail({
             <Globe size={16} className="text-ncv-gold" />
             <div>
               <p className="text-white/30 text-[10px] font-sans uppercase tracking-wider">
-                Ilhas de origem
+                {t("islandRoots")}
               </p>
               <p className="text-white text-sm font-sans">{community.islandRoots.join(", ")}</p>
             </div>
@@ -129,17 +137,16 @@ export function CommunityDetail({
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                A Comunidade
+                {t("communitySection")}
               </span>
             </div>
             <h2 className="font-serif text-3xl lg:text-4xl text-white leading-snug mb-6">
-              Cabo-verdianos em {community.country}
+              {t("capeVerdeansIn")} {community.country}
             </h2>
             <p className="text-white/60 text-base lg:text-lg font-sans leading-relaxed mb-10">
               {community.description}
             </p>
 
-            {/* Highlight quote */}
             <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/8 border-l-4 border-l-ncv-gold mb-10">
               <span className="text-ncv-gold font-serif text-4xl leading-none mt-1 flex-shrink-0">"</span>
               <p className="text-white/70 font-sans italic text-base leading-relaxed">
@@ -148,11 +155,11 @@ export function CommunityDetail({
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="/diaspora" className="btn btn-gold px-8 py-4 text-sm font-bold tracking-wide">
-                Ver todas as comunidades
+              <Link href={diasporaHref} className="btn btn-gold px-8 py-4 text-sm font-bold tracking-wide">
+                {t("viewAllCommunities")}
               </Link>
-              <Link href="/diaspora#registo" className="btn btn-glass px-8 py-4 text-sm">
-                Registar comunidade
+              <Link href={diasporaRegisterHref} className="btn btn-glass px-8 py-4 text-sm">
+                {t("registerCommunity")}
               </Link>
             </div>
           </motion.div>
@@ -166,7 +173,7 @@ export function CommunityDetail({
           >
             <div className="border border-white/8 rounded-2xl p-8">
               <p className="text-ncv-gold/60 text-[10px] font-sans tracking-[0.3em] uppercase mb-6">
-                Ilhas de Origem
+                {t("islandRootsLabel")}
               </p>
               {community.islandRoots.map((island, i) => (
                 <div
@@ -197,11 +204,11 @@ export function CommunityDetail({
             <div className="flex items-center gap-4 mb-3">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                Vozes da comunidade
+                {t("communityVoices")}
               </span>
             </div>
             <h2 className="font-serif text-3xl text-white mb-10">
-              Histórias de {community.country}
+              {t("storiesFrom")} {community.country}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {stories.map((story, i) => (
@@ -231,7 +238,7 @@ export function CommunityDetail({
                       &ldquo;{story.quote}&rdquo;
                     </blockquote>
                     <p className="text-ncv-gold text-sm font-sans font-medium">{story.name}</p>
-                    <p className="text-white/40 text-xs font-sans">Ilha: {story.islandOrigin}</p>
+                    <p className="text-white/40 text-xs font-sans">{t("islandLabel")} {story.islandOrigin}</p>
                   </div>
                 </motion.div>
               ))}
@@ -245,10 +252,10 @@ export function CommunityDetail({
         <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
           <div className="flex items-center gap-4 mb-3">
             <div className="h-px w-12 bg-ncv-gold" />
-            <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">Agenda</span>
+            <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">{t("agenda")}</span>
           </div>
           <h2 className="font-serif text-3xl text-white mb-10">
-            Eventos em {community.country}
+            {t("eventsIn")} {community.country}
           </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {events.map((event, i) => (
@@ -273,7 +280,7 @@ export function CommunityDetail({
                 </div>
                 {event.free && (
                   <span className="flex-shrink-0 self-start px-2 py-0.5 text-[10px] rounded-full bg-emerald-900/40 text-emerald-400 border border-emerald-700/30 font-sans">
-                    Grátis
+                    {t("free")}
                   </span>
                 )}
               </motion.div>
@@ -286,12 +293,12 @@ export function CommunityDetail({
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2">
           {[
-            { nav: prev, label: "Comunidade anterior", dir: "prev" as const },
-            { nav: next, label: "Próxima comunidade", dir: "next" as const },
+            { nav: prev, label: t("prevCommunity"), dir: "prev" as const },
+            { nav: next, label: t("nextCommunity"), dir: "next" as const },
           ].map(({ nav, label, dir }) => (
             <Link
               key={dir}
-              href={`/diaspora/${nav.id}`}
+              href={isEn ? `/en/diaspora/${nav.id}` : `/diaspora/${nav.id}`}
               className={`group relative h-56 overflow-hidden flex items-center ${
                 dir === "next" ? "justify-end text-right md:border-l md:border-white/8" : ""
               }`}

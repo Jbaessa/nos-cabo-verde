@@ -2,23 +2,27 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { useFavorites } from "@/lib/favorites-context";
 import { islands, experiences, editorialFeatures } from "@/lib/data";
 
-const tabs = [
-  { id: "islands", label: "Ilhas" },
-  { id: "experiences", label: "Experiências" },
-  { id: "articles", label: "Artigos" },
-] as const;
-
-type Tab = (typeof tabs)[number]["id"];
-
 export default function FavoritosPage() {
+  const t = useTranslations("favoritesPage");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
   const { favorites } = useFavorites();
-  const [activeTab, setActiveTab] = useState<Tab>("islands");
+
+  const tabs = [
+    { id: "islands" as const, label: t("tabIslands") },
+    { id: "experiences" as const, label: t("tabExperiences") },
+    { id: "articles" as const, label: t("tabArticles") },
+  ];
+
+  const [activeTab, setActiveTab] = useState<"islands" | "experiences" | "articles">("islands");
 
   const savedIslands = islands.filter((i) => favorites.islands.includes(i.id));
   const savedExperiences = experiences.filter((e) => favorites.experiences.includes(e.id));
@@ -38,17 +42,15 @@ export default function FavoritosPage() {
       <main className="min-h-screen bg-ncv-night pt-24">
         {/* Header */}
         <section className="max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-8">
-          <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">
-            — A tua colecção
-          </p>
+          <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">{t("eyebrow")}</p>
           <h1 className="font-serif text-5xl lg:text-6xl text-white mb-4">
-            Os teus{" "}
-            <span className="text-ncv-gold">favoritos</span>
+            {t("heading")}{" "}
+            <span className="text-ncv-gold">{t("headingHighlight")}</span>
           </h1>
           <p className="text-white/60 font-sans text-lg max-w-xl">
             {totalCount === 0
-              ? "Ainda não guardaste nada. Explora e clica no coração para guardar."
-              : `${totalCount} ${totalCount === 1 ? "item guardado" : "itens guardados"} na tua colecção pessoal.`}
+              ? t("empty")
+              : `${totalCount} ${totalCount === 1 ? t("countSingular") : t("countPlural")}`}
           </p>
         </section>
 
@@ -82,13 +84,17 @@ export default function FavoritosPage() {
           {activeTab === "islands" && (
             <>
               {savedIslands.length === 0 ? (
-                <EmptyState label="ilhas" href="/ilhas" />
+                <EmptyState
+                  message={t("emptyIslands")}
+                  href={isEn ? "/en/ilhas" : "/ilhas"}
+                  btnLabel={t("exploreIslands")}
+                />
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {savedIslands.map((island) => (
                     <Link
                       key={island.id}
-                      href={`/ilhas/${island.id}`}
+                      href={isEn ? `/en/ilhas/${island.id}` : `/ilhas/${island.id}`}
                       className="group relative overflow-hidden rounded-2xl bg-white/5 hover:bg-white/8 transition-all duration-300"
                     >
                       <div className="relative h-52 overflow-hidden">
@@ -121,13 +127,17 @@ export default function FavoritosPage() {
           {activeTab === "experiences" && (
             <>
               {savedExperiences.length === 0 ? (
-                <EmptyState label="experiências" href="/experiencias" />
+                <EmptyState
+                  message={t("emptyExperiences")}
+                  href={isEn ? "/en/experiencias" : "/experiencias"}
+                  btnLabel={t("exploreExperiences")}
+                />
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {savedExperiences.map((exp) => (
                     <Link
                       key={exp.id}
-                      href={`/experiencias/${exp.id}`}
+                      href={isEn ? `/en/experiencias/${exp.id}` : `/experiencias/${exp.id}`}
                       className="group relative overflow-hidden rounded-2xl bg-white/5 hover:bg-white/8 transition-all duration-300"
                     >
                       <div className="relative h-48 overflow-hidden">
@@ -162,12 +172,17 @@ export default function FavoritosPage() {
           {activeTab === "articles" && (
             <>
               {savedArticles.length === 0 ? (
-                <EmptyState label="artigos" href="/#editorial" />
+                <EmptyState
+                  message={t("emptyArticles")}
+                  href={isEn ? "/en/#editorial" : "/#editorial"}
+                  btnLabel={t("exploreArticles")}
+                />
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {savedArticles.map((article) => (
-                    <div
+                    <Link
                       key={article.id}
+                      href={isEn ? `/en/historias/${article.id}` : `/historias/${article.id}`}
                       className="group relative overflow-hidden rounded-2xl bg-white/5"
                     >
                       <div className="relative h-48 overflow-hidden">
@@ -186,9 +201,9 @@ export default function FavoritosPage() {
                       </div>
                       <div className="p-4">
                         <h3 className="font-serif text-lg text-white mb-1 line-clamp-2">{article.title}</h3>
-                        <p className="text-white/50 text-xs font-sans">{article.readTime} de leitura · {article.island}</p>
+                        <p className="text-white/50 text-xs font-sans">{article.readTime} {t("readTime")} · {article.island}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -201,7 +216,7 @@ export default function FavoritosPage() {
   );
 }
 
-function EmptyState({ label, href }: { label: string; href: string }) {
+function EmptyState({ message, href, btnLabel }: { message: string; href: string; btnLabel: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center">
       <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6">
@@ -209,9 +224,9 @@ function EmptyState({ label, href }: { label: string; href: string }) {
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <p className="text-white/40 font-sans text-sm mb-4">Ainda não tens {label} guardados.</p>
+      <p className="text-white/40 font-sans text-sm mb-4">{message}</p>
       <Link href={href} className="btn btn-gold-line text-sm px-6 py-2.5">
-        Explorar {label}
+        {btnLabel}
       </Link>
     </div>
   );

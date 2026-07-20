@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type Partner = {
   id: string;
   name: string;
@@ -21,6 +25,15 @@ const typeColors: Record<string, string> = {
 };
 
 export function PartnerCard({ partner }: Props) {
+  const t = useTranslations("partnerCard");
+
+  const typeLabel: Record<string, string> = {
+    Hotel: t("typeHotel"),
+    Restaurante: t("typeRestaurant"),
+    "Operador Turístico": t("typeOperator"),
+    "Escola de Desporto": t("typeSports"),
+  };
+
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-ncv-gold/25 hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.35),0_4px_20px_rgba(0,0,0,0.25)] transition-all duration-300">
       {/* Image */}
@@ -35,7 +48,7 @@ export function PartnerCard({ partner }: Props) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2">
           <span className={`px-2.5 py-1 rounded-full text-xs font-sans font-medium ${typeColors[partner.type] ?? "bg-white/20 text-white"}`}>
-            {partner.type}
+            {typeLabel[partner.type] ?? partner.type}
           </span>
           {partner.verified && (
             <span className="px-2.5 py-1 rounded-full bg-ncv-gold/90 text-ncv-night text-xs font-sans font-semibold flex items-center gap-1">
@@ -62,7 +75,7 @@ export function PartnerCard({ partner }: Props) {
           rel="noopener noreferrer"
           className="btn btn-glass text-xs py-2.5 text-center w-full"
         >
-          Visitar site
+          {t("visitSite")}
         </a>
       </div>
     </div>

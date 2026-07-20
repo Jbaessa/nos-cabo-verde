@@ -1,10 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { MapPin, Quote } from "lucide-react";
 import { faces } from "@/lib/data";
 
 export function FacesSection() {
+  const t = useTranslations("facesSection");
+
   return (
     <section id="rostos" className="bg-ncv-salt py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -20,18 +23,17 @@ export function FacesSection() {
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                O Povo
+                {t("eyebrow")}
               </span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
-              Rostos de
+              {t("heading")}
               <br />
-              <span className="text-gradient-gold">Cabo Verde</span>
+              <span className="text-gradient-gold">{t("headingHighlight")}</span>
             </h2>
           </div>
           <p className="text-ncv-basalt/50 text-base font-sans max-w-md lg:text-right leading-relaxed">
-            As histórias que fazem Cabo Verde ser mais do que uma destinação. São pessoas reais,
-            com histórias reais.
+            {t("desc")}
           </p>
         </motion.div>
 
@@ -54,10 +56,8 @@ export function FacesSection() {
                   alt={person.name}
                   className="w-full h-full object-cover object-top group-hover:scale-[1.04] transition-transform duration-600"
                 />
-                {/* Always-visible gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-ncv-night/90 via-ncv-night/20 to-transparent" />
 
-                {/* Info — always visible at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <div className="flex items-start gap-3">
                     <div className="flex-1">
@@ -71,7 +71,6 @@ export function FacesSection() {
                     </div>
                   </div>
 
-                  {/* Quote — appears on hover */}
                   <div className="overflow-hidden max-h-28 lg:max-h-0 lg:group-hover:max-h-28 transition-all duration-400">
                     <div className="pt-3 border-t border-white/10 mt-3">
                       <Quote size={12} className="text-ncv-gold mb-1.5" />
@@ -93,11 +92,8 @@ export function FacesSection() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <a
-            href="#"
-            className="btn btn-night px-10 py-4 text-sm"
-          >
-            Conhecer mais pessoas de Cabo Verde
+          <a href="#" className="btn btn-night px-10 py-4 text-sm">
+            {t("cta")}
           </a>
         </motion.div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { useFavorites } from "@/lib/favorites-context";
@@ -32,6 +33,10 @@ const interestOptions = [
 ];
 
 export default function PerfilPage() {
+  const t = useTranslations("profilePage");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
   const { favorites } = useFavorites();
   const [profile, setProfile] = useState<Profile>({ name: "", email: "", interests: [] });
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -65,7 +70,6 @@ export default function PerfilPage() {
 
   const savedIslands = islands.filter((i) => favorites.islands.includes(i.id));
   const savedExperiences = experiences.filter((e) => favorites.experiences.includes(e.id));
-  const hasProfile = profile.name || profile.email;
 
   return (
     <>
@@ -75,13 +79,11 @@ export default function PerfilPage() {
 
           {/* Header */}
           <div>
-            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">— O teu espaço</p>
+            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">{t("eyebrow")}</p>
             <h1 className="font-serif text-5xl text-white mb-2">
-              O meu <span className="text-ncv-gold">perfil</span>
+              {t("heading")} <span className="text-ncv-gold">{t("headingHighlight")}</span>
             </h1>
-            <p className="text-white/50 font-sans text-base">
-              Preferências, favoritos e histórico de reservas.
-            </p>
+            <p className="text-white/50 font-sans text-base">{t("desc")}</p>
           </div>
 
           {/* Profile card */}
@@ -98,15 +100,15 @@ export default function PerfilPage() {
                   </span>
                 </div>
                 <div>
-                  <h2 className="font-serif text-xl text-white">{profile.name || "Viajante"}</h2>
-                  <p className="text-white/40 text-sm font-sans">{profile.email || "Sem email"}</p>
+                  <h2 className="font-serif text-xl text-white">{profile.name || t("defaultName")}</h2>
+                  <p className="text-white/40 text-sm font-sans">{profile.email || t("noEmail")}</p>
                 </div>
               </div>
               <button
                 onClick={() => setEditing((e) => !e)}
                 className="btn btn-glass text-sm px-4 py-2"
               >
-                {editing ? "Cancelar" : "Editar"}
+                {editing ? t("cancel") : t("edit")}
               </button>
             </div>
 
@@ -119,29 +121,29 @@ export default function PerfilPage() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-white/60 text-xs font-sans mb-1.5">Nome</label>
+                    <label className="block text-white/60 text-xs font-sans mb-1.5">{t("nameLabel")}</label>
                     <input
                       type="text"
                       value={profile.name}
                       onChange={(e) => setProfile((p) => ({ ...p, name: e.target.value }))}
-                      placeholder="O teu nome"
+                      placeholder={t("namePlaceholder")}
                       className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/60 text-xs font-sans mb-1.5">Email</label>
+                    <label className="block text-white/60 text-xs font-sans mb-1.5">{t("emailLabel")}</label>
                     <input
                       type="email"
                       value={profile.email}
                       onChange={(e) => setProfile((p) => ({ ...p, email: e.target.value }))}
-                      placeholder="email@exemplo.com"
+                      placeholder={t("emailPlaceholder")}
                       className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white/60 text-xs font-sans mb-2.5">Interesses</label>
+                  <label className="block text-white/60 text-xs font-sans mb-2.5">{t("interestsLabel")}</label>
                   <div className="flex flex-wrap gap-2">
                     {interestOptions.map((interest) => (
                       <button
@@ -161,14 +163,14 @@ export default function PerfilPage() {
 
                 <div className="flex items-center gap-3">
                   <button onClick={saveProfile} className="btn btn-gold px-6 py-2.5 text-sm">
-                    Guardar perfil
+                    {t("saveProfile")}
                   </button>
                   {saved && (
                     <span className="text-emerald-400 text-sm font-sans flex items-center gap-1.5">
                       <svg viewBox="0 0 20 20" className="w-4 h-4 fill-current">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      Guardado
+                      {t("saved")}
                     </span>
                   )}
                 </div>
@@ -184,17 +186,17 @@ export default function PerfilPage() {
             className="space-y-4"
           >
             <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl text-white">Os meus favoritos</h2>
-              <Link href="/favoritos" className="text-ncv-gold text-sm font-sans hover:text-ncv-gold/70 transition-colors">
-                Ver todos →
+              <h2 className="font-serif text-2xl text-white">{t("myFavorites")}</h2>
+              <Link href={isEn ? "/en/favoritos" : "/favoritos"} className="text-ncv-gold text-sm font-sans hover:text-ncv-gold/70 transition-colors">
+                {t("viewAll")}
               </Link>
             </div>
 
             {savedIslands.length === 0 && savedExperiences.length === 0 ? (
               <div className="rounded-2xl bg-white/5 border border-white/10 p-8 text-center">
-                <p className="text-white/40 font-sans text-sm mb-3">Ainda não tens favoritos.</p>
-                <Link href="/experiencias" className="btn btn-gold-line text-sm px-5 py-2">
-                  Explorar experiências
+                <p className="text-white/40 font-sans text-sm mb-3">{t("noFavorites")}</p>
+                <Link href={isEn ? "/en/experiencias" : "/experiencias"} className="btn btn-gold-line text-sm px-5 py-2">
+                  {t("exploreExperiences")}
                 </Link>
               </div>
             ) : (
@@ -202,12 +204,12 @@ export default function PerfilPage() {
                 {savedIslands.slice(0, 2).map((island) => (
                   <Link
                     key={island.id}
-                    href={`/ilhas/${island.id}`}
+                    href={isEn ? `/en/ilhas/${island.id}` : `/ilhas/${island.id}`}
                     className="group flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/8 border border-white/5 hover:border-white/15 transition-all duration-300"
                   >
                     <img src={island.image} alt={island.name} className="w-16 h-16 rounded-xl object-cover shrink-0" />
                     <div>
-                      <p className="text-ncv-gold text-xs font-sans mb-1">Ilha</p>
+                      <p className="text-ncv-gold text-xs font-sans mb-1">{t("islandLabel")}</p>
                       <h3 className="font-serif text-base text-white">{island.name}</h3>
                       <p className="text-white/50 text-xs font-sans">{island.temperature} · {island.duration}</p>
                     </div>
@@ -216,7 +218,7 @@ export default function PerfilPage() {
                 {savedExperiences.slice(0, 2).map((exp) => (
                   <Link
                     key={exp.id}
-                    href={`/experiencias/${exp.id}`}
+                    href={isEn ? `/en/experiencias/${exp.id}` : `/experiencias/${exp.id}`}
                     className="group flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/8 border border-white/5 hover:border-white/15 transition-all duration-300"
                   >
                     <img src={exp.image} alt={exp.title} className="w-16 h-16 rounded-xl object-cover shrink-0" />
@@ -238,13 +240,13 @@ export default function PerfilPage() {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <h2 className="font-serif text-2xl text-white">Histórico de reservas</h2>
+            <h2 className="font-serif text-2xl text-white">{t("bookingsHistory")}</h2>
 
             {bookings.length === 0 ? (
               <div className="rounded-2xl bg-white/5 border border-white/10 p-8 text-center">
-                <p className="text-white/40 font-sans text-sm mb-3">Ainda não tens reservas.</p>
-                <Link href="/experiencias" className="btn btn-gold text-sm px-5 py-2.5">
-                  Explorar experiências
+                <p className="text-white/40 font-sans text-sm mb-3">{t("noBookings")}</p>
+                <Link href={isEn ? "/en/experiencias" : "/experiencias"} className="btn btn-gold text-sm px-5 py-2.5">
+                  {t("exploreExperiences")}
                 </Link>
               </div>
             ) : (
@@ -257,13 +259,13 @@ export default function PerfilPage() {
                     <div>
                       <h3 className="font-serif text-base text-white">{booking.experienceTitle}</h3>
                       <p className="text-white/50 text-xs font-sans mt-0.5">
-                        {booking.island} · {booking.checkIn} · {booking.people} {booking.people === 1 ? "pessoa" : "pessoas"}
+                        {booking.island} · {booking.checkIn} · {booking.people} {booking.people === 1 ? t("personSingular") : t("personPlural")}
                       </p>
                     </div>
                     <div className="text-right shrink-0">
                       <p className="text-ncv-gold font-sans font-semibold">{booking.total}€</p>
                       <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-sans">
-                        Pendente
+                        {t("pending")}
                       </span>
                     </div>
                   </div>

@@ -1,16 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PartnerCard } from "@/components/PartnerCard";
 import { partners } from "@/lib/data";
 import { motion } from "framer-motion";
 
-const types = ["Todos", "Hotel", "Restaurante", "Operador Turístico", "Escola de Desporto"];
-const islandOptions = ["Todas", "Santo Antão", "São Vicente", "Sal", "Boa Vista", "Fogo", "Santiago", "Brava"];
-
 export default function ParceirosPage() {
+  const t = useTranslations("partnersPage");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
+  const types = [
+    { key: "Todos", label: t("typeAll") },
+    { key: "Hotel", label: t("typeHotel") },
+    { key: "Restaurante", label: t("typeRestaurant") },
+    { key: "Operador Turístico", label: t("typeOperator") },
+    { key: "Escola de Desporto", label: t("typeSports") },
+  ];
+
+  const islandOptions = [
+    { key: "Todas", label: t("islandAll") },
+    { key: "Santo Antão", label: "Santo Antão" },
+    { key: "São Vicente", label: "São Vicente" },
+    { key: "Sal", label: "Sal" },
+    { key: "Boa Vista", label: "Boa Vista" },
+    { key: "Fogo", label: "Fogo" },
+    { key: "Santiago", label: "Santiago" },
+    { key: "Brava", label: "Brava" },
+  ];
+
   const [activeType, setActiveType] = useState("Todos");
   const [activeIsland, setActiveIsland] = useState("Todas");
 
@@ -30,19 +51,19 @@ export default function ParceirosPage() {
         <section className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80"
-            alt="Parceiros Nós Cabo Verde"
+            alt={isEn ? "Nós Cabo Verde Partners" : "Parceiros Nós Cabo Verde"}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ncv-night via-ncv-night/50 to-transparent" />
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pb-12">
             <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">
-              — Escolhidos a dedo
+              {t("eyebrow")}
             </p>
             <h1 className="font-serif text-5xl lg:text-6xl text-white mb-4">
-              Parceiros <span className="text-ncv-gold">verificados</span>
+              {t("heading")} <span className="text-ncv-gold">{t("headingHighlight")}</span>
             </h1>
             <p className="text-white/70 font-sans text-lg max-w-xl">
-              Hotéis, restaurantes, operadores e escolas de desporto seleccionados pela nossa equipa. {verified} parceiros oficiais em todo o arquipélago.
+              {t("desc", { count: verified })}
             </p>
           </div>
         </section>
@@ -50,39 +71,39 @@ export default function ParceirosPage() {
         {/* Filters */}
         <section className="max-w-7xl mx-auto px-6 lg:px-12 py-8 space-y-4">
           <div className="flex gap-2 flex-wrap">
-            {types.map((t) => (
+            {types.map(({ key, label }) => (
               <button
-                key={t}
-                onClick={() => setActiveType(t)}
+                key={key}
+                onClick={() => setActiveType(key)}
                 className={`px-4 py-2 rounded-full text-sm font-sans transition-all duration-200 ${
-                  activeType === t
+                  activeType === key
                     ? "bg-ncv-gold text-ncv-night font-semibold"
                     : "bg-white/8 text-white/70 hover:bg-white/15 hover:text-white"
                 }`}
               >
-                {t}
+                {label}
               </button>
             ))}
           </div>
 
           <div className="flex gap-2 flex-wrap">
-            {islandOptions.map((isl) => (
+            {islandOptions.map(({ key, label }) => (
               <button
-                key={isl}
-                onClick={() => setActiveIsland(isl)}
+                key={key}
+                onClick={() => setActiveIsland(key)}
                 className={`px-3 py-1.5 rounded-full text-xs font-sans transition-all duration-200 border ${
-                  activeIsland === isl
+                  activeIsland === key
                     ? "border-ncv-gold/60 bg-ncv-gold/10 text-ncv-gold"
                     : "border-white/10 text-white/50 hover:border-white/30 hover:text-white"
                 }`}
               >
-                {isl}
+                {label}
               </button>
             ))}
           </div>
 
           <p className="text-white/40 text-xs font-sans">
-            {filtered.length} {filtered.length === 1 ? "parceiro encontrado" : "parceiros encontrados"}
+            {filtered.length} {filtered.length === 1 ? t("countSingular") : t("countPlural")}
           </p>
         </section>
 
@@ -90,12 +111,12 @@ export default function ParceirosPage() {
         <section className="max-w-7xl mx-auto px-6 lg:px-12 pb-20">
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center py-24 text-center">
-              <p className="text-white/40 font-sans text-sm mb-4">Nenhum parceiro encontrado.</p>
+              <p className="text-white/40 font-sans text-sm mb-4">{t("empty")}</p>
               <button
                 onClick={() => { setActiveType("Todos"); setActiveIsland("Todas"); }}
                 className="btn btn-gold-line text-sm px-6 py-2.5"
               >
-                Limpar filtros
+                {t("clearFilters")}
               </button>
             </div>
           ) : (
@@ -114,21 +135,17 @@ export default function ParceirosPage() {
           )}
         </section>
 
-        {/* CTA — tornar-se parceiro */}
+        {/* CTA */}
         <section className="max-w-7xl mx-auto px-6 lg:px-12 pb-20">
           <div className="rounded-2xl bg-gradient-to-br from-ncv-blue to-ncv-night border border-white/10 p-10 text-center">
-            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">— Junta-te a nós</p>
-            <h2 className="font-serif text-4xl text-white mb-4">
-              O teu negócio merece estar aqui
-            </h2>
-            <p className="text-white/60 font-sans text-base max-w-lg mx-auto mb-8">
-              Partilha a tua paixão por Cabo Verde com viajantes de todo o mundo. Torna-te parceiro verificado da plataforma.
-            </p>
+            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">{t("ctaEyebrow")}</p>
+            <h2 className="font-serif text-4xl text-white mb-4">{t("ctaHeading")}</h2>
+            <p className="text-white/60 font-sans text-base max-w-lg mx-auto mb-8">{t("ctaBody")}</p>
             <a
               href="mailto:parceiros@noscaboverde.cv"
               className="btn btn-gold px-8 py-3.5 text-base inline-block"
             >
-              Candidatar-me como parceiro
+              {t("ctaBtn")}
             </a>
           </div>
         </section>
