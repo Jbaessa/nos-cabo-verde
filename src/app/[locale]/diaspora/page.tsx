@@ -2,17 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { diasporaCommunities, diasporaStories, diasporaEvents } from "@/lib/data";
 import { motion } from "framer-motion";
-
-const stats = [
-  { value: "700 000+", label: "Cabo-verdianos no mundo" },
-  { value: "2×", label: "Mais fora do que dentro das ilhas" },
-  { value: "120+", label: "Países de acolhimento" },
-  { value: "500 anos", label: "De história de emigração" },
-];
 
 const islandRootColors: Record<string, string> = {
   Santiago: "bg-ncv-blue/30 text-ncv-blue border-ncv-blue/20",
@@ -25,9 +19,17 @@ const islandRootColors: Record<string, string> = {
 };
 
 export default function DiasporaPage() {
+  const t = useTranslations("diasporaPage");
+  const locale = useLocale();
+  const isEn = locale === "en";
   const [activeContinent, setActiveContinent] = useState("Todos");
 
-  const continents = ["Todos", "Europa", "Américas", "África"];
+  const continents = [
+    { key: "Todos", label: t("continentAll") },
+    { key: "Europa", label: t("continentEurope") },
+    { key: "Américas", label: t("continentAmericas") },
+    { key: "África", label: t("continentAfrica") },
+  ];
 
   const continentMap: Record<string, string[]> = {
     Europa: ["portugal", "franca", "paises-baixos", "italia", "luxemburgo"],
@@ -47,6 +49,13 @@ export default function DiasporaPage() {
     0
   );
 
+  const stats = [
+    { value: "700 000+", label: t("stat0") },
+    { value: "2×", label: t("stat1") },
+    { value: "120+", label: t("stat2") },
+    { value: "500 anos", label: t("stat3") },
+  ];
+
   return (
     <>
       <Navbar />
@@ -54,10 +63,9 @@ export default function DiasporaPage() {
 
         {/* ── HERO ─────────────────────────────────── */}
         <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-          {/* Background: dark gradient with subtle globe texture */}
           <div className="absolute inset-0 bg-gradient-to-br from-ncv-night via-ncv-blue/10 to-ncv-night" />
 
-          {/* Decorative dots — diáspora points */}
+          {/* Decorative dots */}
           {[
             { x: "18%", y: "35%", size: 10, delay: 0 },
             { x: "32%", y: "28%", size: 6, delay: 0.3 },
@@ -84,7 +92,6 @@ export default function DiasporaPage() {
             />
           ))}
 
-          {/* Lines connecting dots — suggestion of connection */}
           <svg className="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none" preserveAspectRatio="none">
             <line x1="18%" y1="35%" x2="32%" y2="28%" stroke="#C9A05E" strokeWidth="1" />
             <line x1="32%" y1="28%" x2="48%" y2="38%" stroke="#C9A05E" strokeWidth="1" />
@@ -95,7 +102,6 @@ export default function DiasporaPage() {
             <line x1="48%" y1="38%" x2="55%" y2="60%" stroke="#C9A05E" strokeWidth="1" />
           </svg>
 
-          {/* Cabo Verde marker — origin point */}
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -112,7 +118,6 @@ export default function DiasporaPage() {
             </div>
           </motion.div>
 
-          {/* Hero content */}
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pb-16 pt-40">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -120,15 +125,14 @@ export default function DiasporaPage() {
               transition={{ duration: 0.9 }}
             >
               <p className="text-ncv-gold text-xs tracking-[0.35em] uppercase mb-5">
-                — A diáspora cabo-verdiana
+                {t("heroEyebrow")}
               </p>
               <h1 className="font-serif text-5xl lg:text-7xl xl:text-8xl text-white mb-6 leading-tight">
-                Somos de todo<br />
-                <span className="text-ncv-gold">o mundo</span>
+                {t("heading1")}<br />
+                <span className="text-ncv-gold">{t("heading2")}</span>
               </h1>
               <p className="text-white/60 font-sans text-lg max-w-2xl leading-relaxed">
-                Mais de {(totalDiaspora / 1000).toFixed(0)} mil cabo-verdianos vivem fora das dez ilhas.
-                Levam a língua crioula, a morna e a morabeza — a arte de ser generoso — por onde quer que vão.
+                {t("body", { count: (totalDiaspora / 1000).toFixed(0) })}
               </p>
             </motion.div>
           </div>
@@ -160,24 +164,23 @@ export default function DiasporaPage() {
             <div>
               <div className="flex items-center gap-4 mb-3">
                 <div className="h-px w-12 bg-ncv-gold" />
-                <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">Onde vivemos</span>
+                <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">{t("whereEyebrow")}</span>
               </div>
-              <h2 className="font-serif text-4xl text-white">Comunidades no mundo</h2>
+              <h2 className="font-serif text-4xl text-white">{t("whereHeading")}</h2>
             </div>
 
-            {/* Continent filter */}
             <div className="flex gap-2 flex-wrap">
-              {continents.map((c) => (
+              {continents.map(({ key, label }) => (
                 <button
-                  key={c}
-                  onClick={() => setActiveContinent(c)}
+                  key={key}
+                  onClick={() => setActiveContinent(key)}
                   className={`px-4 py-2 rounded-full text-sm font-sans transition-all duration-200 ${
-                    activeContinent === c
+                    activeContinent === key
                       ? "bg-ncv-gold text-ncv-night font-semibold"
                       : "bg-white/8 text-white/60 hover:bg-white/15 hover:text-white"
                   }`}
                 >
-                  {c}
+                  {label}
                 </button>
               ))}
             </div>
@@ -192,10 +195,9 @@ export default function DiasporaPage() {
                 transition={{ duration: 0.4, delay: i * 0.07 }}
               >
                 <Link
-                  href={`/diaspora/${community.id}`}
+                  href={isEn ? `/en/diaspora/${community.id}` : `/diaspora/${community.id}`}
                   className="block rounded-2xl bg-white/5 border border-white/8 overflow-hidden group hover:border-white/20 transition-all duration-300"
                 >
-                  {/* Image */}
                   <div className="relative h-44 overflow-hidden">
                     <img
                       src={community.image}
@@ -211,7 +213,6 @@ export default function DiasporaPage() {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-5">
                     <h3 className="font-serif text-xl text-white mb-1">{community.country}</h3>
                     <p className="text-white/40 text-xs font-sans mb-3">{community.city}</p>
@@ -219,7 +220,6 @@ export default function DiasporaPage() {
                       {community.description}
                     </p>
 
-                    {/* Highlight quote */}
                     <div className="flex items-start gap-2 p-3 rounded-xl bg-white/5 border-l-2 border-ncv-gold/40">
                       <span className="text-ncv-gold/50 font-serif text-lg leading-none mt-0.5">"</span>
                       <p className="text-white/50 text-xs font-sans italic leading-relaxed">
@@ -227,7 +227,6 @@ export default function DiasporaPage() {
                       </p>
                     </div>
 
-                    {/* Island roots */}
                     <div className="flex flex-wrap gap-1.5 mt-4">
                       {community.islandRoots.map((island) => (
                         <span
@@ -250,9 +249,9 @@ export default function DiasporaPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
             <div className="flex items-center gap-4 mb-3">
               <div className="h-px w-12 bg-ncv-gold" />
-              <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">Histórias reais</span>
+              <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">{t("storiesEyebrow")}</span>
             </div>
-            <h2 className="font-serif text-4xl text-white mb-12">Vozes da diáspora</h2>
+            <h2 className="font-serif text-4xl text-white mb-12">{t("storiesHeading")}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {diasporaStories.map((person, i) => (
@@ -264,7 +263,6 @@ export default function DiasporaPage() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="rounded-2xl bg-ncv-night border border-white/8 overflow-hidden"
                 >
-                  {/* Photo */}
                   <div className="relative h-52 overflow-hidden">
                     <img
                       src={person.image}
@@ -281,11 +279,10 @@ export default function DiasporaPage() {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="px-2.5 py-1 rounded-full bg-ncv-gold/10 text-ncv-gold text-xs font-sans border border-ncv-gold/20">
-                        Origem: {person.islandOrigin}
+                        {t("origin")} {person.islandOrigin}
                       </span>
                     </div>
                     <blockquote className="font-serif text-white/85 text-base leading-relaxed mb-4">
@@ -305,9 +302,9 @@ export default function DiasporaPage() {
         <section className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
           <div className="flex items-center gap-4 mb-3">
             <div className="h-px w-12 bg-ncv-gold" />
-            <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">Agenda global</span>
+            <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">{t("eventsEyebrow")}</span>
           </div>
-          <h2 className="font-serif text-4xl text-white mb-12">Eventos da diáspora</h2>
+          <h2 className="font-serif text-4xl text-white mb-12">{t("eventsHeading")}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {diasporaEvents.map((event, i) => (
@@ -334,7 +331,7 @@ export default function DiasporaPage() {
                   </div>
                   {event.free && (
                     <span className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-emerald-500/80 text-white text-xs font-sans font-semibold">
-                      Entrada livre
+                      {t("freeEntry")}
                     </span>
                   )}
                   <div className="absolute bottom-4 left-4">
@@ -359,25 +356,25 @@ export default function DiasporaPage() {
         {/* ── CTA REGISTO ─────────────────────────── */}
         <section id="registo" className="max-w-7xl mx-auto px-6 lg:px-12 pb-24">
           <div className="rounded-2xl bg-gradient-to-br from-ncv-blue to-ncv-night border border-white/10 p-10 lg:p-14 text-center">
-            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">— Junta-te a nós</p>
+            <p className="text-ncv-gold text-xs tracking-[0.3em] uppercase mb-4">{t("ctaEyebrow")}</p>
             <h2 className="font-serif text-4xl lg:text-5xl text-white mb-4">
-              A tua comunidade<br />merece estar aqui
+              {t("ctaHeading")}
             </h2>
             <p className="text-white/60 font-sans text-base max-w-lg mx-auto mb-8 leading-relaxed">
-              Se representas uma associação ou comunidade cabo-verdiana no mundo, contacta-nos para figurares nesta plataforma e ligar-te à rede global.
+              {t("ctaBody")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href="mailto:diaspora@noscaboverde.cv"
                 className="btn btn-gold px-8 py-3.5 text-base inline-block"
               >
-                Registar a minha comunidade
+                {t("ctaBtn")}
               </a>
               <Link
-                href="/"
+                href={isEn ? "/en" : "/"}
                 className="btn btn-glass text-white/60 hover:text-white px-6 py-3.5 text-sm inline-block transition-colors"
               >
-                Voltar ao início
+                {t("ctaBack")}
               </Link>
             </div>
           </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, MapPin } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { editorialFeatures } from "@/lib/data";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -24,24 +25,31 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: string; id: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { id, locale } = await params;
   const article = editorialFeatures.find((a) => a.id === id);
   if (!article) return {};
 
+  const isEn = locale === "en";
   const imageUrl = article.image.startsWith("http") ? article.image : `${BASE}${article.image}`;
+  const ptUrl = `${BASE}/historias/${article.id}`;
+  const enUrl = `${BASE}/en/historias/${article.id}`;
+  const canonicalUrl = isEn ? enUrl : ptUrl;
 
   return {
     title: article.title,
     description: article.subtitle,
-    alternates: { canonical: `${BASE}/historias/${article.id}` },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: { pt: ptUrl, en: enUrl },
+    },
     openGraph: {
       title: article.title,
       description: article.subtitle,
-      url: `${BASE}/historias/${article.id}`,
+      url: canonicalUrl,
       type: "article",
-      locale: "pt_CV",
+      locale: isEn ? "en_GB" : "pt_CV",
       siteName: "Nós Cabo Verde",
       images: [{ url: imageUrl, width: 1200, height: 630, alt: article.title }],
     },
@@ -57,25 +65,27 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: string; id: string }>;
 }) {
-  const { id } = await params;
+  const { id, locale } = await params;
+  const t = await getTranslations({ locale, namespace: "historias" });
   const article = editorialFeatures.find((a) => a.id === id);
   if (!article) notFound();
 
+  const isEn = locale === "en";
   const others = editorialFeatures.filter((a) => a.id !== id);
   const imageUrl = article.image.startsWith("http") ? article.image : `${BASE}${article.image}`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `${BASE}/historias/${article.id}`,
+    "@id": `${BASE}/${locale === "en" ? "en/" : ""}historias/${article.id}`,
     headline: article.title,
     description: article.subtitle,
     image: [imageUrl],
-    url: `${BASE}/historias/${article.id}`,
+    url: `${BASE}/${locale === "en" ? "en/" : ""}historias/${article.id}`,
     datePublished: "2026-01-01T00:00:00Z",
-    dateModified: "2026-07-19T00:00:00Z",
+    dateModified: "2026-07-20T00:00:00Z",
     author: {
       "@type": "Organization",
       name: "Nós Cabo Verde",
@@ -86,12 +96,12 @@ export default async function ArticlePage({
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${BASE}/historias/${article.id}`,
+      "@id": `${BASE}/${locale === "en" ? "en/" : ""}historias/${article.id}`,
     },
     about: {
       "@type": "Place",
       name: article.island,
-      containedInPlace: { "@type": "Country", name: "Cabo Verde" },
+      containedInPlace: { "@type": "Country", name: isEn ? "Cape Verde" : "Cabo Verde" },
     },
     isPartOf: { "@id": `${BASE}/#website` },
   };
@@ -113,11 +123,11 @@ export default async function ArticlePage({
           {/* Back */}
           <div className="absolute top-6 left-6 lg:top-8 lg:left-12">
             <Link
-              href="/#editorial"
+              href={isEn ? "/en/#editorial" : "/#editorial"}
               className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm font-sans group"
             >
               <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
-              Voltar
+              {t("back")}
             </Link>
           </div>
 
@@ -137,7 +147,7 @@ export default async function ArticlePage({
             <div className="flex items-center gap-5 flex-wrap">
               <div className="flex items-center gap-1.5 text-white/35 text-xs font-sans">
                 <Clock size={12} />
-                {article.readTime} de leitura
+                {article.readTime} {t("readTime")}
               </div>
               <div className="h-px w-6 bg-white/15" />
               <div className="flex items-center gap-1.5 text-white/35 text-xs font-sans">
@@ -152,8 +162,8 @@ export default async function ArticlePage({
         <div className="max-w-2xl mx-auto px-6 pt-8 pb-2">
           <Breadcrumbs
             items={[
-              { label: "Início", href: "/" },
-              { label: "Histórias", href: "/#editorial" },
+              { label: t("breadcrumbHome"), href: isEn ? "/en" : "/" },
+              { label: t("breadcrumbStories"), href: isEn ? "/en/#editorial" : "/#editorial" },
               { label: article.title },
             ]}
           />
@@ -185,7 +195,7 @@ export default async function ArticlePage({
             ))
           ) : (
             <p className="text-ncv-basalt/30 font-sans text-center py-24 text-sm">
-              Artigo completo em breve.
+              {t("comingSoon")}
             </p>
           )}
         </div>
@@ -198,13 +208,13 @@ export default async function ArticlePage({
           <div className="flex items-center gap-4 mb-3">
             <div className="h-px w-12 bg-ncv-gold" />
             <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-              Continua a ler
+              {t("continueReading")}
             </span>
           </div>
-          <h3 className="font-serif text-4xl text-ncv-night mb-10">Mais histórias</h3>
+          <h3 className="font-serif text-4xl text-ncv-night mb-10">{t("moreStories")}</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {others.map((item) => (
-              <Link key={item.id} href={`/historias/${item.id}`} className="group">
+              <Link key={item.id} href={isEn ? `/en/historias/${item.id}` : `/historias/${item.id}`} className="group">
                 <div className="relative h-52 overflow-hidden rounded-2xl mb-4">
                   <img
                     src={item.image}
@@ -225,7 +235,7 @@ export default async function ArticlePage({
                 </h4>
                 <div className="flex items-center gap-1.5 text-ncv-basalt/35 text-xs font-sans">
                   <Clock size={10} />
-                  {item.readTime} de leitura
+                  {item.readTime} {t("readTime")}
                 </div>
               </Link>
             ))}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Mail, MapPin } from "lucide-react";
 
 const SvgInstagram = () => (
@@ -26,49 +27,6 @@ const SvgX = () => (
   </svg>
 );
 
-const footerLinks = {
-  descobrir: {
-    title: "Descobrir",
-    links: [
-      { label: "As Dez Ilhas", href: "#ilhas" },
-      { label: "Cultura", href: "#cultura" },
-      { label: "Gastronomia", href: "#sabores" },
-      { label: "Música", href: "#musica" },
-      { label: "Agenda", href: "#agenda" },
-    ],
-  },
-  experiencias: {
-    title: "Experiências",
-    links: [
-      { label: "Natureza", href: "#" },
-      { label: "Mergulho", href: "#" },
-      { label: "Kitesurf", href: "#" },
-      { label: "Trekking", href: "#" },
-      { label: "Gastronomia Local", href: "#" },
-    ],
-  },
-  plataforma: {
-    title: "Plataforma",
-    links: [
-      { label: "Sobre Nós", href: "#" },
-      { label: "Parceiros", href: "#" },
-      { label: "Tornar-se Parceiro", href: "#" },
-      { label: "Imprensa", href: "#" },
-      { label: "Investidores", href: "#" },
-    ],
-  },
-  suporte: {
-    title: "Suporte",
-    links: [
-      { label: "Planear Viagem", href: "#" },
-      { label: "FAQ", href: "#" },
-      { label: "Contacto", href: "#" },
-      { label: "Termos de Uso", href: "#" },
-      { label: "Privacidade", href: "#" },
-    ],
-  },
-};
-
 const socials = [
   { icon: SvgInstagram, label: "Instagram", href: "#" },
   { icon: SvgYoutube, label: "YouTube", href: "#" },
@@ -77,15 +35,60 @@ const socials = [
 ];
 
 export function Footer() {
+  const t = useTranslations("footerFull");
+
+  const footerLinks = {
+    descobrir: {
+      title: t("discoverTitle"),
+      links: [
+        { label: t("linkTenIslands"), href: "#ilhas" },
+        { label: t("linkCulture"), href: "#cultura" },
+        { label: t("linkCuisine"), href: "#sabores" },
+        { label: t("linkMusic"), href: "#musica" },
+        { label: t("linkEvents"), href: "#agenda" },
+      ],
+    },
+    experiencias: {
+      title: t("experiencesTitle"),
+      links: [
+        { label: t("linkNature"), href: "#" },
+        { label: t("linkDiving"), href: "#" },
+        { label: t("linkKitesurf"), href: "#" },
+        { label: t("linkTrekking"), href: "#" },
+        { label: t("linkLocalCuisine"), href: "#" },
+      ],
+    },
+    plataforma: {
+      title: t("platformTitle"),
+      links: [
+        { label: t("linkAbout"), href: "#" },
+        { label: t("linkPartners"), href: "#" },
+        { label: t("linkBecomePartner"), href: "#" },
+        { label: t("linkPress"), href: "#" },
+        { label: t("linkInvestors"), href: "#" },
+      ],
+    },
+    suporte: {
+      title: t("supportTitle"),
+      links: [
+        { label: t("linkPlanTrip"), href: "#" },
+        { label: t("linkFaq"), href: "#" },
+        { label: t("linkContact"), href: "#" },
+        { label: t("linkTerms"), href: "#" },
+        { label: t("linkPrivacy"), href: "#" },
+      ],
+    },
+  };
+
   return (
     <footer className="bg-ncv-night text-white">
       {/* Newsletter bar */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
           <div>
-            <h3 className="font-serif text-2xl text-white mb-1">Fica ligado a Cabo Verde</h3>
+            <h3 className="font-serif text-2xl text-white mb-1">{t("newsletter")}</h3>
             <p className="text-white/50 text-sm font-sans">
-              Histórias, eventos, receitas e muito mais. Directamente no teu email.
+              {t("newsletterDesc")}
             </p>
           </div>
           <form
@@ -94,14 +97,14 @@ export function Footer() {
           >
             <input
               type="email"
-              placeholder="O teu email"
+              placeholder={t("emailPlaceholder")}
               className="flex-1 bg-transparent text-white placeholder-white/30 px-4 py-2 text-sm font-sans focus:outline-none min-w-0"
             />
             <button
               type="submit"
               className="btn btn-gold px-6 py-2.5 text-xs font-bold tracking-widest uppercase shrink-0"
             >
-              Subscrever
+              {t("subscribe")}
             </button>
           </form>
         </div>
@@ -128,8 +131,7 @@ export function Footer() {
               <span className="font-serif text-xl text-white">Nós Cabo Verde</span>
             </div>
             <p className="text-white/50 text-sm font-sans leading-relaxed mb-6 max-w-xs">
-              Dez ilhas. Um povo. Uma alma. O portal digital da cultura, identidade e beleza
-              cabo-verdiana.
+              {t("description")}
             </p>
 
             {/* Socials */}
@@ -189,21 +191,15 @@ export function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-xs font-sans">
-            © 2025 Nós Cabo Verde · Todos os direitos reservados
+            © 2025 Nós Cabo Verde · {t("rights")}
           </p>
           <p className="text-ncv-gold/40 text-xs font-sans italic">
-            Não mostramos apenas Cabo Verde. Fazemos o mundo senti-lo.
+            {t("bottomTagline")}
           </p>
           <div className="flex gap-4 text-white/25 text-xs font-sans">
-            <a href="#" className="hover:text-white/60 transition-colors">
-              Termos
-            </a>
-            <a href="#" className="hover:text-white/60 transition-colors">
-              Privacidade
-            </a>
-            <a href="#" className="hover:text-white/60 transition-colors">
-              Cookies
-            </a>
+            <a href="#" className="hover:text-white/60 transition-colors">{t("terms")}</a>
+            <a href="#" className="hover:text-white/60 transition-colors">{t("privacy")}</a>
+            <a href="#" className="hover:text-white/60 transition-colors">{t("cookies")}</a>
           </div>
         </div>
       </div>

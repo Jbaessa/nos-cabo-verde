@@ -2,14 +2,12 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { ChevronRight, Thermometer, Clock, ArrowRight, X } from "lucide-react";
 import { islands } from "@/lib/data";
 import { BARLAVENTO, SOTAVENTO } from "@/lib/island-groups";
 
-// Hotspot positions derived from real lat/lon using Wikimedia map bounds:
-// W:25.7° E:22.2° N:17.5° S:14.5° → 2400×2085px
-// x = (25.7 - lon_W) / 3.5 * 2400   y = (17.5 - lat_N) / 3.0 * 2085
 const ISLAND_HOTSPOTS: Record<string, { x: number; y: number; r: number }> = {
   "santo-antao": { x: 366,  y: 290,  r: 120 },
   "sao-vicente": { x: 492,  y: 429,  r: 85  },
@@ -34,7 +32,6 @@ function IslandMapWithHotspots({
 }) {
   return (
     <div className="relative w-full" style={{ aspectRatio: "2400 / 2085" }}>
-      {/* Topographic map — masked with multi-stop vignette */}
       <div
         className="absolute inset-0"
         style={{
@@ -53,7 +50,6 @@ function IslandMapWithHotspots({
         />
       </div>
 
-      {/* ncv-night overlay — tames the bright ocean center and blends edges */}
       <div
         className="absolute inset-0"
         style={{
@@ -63,7 +59,6 @@ function IslandMapWithHotspots({
         }}
       />
 
-      {/* SVG hotspot overlay */}
       <svg
         viewBox="0 0 2400 2085"
         className="absolute inset-0 w-full h-full"
@@ -164,11 +159,14 @@ function IslandRow({
 }
 
 export function IslandsSection() {
+  const t = useTranslations("islandsSection");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
   const [hovered, setHovered] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Hover pré-visualiza; clique fixa a ilha até ser desmarcada
   const activeIsland = hovered ?? selected;
   const isPinned = selected !== null && hovered === null;
   const toggleSelect = (id: string) =>
@@ -193,17 +191,16 @@ export function IslandsSection() {
           <div className="flex items-center gap-4 mb-5">
             <div className="h-px w-12 bg-ncv-gold" />
             <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-              O Arquipélago
+              {t("eyebrow")}
             </span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
-            As Dez Ilhas
+            {t("heading")}
             <br />
-            <span className="text-ncv-gold">do Atlântico</span>
+            <span className="text-ncv-gold">{t("headingHighlight")}</span>
           </h2>
           <p className="text-white/40 text-base font-sans mt-4 max-w-lg">
-            Cada ilha tem a sua personalidade, a sua música e a sua forma de te fazer sentir em
-            casa.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -233,7 +230,6 @@ export function IslandsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {activeData ? (
-              /* ── ACTIVE STATE: island detail ── */
               <motion.div
                 key={activeData.id}
                 initial={{ opacity: 0, y: 10 }}
@@ -256,7 +252,7 @@ export function IslandsSection() {
                   {isPinned && (
                     <button
                       onClick={() => setSelected(null)}
-                      aria-label="Desmarcar ilha"
+                      aria-label={t("deselect")}
                       className="absolute top-3 right-3 w-8 h-8 rounded-full bg-ncv-night/70 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-ncv-gold/50 transition-colors cursor-pointer"
                     >
                       <X size={14} />
@@ -291,15 +287,14 @@ export function IslandsSection() {
                   ))}
                 </div>
                 <Link
-                  href={`/ilhas/${activeData.id}`}
+                  href={isEn ? `/en/ilhas/${activeData.id}` : `/ilhas/${activeData.id}`}
                   className="group btn btn-gold px-6 py-3 text-xs font-bold tracking-wider uppercase self-start"
                 >
-                  Explorar {activeData.name}{" "}
+                  {t("explore")} {activeData.name}{" "}
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
             ) : (
-              /* ── EMPTY STATE: archipelago overview ── */
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -309,15 +304,14 @@ export function IslandsSection() {
                 {/* Intro */}
                 <div className="mb-8 pb-8 border-b border-white/8">
                   <p className="text-ncv-gold/50 text-[10px] font-sans tracking-[0.3em] uppercase mb-3">
-                    O Arquipélago
+                    {t("eyebrow")}
                   </p>
                   <h3 className="font-serif text-3xl text-white leading-snug mb-3">
-                    Dez ilhas,{" "}
-                    <span className="text-ncv-gold/70">dois grupos.</span>
+                    {t("emptyHeading")}{" "}
+                    <span className="text-ncv-gold/70">{t("emptyHeadingHighlight")}</span>
                   </h3>
                   <p className="text-white/30 text-sm font-sans leading-relaxed">
-                    Passa o cursor para pré-visualizar, clica numa ilha para a fixar e depois
-                    explora-a em detalhe.
+                    {t("emptyHint")}
                   </p>
                 </div>
 
@@ -365,12 +359,12 @@ export function IslandsSection() {
                   <div className="grid grid-cols-4 gap-3">
                     <div className="text-center">
                       <div className="font-serif text-2xl text-ncv-gold leading-none mb-1">10</div>
-                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">Ilhas</div>
+                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">{t("islandsLabel")}</div>
                     </div>
                     <div className="w-px bg-white/8" />
                     <div className="text-center">
                       <div className="font-serif text-2xl text-ncv-gold leading-none mb-1">9</div>
-                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">Habitadas</div>
+                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">{t("inhabitedLabel")}</div>
                     </div>
                     <div className="w-px bg-white/8" />
                     <div className="text-center">
@@ -380,7 +374,7 @@ export function IslandsSection() {
                     <div className="w-px bg-white/8" />
                     <div className="text-center">
                       <div className="font-serif text-2xl text-ncv-gold leading-none mb-1">500k</div>
-                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">Habitantes</div>
+                      <div className="text-white/30 text-[10px] font-sans uppercase tracking-wider">{isEn ? "Inhabitants" : "Habitantes"}</div>
                     </div>
                   </div>
                 </div>
@@ -393,13 +387,13 @@ export function IslandsSection() {
         <div>
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-white/60 text-sm font-sans tracking-widest uppercase">
-              Todas as Ilhas
+              {t("allIslandsLabel")}
             </h3>
             <Link
-              href="/ilhas"
+              href={isEn ? "/en/ilhas" : "/ilhas"}
               className="text-ncv-gold text-sm font-sans flex items-center gap-2 hover:gap-4 transition-all"
             >
-              Ver todas <ChevronRight size={15} />
+              {t("seeAll")} <ChevronRight size={15} />
             </Link>
           </div>
           <div
@@ -409,7 +403,7 @@ export function IslandsSection() {
             {islands.map((island, i) => (
               <motion.a
                 key={island.id}
-                href={`/ilhas/${island.id}`}
+                href={isEn ? `/en/ilhas/${island.id}` : `/ilhas/${island.id}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

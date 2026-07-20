@@ -1,60 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, Music2, ExternalLink } from "lucide-react";
 import { playlists } from "@/lib/data";
-
-const genres = [
-  {
-    name: "Morna",
-    icon: "♪",
-    description: "A alma de Cabo Verde. Música de saudade, amor e mar — reconhecida como Património da Humanidade pela UNESCO.",
-    spotifyId: "6bHuZog5a0N2nMRC3ycMAR",
-  },
-  {
-    name: "Funaná",
-    icon: "🎸",
-    description: "Ritmo contagiante das ilhas de Santiago e Maio. Gaita e ferrinho num diálogo frenético e dançante.",
-    spotifyId: null,
-  },
-  {
-    name: "Batuque",
-    icon: "🥁",
-    description: "Expressão ancestral das mulheres de Santiago. Percussão, canto e dança ligados à espiritualidade.",
-    spotifyId: null,
-  },
-  {
-    name: "Coladeira",
-    icon: "💃",
-    description: "Mais alegre e acelerada que a morna, a coladeira fala de amor e da vida quotidiana com ironia e leveza.",
-    spotifyId: null,
-  },
-  {
-    name: "Tabanka",
-    icon: "🎶",
-    description: "Tradição musical de Santiago ligada às festas populares — procissões, canto coral e tambores.",
-    spotifyId: null,
-  },
-];
 
 const waveHeights = [20, 35, 50, 42, 28, 55, 38, 30, 48, 22, 40, 33, 58, 25, 45];
 
 type Playlist = (typeof playlists)[number];
 
 export function MusicSection() {
+  const t = useTranslations("musicSection");
   const [playing, setPlaying] = useState<string | null>(null);
   const [activeGenre, setActiveGenre] = useState("Morna");
   const [selectedPlaylist, setSelectedPlaylist] = useState<Playlist | null>(null);
 
+  const genres = [
+    { name: "Morna", icon: "♪", descKey: "mornaDesc", spotifyId: "6bHuZog5a0N2nMRC3ycMAR" },
+    { name: "Funaná", icon: "🎸", descKey: "funanadesc", spotifyId: null },
+    { name: "Batuque", icon: "🥁", descKey: "batuqueDesc", spotifyId: null },
+    { name: "Coladeira", icon: "💃", descKey: "colaDesc", spotifyId: null },
+    { name: "Tabanka", icon: "🎶", descKey: "tabankaDesc", spotifyId: null },
+  ];
+
   const currentGenre = genres.find((g) => g.name === activeGenre) ?? genres[0];
 
-  // What to show in the sidebar: selected card takes priority over active genre
   const sidebarSpotifyId = selectedPlaylist?.spotifyId ?? currentGenre.spotifyId ?? null;
   const sidebarLabel = selectedPlaylist ? selectedPlaylist.name : currentGenre.name;
-  const sidebarDescription = selectedPlaylist
-    ? selectedPlaylist.mood
-    : currentGenre.description;
+  const sidebarDescription = selectedPlaylist ? selectedPlaylist.mood : t(currentGenre.descKey as Parameters<typeof t>[0]);
   const sidebarKey = selectedPlaylist?.id ?? currentGenre.name;
 
   function handleGenreClick(name: string) {
@@ -85,9 +59,9 @@ export function MusicSection() {
               </span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
-              A Nossa
+              {t("heading1")}
               <br />
-              <span className="text-gradient-gold">Música</span>
+              <span className="text-gradient-gold">{t("heading2")}</span>
             </h2>
           </div>
 
@@ -194,7 +168,7 @@ export function MusicSection() {
                       {isSelected && (
                         <div className="absolute top-3 left-3">
                           <span className="text-ncv-night text-[9px] font-sans font-bold tracking-wider uppercase bg-ncv-gold px-2.5 py-1 rounded-full">
-                            A tocar
+                            {t("playing")}
                           </span>
                         </div>
                       )}
@@ -298,7 +272,7 @@ export function MusicSection() {
                         <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
                           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
                         </svg>
-                        Abrir no Spotify
+                        {t("openSpotify")}
                         <ExternalLink size={11} />
                       </a>
                     </motion.div>
@@ -313,7 +287,7 @@ export function MusicSection() {
                     >
                       <Music2 size={28} className="text-ncv-gold/30" />
                       <p className="text-white/30 text-xs font-sans text-center leading-snug">
-                        Playlist de {sidebarLabel}<br />em breve
+                        {sidebarLabel}<br />{t("comingSoon")}
                       </p>
                     </motion.div>
                   )}

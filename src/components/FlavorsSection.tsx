@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { flavors } from "@/lib/data";
@@ -13,6 +14,7 @@ const categoryColors: Record<string, string> = {
 };
 
 export function FlavorsSection() {
+  const t = useTranslations("flavorsSection");
   const featured = flavors.find((f) => f.featured)!;
   const others = flavors.filter((f) => !f.featured);
 
@@ -30,18 +32,17 @@ export function FlavorsSection() {
           <div className="flex items-center gap-4 mb-5">
             <div className="h-px w-12 bg-ncv-gold" />
             <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-              Gastronomia
+              {t("eyebrow")}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
-              Sabores de
+              {t("heading1")}
               <br />
-              <span className="text-ncv-gold">Cabo Verde</span>
+              <span className="text-ncv-gold">{t("heading2")}</span>
             </h2>
             <p className="text-white/35 text-base font-sans max-w-sm leading-relaxed">
-              Da cachupa ao queijo do Fogo. Da lagosta grelhada ao grogue de Santo Antão.
-              Uma cozinha que conta a história de um povo.
+              {t("desc")}
             </p>
           </div>
         </motion.div>
@@ -78,13 +79,13 @@ export function FlavorsSection() {
               href="#"
               className="mt-5 inline-flex items-center gap-2 text-ncv-gold text-sm font-sans font-medium hover:gap-4 transition-all"
             >
-              Ver receita <ArrowRight size={14} />
+              {t("recipe")} <ArrowRight size={14} />
             </a>
           </div>
 
-          {/* PRATO NACIONAL badge */}
+          {/* Badge */}
           <div className="absolute top-6 right-6 border border-ncv-gold/30 text-ncv-gold text-xs font-sans tracking-widest px-3.5 py-1.5 bg-ncv-night/40 backdrop-blur-sm rounded-full">
-            PRATO NACIONAL
+            {t("nationalDish")}
           </div>
         </motion.div>
 
@@ -135,13 +136,13 @@ export function FlavorsSection() {
             href="#"
             className="btn btn-gold text-sm font-bold px-10 py-4 tracking-wide"
           >
-            Explorar a Gastronomia Cabo-Verdiana
+            {t("cta")}
           </a>
           <a
             href="#"
             className="btn btn-glass px-8 py-4 text-sm"
           >
-            Mapa Gastronómico
+            {t("ctaMap")}
           </a>
         </motion.div>
       </div>

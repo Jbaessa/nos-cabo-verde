@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Experience = {
@@ -31,6 +32,7 @@ type FormData = {
 const STORAGE_KEY = "ncv_bookings";
 
 export function BookingModal({ experience, onClose }: Props) {
+  const t = useTranslations("bookingModal");
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>({
     checkIn: "",
@@ -42,14 +44,12 @@ export function BookingModal({ experience, onClose }: Props) {
     notes: "",
   });
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
 
-  // Prevent body scroll
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
@@ -135,7 +135,7 @@ export function BookingModal({ experience, onClose }: Props) {
                     {s}
                   </div>
                   <span className={`text-xs font-sans ${step === s ? "text-white" : "text-white/30"}`}>
-                    {s === 1 ? "Data e grupo" : "Dados de contacto"}
+                    {s === 1 ? t("step1Label") : t("step2Label")}
                   </span>
                   {s < 2 && <div className="flex-1 h-px bg-white/10 mx-1 w-8" />}
                 </div>
@@ -157,7 +157,7 @@ export function BookingModal({ experience, onClose }: Props) {
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white/60 text-xs font-sans mb-1.5">Data de início</label>
+                      <label className="block text-white/60 text-xs font-sans mb-1.5">{t("checkIn")}</label>
                       <input
                         type="date"
                         value={form.checkIn}
@@ -167,7 +167,7 @@ export function BookingModal({ experience, onClose }: Props) {
                       />
                     </div>
                     <div>
-                      <label className="block text-white/60 text-xs font-sans mb-1.5">Data de fim <span className="text-white/30">(opcional)</span></label>
+                      <label className="block text-white/60 text-xs font-sans mb-1.5">{t("checkOut")} <span className="text-white/30">({t("optional")})</span></label>
                       <input
                         type="date"
                         value={form.checkOut}
@@ -179,7 +179,7 @@ export function BookingModal({ experience, onClose }: Props) {
                   </div>
 
                   <div>
-                    <label className="block text-white/60 text-xs font-sans mb-1.5">Número de pessoas</label>
+                    <label className="block text-white/60 text-xs font-sans mb-1.5">{t("people")}</label>
                     <div className="flex items-center gap-3">
                       <button
                         onClick={() => update("people", Math.max(1, form.people - 1))}
@@ -195,7 +195,7 @@ export function BookingModal({ experience, onClose }: Props) {
                         +
                       </button>
                       <span className="text-white/40 text-sm font-sans ml-2">
-                        Total: <span className="text-ncv-gold font-semibold">{experience.price * form.people}€</span>
+                        {t("total")}: <span className="text-ncv-gold font-semibold">{experience.price * form.people}€</span>
                       </span>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export function BookingModal({ experience, onClose }: Props) {
                     onClick={() => setStep(2)}
                     className="btn btn-gold w-full py-3 text-base disabled:opacity-40 disabled:cursor-not-allowed mt-2"
                   >
-                    Continuar
+                    {t("continue")}
                   </button>
                 </motion.div>
               )}
@@ -220,12 +220,12 @@ export function BookingModal({ experience, onClose }: Props) {
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-white/60 text-xs font-sans mb-1.5">Nome completo</label>
+                    <label className="block text-white/60 text-xs font-sans mb-1.5">{t("fullName")}</label>
                     <input
                       type="text"
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      placeholder="O teu nome"
+                      placeholder={t("namePlaceholder")}
                       className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors"
                     />
                   </div>
@@ -237,29 +237,29 @@ export function BookingModal({ experience, onClose }: Props) {
                         type="email"
                         value={form.email}
                         onChange={(e) => update("email", e.target.value)}
-                        placeholder="email@exemplo.com"
+                        placeholder={t("emailPlaceholder")}
                         className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-white/60 text-xs font-sans mb-1.5">Telefone <span className="text-white/30">(opcional)</span></label>
+                      <label className="block text-white/60 text-xs font-sans mb-1.5">{t("phone")} <span className="text-white/30">({t("optional")})</span></label>
                       <input
                         type="tel"
                         value={form.phone}
                         onChange={(e) => update("phone", e.target.value)}
-                        placeholder="+238 ..."
+                        placeholder={t("phonePlaceholder")}
                         className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-white/60 text-xs font-sans mb-1.5">Notas adicionais <span className="text-white/30">(opcional)</span></label>
+                    <label className="block text-white/60 text-xs font-sans mb-1.5">{t("notes")} <span className="text-white/30">({t("optional")})</span></label>
                     <textarea
                       rows={2}
                       value={form.notes}
                       onChange={(e) => update("notes", e.target.value)}
-                      placeholder="Alergias, necessidades especiais, pedidos..."
+                      placeholder={t("notesPlaceholder")}
                       className="w-full bg-white/8 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm font-sans placeholder-white/30 focus:outline-none focus:border-ncv-gold/50 transition-colors resize-none"
                     />
                   </div>
@@ -269,14 +269,14 @@ export function BookingModal({ experience, onClose }: Props) {
                       onClick={() => setStep(1)}
                       className="btn btn-glass flex-1 py-3"
                     >
-                      Voltar
+                      {t("back")}
                     </button>
                     <button
                       disabled={!canProceedStep2}
                       onClick={handleConfirm}
                       className="btn btn-gold flex-1 py-3 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
-                      Confirmar pedido
+                      {t("confirm")}
                     </button>
                   </div>
                 </motion.div>
@@ -296,31 +296,30 @@ export function BookingModal({ experience, onClose }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl text-white mb-2">Pedido enviado!</h3>
+                    <h3 className="font-serif text-2xl text-white mb-2">{t("successTitle")}</h3>
                     <p className="text-white/60 font-sans text-sm leading-relaxed">
-                      O teu pedido de reserva para <strong className="text-white">{experience.title}</strong> foi recebido.
-                      Responderemos a <strong className="text-white">{form.email}</strong> em menos de 24 horas.
+                      {t("successBody", { title: experience.title, email: form.email })}
                     </p>
                   </div>
                   <div className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-left space-y-2">
                     <div className="flex justify-between text-sm font-sans">
-                      <span className="text-white/50">Data</span>
+                      <span className="text-white/50">{t("date")}</span>
                       <span className="text-white">{form.checkIn}</span>
                     </div>
                     <div className="flex justify-between text-sm font-sans">
-                      <span className="text-white/50">Pessoas</span>
+                      <span className="text-white/50">{t("guests")}</span>
                       <span className="text-white">{form.people}</span>
                     </div>
                     <div className="flex justify-between text-sm font-sans border-t border-white/10 pt-2 mt-2">
-                      <span className="text-white/50">Total estimado</span>
+                      <span className="text-white/50">{t("estimatedTotal")}</span>
                       <span className="text-ncv-gold font-semibold">{experience.price * form.people}€</span>
                     </div>
                   </div>
                   <button onClick={onClose} className="btn btn-gold w-full py-3 text-base">
-                    Fechar
+                    {t("close")}
                   </button>
                   <p className="text-white/30 text-xs font-sans">
-                    Cancelamento gratuito até 48h antes da experiência
+                    {t("cancellation")}
                   </p>
                 </motion.div>
               )}

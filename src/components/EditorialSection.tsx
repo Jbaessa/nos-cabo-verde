@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { editorialFeatures } from "@/lib/data";
 
 const typeColors: Record<string, string> = {
@@ -9,7 +10,8 @@ const typeColors: Record<string, string> = {
   "receita da semana": "bg-green-800 text-white",
 };
 
-export function EditorialSection() {
+export async function EditorialSection() {
+  const t = await getTranslations("editorialSection");
   const featured = editorialFeatures.find((f) => f.featured)!;
   const secondary = editorialFeatures.filter((f) => !f.featured);
 
@@ -22,18 +24,18 @@ export function EditorialSection() {
             <div className="flex items-center gap-4 mb-4">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                Editorial
+                {t("eyebrow")}
               </span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
-              Em Destaque
+              {t("heading")}
             </h2>
           </div>
           <a
             href="#"
             className="hidden md:flex items-center gap-2 text-ncv-blue text-sm font-sans font-medium hover:gap-4 transition-all"
           >
-            Ver todas as histórias <ArrowRight size={15} />
+            {t("viewAll")} <ArrowRight size={15} />
           </a>
         </div>
 
@@ -62,7 +64,7 @@ export function EditorialSection() {
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1.5 text-white/40 text-xs font-sans">
                     <Clock size={12} />
-                    {featured.readTime} de leitura
+                    {featured.readTime} {t("readTime")}
                   </div>
                   <div className="h-px w-8 bg-white/20" />
                   <span className="text-white/40 text-xs font-sans">{featured.island}</span>
@@ -75,7 +77,7 @@ export function EditorialSection() {
               href={`/historias/${featured.id}`}
               className="inline-flex items-center gap-2 text-ncv-blue text-sm font-sans font-semibold hover:gap-4 transition-all group"
             >
-              Ler a história <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              {t("readStory")} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -110,19 +112,19 @@ export function EditorialSection() {
             {/* Promotional card */}
             <div className="bg-ncv-night rounded-2xl p-6 mt-auto">
               <p className="text-ncv-gold text-xs font-sans tracking-widest uppercase mb-3">
-                Comunidade
+                {t("communityTag")}
               </p>
               <h4 className="font-serif text-xl text-white mb-3">
-                Conta a tua história de Cabo Verde
+                {t("communityTitle")}
               </h4>
               <p className="text-white/40 text-xs font-sans leading-relaxed mb-5">
-                Cada família guarda um pedaço de Cabo Verde. Partilha o teu.
+                {t("communityDesc")}
               </p>
               <a
                 href="#"
                 className="btn btn-gold text-xs font-bold tracking-wide uppercase px-6 py-2.5"
               >
-                Partilhar
+                {t("share")}
               </a>
             </div>
           </div>

@@ -2,22 +2,26 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { diasporaCommunities, diasporaStories } from "@/lib/data";
 
-const stats = [
-  { value: "700 000+", label: "cabo-verdianos no mundo" },
-  { value: "120+", label: "países de acolhimento" },
-  { value: "2×", label: "mais na diáspora que nas ilhas" },
-  { value: "500 anos", label: "de história de migração" },
-];
-
 export function DiasporaSection() {
+  const t = useTranslations("diasporaSection");
+  const locale = useLocale();
+  const isEn = locale === "en";
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [activeStory, setActiveStory] = useState(0);
 
   const story = diasporaStories[activeStory];
+
+  const stats = [
+    { value: "700 000+", label: t("stat0") },
+    { value: "120+", label: t("stat1") },
+    { value: "2×", label: t("stat2") },
+    { value: "500 anos", label: t("stat3") },
+  ];
 
   return (
     <section
@@ -54,12 +58,12 @@ export function DiasporaSection() {
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                — A diáspora
+                {t("eyebrow")}
               </span>
             </div>
             <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-white leading-tight">
-              De todo o mundo,<br />
-              <span className="text-ncv-gold">sempre Cabo Verde</span>
+              {t("heading1")}<br />
+              <span className="text-ncv-gold">{t("heading2")}</span>
             </h2>
           </motion.div>
 
@@ -69,7 +73,7 @@ export function DiasporaSection() {
             transition={{ duration: 0.9, delay: 0.15 }}
             className="text-white/50 font-sans text-base lg:text-lg leading-relaxed lg:pb-2"
           >
-            Há mais cabo-verdianos fora das ilhas do que dentro delas. Espalhados por mais de 120 países, levam a língua crioula, a morna e a morabeza — a arte de ser generoso — por onde quer que vão.
+            {t("body")}
           </motion.p>
         </div>
 
@@ -102,7 +106,7 @@ export function DiasporaSection() {
             className="lg:col-span-2"
           >
             <p className="text-ncv-gold/70 text-xs font-sans tracking-[0.25em] uppercase mb-6">
-              Vozes da diáspora
+              {t("voices")}
             </p>
 
             {/* Story card */}
@@ -127,7 +131,7 @@ export function DiasporaSection() {
                 <div>
                   <p className="text-ncv-gold text-sm font-sans font-medium">{story.name}</p>
                   <p className="text-white/40 text-xs font-sans">
-                    Origem: {story.islandOrigin} · {story.country}
+                    {t("origin")} {story.islandOrigin} · {story.country}
                   </p>
                 </div>
               </div>
@@ -155,7 +159,7 @@ export function DiasporaSection() {
             className="lg:col-span-3"
           >
             <p className="text-ncv-gold/70 text-xs font-sans tracking-[0.25em] uppercase mb-6">
-              Onde vivemos
+              {t("where")}
             </p>
 
             <div className="space-y-3">
@@ -167,7 +171,7 @@ export function DiasporaSection() {
                   transition={{ duration: 0.5, delay: 0.35 + i * 0.07 }}
                 >
                   <Link
-                    href={`/diaspora/${community.id}`}
+                    href={isEn ? `/en/diaspora/${community.id}` : `/diaspora/${community.id}`}
                     className="flex items-center gap-4 p-4 rounded-xl bg-white/4 hover:bg-white/8 border border-white/5 hover:border-white/15 transition-all duration-300 group"
                   >
                     <span className="text-2xl flex-shrink-0">{community.flag}</span>
@@ -179,7 +183,7 @@ export function DiasporaSection() {
                     </div>
                     <div className="text-right flex-shrink-0">
                       <p className="text-ncv-gold font-sans font-semibold text-sm">{community.population}</p>
-                      <p className="text-white/25 text-xs font-sans">cabo-verdianos</p>
+                      <p className="text-white/25 text-xs font-sans">{t("capeVerdeans")}</p>
                     </div>
                   </Link>
                 </motion.div>
@@ -189,19 +193,19 @@ export function DiasporaSection() {
             {/* CTA */}
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Link
-                href="/diaspora"
+                href={isEn ? "/en/diaspora" : "/diaspora"}
                 className="btn btn-gold inline-flex items-center justify-center gap-3 text-xs font-bold tracking-widest uppercase px-7 py-3.5"
               >
-                Explorar a diáspora
+                {t("explore")}
                 <svg viewBox="0 0 20 20" className="w-4 h-4 fill-current">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </Link>
               <Link
-                href="/diaspora#registo"
+                href={isEn ? "/en/diaspora#registo" : "/diaspora#registo"}
                 className="btn btn-glass inline-flex items-center justify-center gap-2 text-xs font-sans text-white/50 hover:text-white px-5 py-3.5 transition-colors"
               >
-                Registar a minha comunidade
+                {t("register")}
               </Link>
             </div>
           </motion.div>

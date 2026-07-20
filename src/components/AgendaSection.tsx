@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { MapPin, ArrowRight, ExternalLink } from "lucide-react";
 import { events } from "@/lib/data";
-
-const categories = ["Todos", "Música", "Festival", "Gastronomia", "Arte"];
 
 const categoryColors: Record<string, string> = {
   Música: "text-ncv-blue border-ncv-blue/30 bg-ncv-blue/5",
@@ -15,7 +14,16 @@ const categoryColors: Record<string, string> = {
 };
 
 export function AgendaSection() {
+  const t = useTranslations("agendaSection");
   const [activeCategory, setActiveCategory] = useState("Todos");
+
+  const categories = [
+    { key: "Todos", label: t("all") },
+    { key: "Música", label: t("music") },
+    { key: "Festival", label: t("festival") },
+    { key: "Gastronomia", label: t("gastronomy") },
+    { key: "Arte", label: t("art") },
+  ];
 
   const filtered =
     activeCategory === "Todos" ? events : events.filter((e) => e.category === activeCategory);
@@ -37,37 +45,37 @@ export function AgendaSection() {
           <div className="flex items-center gap-4 mb-5">
             <div className="h-px w-12 bg-ncv-gold" />
             <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-              Eventos
+              {t("eyebrow")}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ncv-night leading-tight">
-              Agenda
+              {t("heading1")}
               <br />
-              Cultural
+              {t("heading2")}
             </h2>
             <a
               href="#"
               className="flex items-center gap-2 text-ncv-blue text-sm font-sans font-medium hover:gap-4 transition-all"
             >
-              Ver calendário completo <ArrowRight size={15} />
+              {t("viewAll")} <ArrowRight size={15} />
             </a>
           </div>
         </motion.div>
 
         {/* Category filters */}
         <div className="flex flex-wrap gap-2 mb-10">
-          {categories.map((cat) => (
+          {categories.map(({ key, label }) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={key}
+              onClick={() => setActiveCategory(key)}
               className={`btn px-5 py-2 text-sm border ${
-                activeCategory === cat
+                activeCategory === key
                   ? "bg-ncv-night text-ncv-gold border-ncv-night shadow-[0_8px_20px_-8px_rgba(3,26,54,0.45)]"
                   : "border-ncv-basalt/15 text-ncv-basalt/50 hover:border-ncv-night/30 hover:text-ncv-night hover:bg-ncv-night/5"
               }`}
             >
-              {cat}
+              {label}
             </button>
           ))}
         </div>
@@ -97,7 +105,7 @@ export function AgendaSection() {
 
                 {featured.free && (
                   <div className="absolute top-4 right-4 bg-green-600 text-white text-[10px] font-bold font-sans tracking-wider uppercase px-2 py-1">
-                    Grátis
+                    {t("free")}
                   </div>
                 )}
 
@@ -120,7 +128,7 @@ export function AgendaSection() {
                 href="#"
                 className="inline-flex items-center gap-2 text-ncv-blue text-sm font-sans font-medium hover:gap-4 transition-all"
               >
-                Saber mais <ExternalLink size={13} />
+                {t("learnMore")} <ExternalLink size={13} />
               </a>
             </motion.div>
           )}
@@ -161,7 +169,7 @@ export function AgendaSection() {
                         </span>
                         {event.free && (
                           <span className="text-[10px] font-bold tracking-widest uppercase text-green-700">
-                            Grátis
+                            {t("free")}
                           </span>
                         )}
                       </div>
@@ -186,14 +194,14 @@ export function AgendaSection() {
             <div className="border border-ncv-night/8 bg-ncv-night rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="text-ncv-gold text-xs font-sans tracking-widest uppercase mb-1">
-                  Nunca perdes um evento
+                  {t("alertsTitle")}
                 </p>
                 <p className="text-white/60 text-sm font-sans">
-                  Subscreve alertas por ilha, categoria e data.
+                  {t("alertsDesc")}
                 </p>
               </div>
               <button className="btn btn-gold text-xs font-bold px-7 py-3 tracking-wider uppercase">
-                Activar Alertas
+                {t("alertsBtn")}
               </button>
             </div>
           </div>

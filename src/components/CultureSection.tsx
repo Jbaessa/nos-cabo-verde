@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { cultureItems } from "@/lib/data";
 
 export function CultureSection() {
+  const t = useTranslations("cultureSection");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -28,13 +30,13 @@ export function CultureSection() {
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-12 bg-ncv-gold" />
               <span className="text-ncv-gold text-xs font-sans tracking-[0.3em] uppercase">
-                Identidade
+                {t("eyebrow")}
               </span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
-              Cultura
+              {t("heading1")}
               <br />
-              <span className="text-ncv-gold">em Movimento</span>
+              <span className="text-ncv-gold">{t("heading2")}</span>
             </h2>
           </div>
 
@@ -114,7 +116,7 @@ export function CultureSection() {
             href="#"
             className="btn btn-gold-line w-full sm:w-auto px-8 sm:px-10 py-4 text-sm"
           >
-            Explorar toda a Cultura Cabo-Verdiana
+            {t("cta")}
           </a>
         </motion.div>
       </div>

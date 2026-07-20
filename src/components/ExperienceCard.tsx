@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import { FavoriteButton } from "@/components/FavoriteButton";
 
 type Experience = {
@@ -24,7 +25,7 @@ type Props = {
   onBook: (exp: Experience) => void;
 };
 
-const difficultyColor: Record<string, string> = {
+const difficultyColorPt: Record<string, string> = {
   Fácil: "bg-emerald-500/20 text-emerald-400",
   Moderado: "bg-amber-500/20 text-amber-400",
   Difícil: "bg-red-500/20 text-red-400",
@@ -32,6 +33,19 @@ const difficultyColor: Record<string, string> = {
 };
 
 export function ExperienceCard({ experience, onBook }: Props) {
+  const t = useTranslations("experienceCard");
+  const locale = useLocale();
+  const isEn = locale === "en";
+
+  const difficultyMap: Record<string, string> = {
+    Fácil: t("easy"),
+    Moderado: t("moderate"),
+    Difícil: t("difficult"),
+    Iniciante: t("beginner"),
+  };
+
+  const difficultyLabel = difficultyMap[experience.difficulty] ?? experience.difficulty;
+
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 hover:bg-white/8 transition-all duration-300 border border-white/5 hover:border-ncv-gold/25 hover:shadow-[0_0_26px_-4px_rgba(201,160,94,0.35),0_4px_20px_rgba(0,0,0,0.25)]">
       {/* Image */}
@@ -68,10 +82,10 @@ export function ExperienceCard({ experience, onBook }: Props) {
           <h3 className="font-serif text-lg text-white leading-snug">{experience.title}</h3>
           <span
             className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-sans font-medium ${
-              difficultyColor[experience.difficulty] ?? "bg-white/10 text-white/60"
+              difficultyColorPt[experience.difficulty] ?? "bg-white/10 text-white/60"
             }`}
           >
-            {experience.difficulty}
+            {difficultyLabel}
           </span>
         </div>
 
@@ -90,16 +104,16 @@ export function ExperienceCard({ experience, onBook }: Props) {
           </div>
           <div className="flex gap-2">
             <Link
-              href={`/experiencias/${experience.id}`}
+              href={isEn ? `/en/experiencias/${experience.id}` : `/experiencias/${experience.id}`}
               className="btn btn-glass text-xs px-3 py-2"
             >
-              Detalhes
+              {t("details")}
             </Link>
             <button
               onClick={() => onBook(experience)}
               className="btn btn-gold text-xs px-3 py-2"
             >
-              Reservar
+              {t("book")}
             </button>
           </div>
         </div>
