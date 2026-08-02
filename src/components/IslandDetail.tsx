@@ -69,7 +69,7 @@ export function IslandDetail({
             transition={{ duration: 0.7 }}
           >
             <Link
-              href={isEn ? "/en/#ilhas" : "/#ilhas"}
+              href={isEn ? "/en/ilhas" : "/ilhas"}
               className="inline-flex items-center gap-2 text-white/50 hover:text-ncv-gold text-xs font-sans tracking-widest uppercase mb-6 transition-colors"
             >
               <ArrowLeft size={13} /> {t.allIslands}

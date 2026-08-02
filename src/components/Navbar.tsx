@@ -20,7 +20,7 @@ export function Navbar() {
   const isEn = locale === "en";
 
   const navLinks = [
-    { label: t("islands"), href: "/#ilhas" },
+    { label: t("islands"), href: "/ilhas" },
     { label: t("culture"), href: "/#cultura" },
     { label: t("music"), href: "/#musica" },
     { label: t("flavors"), href: "/#sabores" },
@@ -30,7 +30,13 @@ export function Navbar() {
   ];
 
   const mobileLinks = [
-    ...navLinks,
+    { label: t("islands"), href: "/ilhas" },
+    { label: t("culture"), href: "/#cultura" },
+    { label: t("music"), href: "/#musica" },
+    { label: t("flavors"), href: "/#sabores" },
+    { label: t("experiences"), href: "/experiencias" },
+    { label: t("diaspora"), href: "/diaspora" },
+    { label: t("partners"), href: "/parceiros" },
     { label: t("agenda"), href: "/#agenda" },
     { label: t("favorites"), href: "/favoritos" },
     { label: t("profile"), href: "/perfil" },

@@ -19,7 +19,10 @@ const typeColors: Record<string, string> = {
 };
 
 export function generateStaticParams() {
-  return editorialFeatures.map((a) => ({ id: a.id }));
+  return editorialFeatures.flatMap((a) => [
+    { locale: "pt", id: a.id },
+    { locale: "en", id: a.id },
+  ]);
 }
 
 export async function generateMetadata({

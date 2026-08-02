@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Mail, MapPin } from "lucide-react";
 
@@ -37,43 +38,64 @@ const socials = [
 export function Footer() {
   const t = useTranslations("footerFull");
 
+  const [email, setEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success" | "error">("idle");
+
+  function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setNewsletterStatus("error");
+      return;
+    }
+    try {
+      const existing = JSON.parse(localStorage.getItem("ncv_newsletter_emails") ?? "[]") as string[];
+      if (!existing.includes(trimmed)) {
+        localStorage.setItem("ncv_newsletter_emails", JSON.stringify([...existing, trimmed]));
+      }
+    } catch {}
+    setEmail("");
+    setNewsletterStatus("success");
+    setTimeout(() => setNewsletterStatus("idle"), 5000);
+  }
+
   const footerLinks = {
     descobrir: {
       title: t("discoverTitle"),
       links: [
-        { label: t("linkTenIslands"), href: "#ilhas" },
-        { label: t("linkCulture"), href: "#cultura" },
-        { label: t("linkCuisine"), href: "#sabores" },
-        { label: t("linkMusic"), href: "#musica" },
-        { label: t("linkEvents"), href: "#agenda" },
+        { label: t("linkTenIslands"), href: "/ilhas" },
+        { label: t("linkCulture"), href: "/#cultura" },
+        { label: t("linkCuisine"), href: "/#sabores" },
+        { label: t("linkMusic"), href: "/#musica" },
+        { label: t("linkEvents"), href: "/#agenda" },
       ],
     },
     experiencias: {
       title: t("experiencesTitle"),
       links: [
-        { label: t("linkNature"), href: "#" },
-        { label: t("linkDiving"), href: "#" },
-        { label: t("linkKitesurf"), href: "#" },
-        { label: t("linkTrekking"), href: "#" },
-        { label: t("linkLocalCuisine"), href: "#" },
+        { label: t("linkNature"), href: "/experiencias" },
+        { label: t("linkDiving"), href: "/experiencias" },
+        { label: t("linkKitesurf"), href: "/experiencias" },
+        { label: t("linkTrekking"), href: "/experiencias" },
+        { label: t("linkLocalCuisine"), href: "/experiencias" },
       ],
     },
     plataforma: {
       title: t("platformTitle"),
       links: [
         { label: t("linkAbout"), href: "#" },
-        { label: t("linkPartners"), href: "#" },
-        { label: t("linkBecomePartner"), href: "#" },
-        { label: t("linkPress"), href: "#" },
-        { label: t("linkInvestors"), href: "#" },
+        { label: t("linkPartners"), href: "/parceiros" },
+        { label: t("linkBecomePartner"), href: "mailto:parceiros@noscaboverde.cv" },
+        { label: t("linkPress"), href: "mailto:imprensa@noscaboverde.cv" },
+        { label: t("linkInvestors"), href: "mailto:geral@noscaboverde.cv" },
       ],
     },
     suporte: {
       title: t("supportTitle"),
       links: [
-        { label: t("linkPlanTrip"), href: "#" },
+        { label: t("linkPlanTrip"), href: "/experiencias" },
         { label: t("linkFaq"), href: "#" },
-        { label: t("linkContact"), href: "#" },
+        { label: t("linkContact"), href: "mailto:geral@noscaboverde.cv" },
         { label: t("linkTerms"), href: "#" },
         { label: t("linkPrivacy"), href: "#" },
       ],
@@ -91,22 +113,42 @@ export function Footer() {
               {t("newsletterDesc")}
             </p>
           </div>
-          <form
-            className="flex items-center gap-1.5 w-full md:w-auto bg-white/5 border border-white/10 rounded-full p-1.5 focus-within:border-ncv-gold/50 transition-colors"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              placeholder={t("emailPlaceholder")}
-              className="flex-1 bg-transparent text-white placeholder-white/30 px-4 py-2 text-sm font-sans focus:outline-none min-w-0"
-            />
-            <button
-              type="submit"
-              className="btn btn-gold px-6 py-2.5 text-xs font-bold tracking-widest uppercase shrink-0"
-            >
-              {t("subscribe")}
-            </button>
-          </form>
+          <div className="w-full md:w-auto">
+            {newsletterStatus === "success" ? (
+              <div className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-sm font-sans">
+                <svg viewBox="0 0 20 20" className="w-4 h-4 fill-current shrink-0">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                {t("subscribeSuccess")}
+              </div>
+            ) : (
+              <form
+                className={`flex items-center gap-1.5 w-full md:w-auto bg-white/5 border rounded-full p-1.5 transition-colors ${
+                  newsletterStatus === "error"
+                    ? "border-red-500/50 focus-within:border-red-500/70"
+                    : "border-white/10 focus-within:border-ncv-gold/50"
+                }`}
+                onSubmit={handleNewsletterSubmit}
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setNewsletterStatus("idle"); }}
+                  placeholder={t("emailPlaceholder")}
+                  className="flex-1 bg-transparent text-white placeholder-white/30 px-4 py-2 text-sm font-sans focus:outline-none min-w-0"
+                />
+                <button
+                  type="submit"
+                  className="btn btn-gold px-6 py-2.5 text-xs font-bold tracking-widest uppercase shrink-0"
+                >
+                  {t("subscribe")}
+                </button>
+              </form>
+            )}
+            {newsletterStatus === "error" && (
+              <p className="text-red-400 text-xs font-sans mt-2 pl-4">{t("subscribeError")}</p>
+            )}
+          </div>
         </div>
       </div>
 

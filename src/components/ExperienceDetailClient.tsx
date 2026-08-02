@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { ArrowLeft } from "lucide-react";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { BookingModal } from "@/components/BookingModal";
 import { experiences } from "@/lib/data";
@@ -49,6 +50,12 @@ export function ExperienceDetailClient({ experience, related }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-ncv-night via-ncv-night/40 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pb-12">
+          <Link
+            href={isEn ? "/en/experiencias" : "/experiencias"}
+            className="inline-flex items-center gap-2 text-white/50 hover:text-ncv-gold text-xs font-sans tracking-widest uppercase mb-6 transition-colors"
+          >
+            <ArrowLeft size={13} /> {t("backToExperiences")}
+          </Link>
           <div className="flex items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
