@@ -15,6 +15,36 @@ export function guideAlternates(path: string, locale: string): Metadata["alterna
   };
 }
 
+export function guideMetadata({
+  title,
+  description,
+  path,
+  locale,
+  image,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  locale: string;
+  image?: { url: string; width: number; height: number; alt: string };
+}): Metadata {
+  return {
+    title,
+    description,
+    alternates: guideAlternates(path, locale),
+    openGraph: {
+      title,
+      description,
+      url: guideUrl(path, locale),
+      type: "article",
+      siteName: BRAND,
+      locale: locale === "en" ? "en_GB" : "pt_CV",
+      ...(image ? { images: [image] } : {}),
+    },
+    twitter: { card: "summary_large_image", title, description, ...(image ? { images: [image.url] } : {}) },
+  };
+}
+
 export function guideArticleJsonLd({
   title,
   description,

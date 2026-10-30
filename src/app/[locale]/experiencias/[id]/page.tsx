@@ -60,7 +60,6 @@ export default async function ExperienciaDetailPage({ params }: { params: Promis
     image: imageUrl,
     url,
     offers: { "@type": "Offer", price: experience.price, priceCurrency: "EUR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: experience.rating, bestRating: 5, ratingCount: 24 },
     brand: { "@type": "Organization", name: "Nós Cabo Verde" },
   };
 

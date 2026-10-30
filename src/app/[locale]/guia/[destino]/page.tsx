@@ -5,9 +5,10 @@ import { getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { GuideNav } from "@/components/guide/GuideNav";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { getDestination, getPublishedCategories, guidePaths } from "@/lib/guide";
-import { guideAlternates, guideArticleJsonLd } from "@/lib/guide-seo";
+import { guideArticleJsonLd, guideMetadata } from "@/lib/guide-seo";
 
 type Params = Promise<{ locale: string; destino: string }>;
 
@@ -16,11 +17,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const destination = getDestination(destino);
   if (!destination || getPublishedCategories(destino).length === 0) return {};
   const lang = locale === "en" ? "en" : "pt";
-  return {
+  return guideMetadata({
     title: destination.title[lang],
     description: destination.intro[lang],
-    alternates: guideAlternates(`/guia/${destino}`, locale),
-  };
+    path: `/guia/${destino}`,
+    locale,
+  });
 }
 
 export default async function GuideDestinationPage({ params }: { params: Params }) {
@@ -61,11 +63,7 @@ export default async function GuideDestinationPage({ params }: { params: Params 
               <p className="text-ncv-basalt/70 mt-2 leading-relaxed">{destination.categories[c].description[lang]}</p>
             </Link>
           ))}
-          <p className="pt-4 text-sm">
-            <Link href={`${prefix}/guia/como-escolhemos`} className="underline underline-offset-4 text-ncv-blue font-semibold">
-              {t("methodTitle")}
-            </Link>
-          </p>
+          <GuideNav locale={locale} destinationId={destino} />
         </div>
       </main>
       <Footer />

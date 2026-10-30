@@ -477,7 +477,7 @@
     "ruleScore": "Hotéis e restaurantes: nota de pelo menos 4,0 em duas fontes, como Google Maps, Tripadvisor ou Booking.",
     "ruleReviews": "Pelo menos 50 avaliações na fonte principal. Em categorias com poucos locais, o mínimo desce para 20, e a ficha indica-o.",
     "ruleRecent": "Avaliações nos últimos 12 meses.",
-    "ruleOpen": "Local confirmado como aberto, com contacto, site ou telefone. Praias e monumentos não precisam de contacto próprio.",
+    "ruleOpen": "Reviews recentes e sem indicação de encerramento no Google Maps, com contacto, site ou telefone. Praias e monumentos não precisam de contacto próprio.",
     "ruleReview": "Os dados são revistos de 6 em 6 meses, e cada ficha mostra a data da verificação.",
     "methodDisclosure": "Não copiamos textos de avaliações. Salvo indicação em contrário, a selecção não resulta de visitas nossas aos locais: indicamos sempre a fonte, para poderes confirmar por ti.",
     "updated": "Actualizado em {date}",
@@ -490,7 +490,7 @@
     "fewReviews": "Categoria com poucos locais: mínimo de 20 avaliações.",
     "tips": "Dicas práticas",
     "luandaTitle": "De Luanda à Praia: voos, visto e o que preparar",
-    "luandaDescription": "Tudo para viajar de Angola para Cabo Verde: voos TAAG Luanda–Praia, visto, registo EASE, taxa, moeda e melhor época.",
+    "luandaDescription": "O essencial para viajar de Angola para Cabo Verde: voos TAAG Luanda–Praia, visto, registo EASE, taxa, moeda e melhor época.",
     "luandaIntro": "O essencial para planear a viagem a partir de Angola, com a fonte e a data de cada informação.",
     "source": "Fonte",
     "unofficial": "Sem confirmação oficial directa: confirma junto da companhia aérea ou do consulado antes de viajar.",
@@ -500,6 +500,7 @@
     "stayLong": "6 noites: chegada à segunda, regresso ao domingo. Acrescenta o Tarrafal e o interior de Santiago.",
     "exploreGuide": "Ver o guia da Praia",
     "teaserAlt": "Campanha da TAAG para a Praia: «O Atlântico tem uma nova ponte», com voos a partir de 793.205 AOA, sobre uma vista aérea de uma baía em Cabo Verde.",
-    "ruleActivities": "Em «O que fazer», onde há menos avaliações em várias fontes, basta uma fonte com nota de pelo menos 4,0 e 50 avaliações. A ficha mostra as fontes usadas."
+    "ruleActivities": "Em «O que fazer», onde há menos avaliações em várias fontes, basta uma fonte com nota de pelo menos 4,0 e 50 avaliações. A ficha mostra as fontes usadas.",
+    "stale": "Esta informação foi verificada há mais de 6 meses e pode estar desactualizada."
   }
 }

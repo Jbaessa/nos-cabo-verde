@@ -3,9 +3,10 @@ import { getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { GuideNav } from "@/components/guide/GuideNav";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { METHOD_UPDATED_AT } from "@/lib/guide";
-import { guideAlternates, guideArticleJsonLd } from "@/lib/guide-seo";
+import { guideArticleJsonLd, guideMetadata } from "@/lib/guide-seo";
 
 const PATH = "/guia/como-escolhemos";
 
@@ -14,7 +15,7 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "guide" });
-  return { title: t("methodTitle"), description: t("methodIntro"), alternates: guideAlternates(PATH, locale) };
+  return guideMetadata({ title: t("methodTitle"), description: t("methodIntro"), path: PATH, locale });
 }
 
 export default async function HowWeChoosePage({ params }: { params: Params }) {
@@ -51,6 +52,7 @@ export default async function HowWeChoosePage({ params }: { params: Params }) {
             ))}
           </ul>
           <p className="mt-8">{t("methodDisclosure")}</p>
+          <GuideNav locale={locale} destinationId="praia" />
         </div>
       </main>
       <Footer />

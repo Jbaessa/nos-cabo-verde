@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { GuideNav } from "@/components/guide/GuideNav";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { getPublishedCategories, LUANDA_UPDATED_AT, luandaFacts } from "@/lib/guide";
-import { guideAlternates, guideArticleJsonLd } from "@/lib/guide-seo";
+import { isFactStale, LUANDA_UPDATED_AT, luandaFacts } from "@/lib/guide";
+import { guideArticleJsonLd, guideMetadata } from "@/lib/guide-seo";
 
 const PATH = "/guia/luanda-praia";
 
@@ -16,12 +16,13 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "guide" });
-  return {
+  return guideMetadata({
     title: t("luandaTitle"),
     description: t("luandaDescription"),
-    alternates: guideAlternates(PATH, locale),
-    openGraph: { images: [{ url: "/images/taag-luanda-praia.jpg", width: 640, height: 778, alt: t("teaserAlt") }] },
-  };
+    path: PATH,
+    locale,
+    image: { url: "/images/taag-luanda-praia.jpg", width: 640, height: 778, alt: t("teaserAlt") },
+  });
 }
 
 export default async function LuandaPraiaPage({ params }: { params: Params }) {
@@ -71,6 +72,7 @@ export default async function LuandaPraiaPage({ params }: { params: Params }) {
                 {` · ${t("checked")} ${fact.checkedAt}`}
               </p>
               {!fact.official && <p className="text-sm text-ncv-basalt/70 mt-2">{t("unofficial")}</p>}
+              {isFactStale(fact, new Date()) && <p className="text-sm text-ncv-basalt/70 mt-2">{t("stale")}</p>}
             </section>
           ))}
           <section>
@@ -81,13 +83,7 @@ export default async function LuandaPraiaPage({ params }: { params: Params }) {
               <li>{t("stayLong")}</li>
             </ul>
           </section>
-          {getPublishedCategories("praia").length > 0 && (
-            <p>
-              <Link href={`${prefix}/guia/praia`} className="underline underline-offset-4 text-ncv-blue font-semibold">
-                {t("exploreGuide")}
-              </Link>
-            </p>
-          )}
+          <GuideNav locale={locale} destinationId="praia" />
         </div>
       </main>
       <Footer />

@@ -8,7 +8,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { GuideNav } from "@/components/guide/GuideNav";
 import { PlaceCard } from "@/components/guide/PlaceCard";
 import { getCategory, guidePaths } from "@/lib/guide";
-import { guideAlternates, guideArticleJsonLd, guideUrl, placesItemListJsonLd } from "@/lib/guide-seo";
+import { guideArticleJsonLd, guideMetadata, placesItemListJsonLd } from "@/lib/guide-seo";
 
 type Params = Promise<{ locale: string; destino: string; categoria: string }>;
 
@@ -19,18 +19,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === "en" ? "en" : "pt";
   const page = found.destination.categories[found.category];
   const path = `/guia/${destino}/${categoria}`;
-  return {
-    title: page.title[lang],
-    description: page.description[lang],
-    alternates: guideAlternates(path, locale),
-    openGraph: {
-      title: page.title[lang],
-      description: page.description[lang],
-      url: guideUrl(path, locale),
-      type: "article",
-      siteName: "Nós Cabo Verde",
-    },
-  };
+  return guideMetadata({ title: page.title[lang], description: page.description[lang], path, locale });
 }
 
 export default async function GuideCategoryPage({ params }: { params: Params }) {

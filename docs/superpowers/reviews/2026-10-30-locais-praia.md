@@ -10,11 +10,11 @@ Fontes recolhidas a 30-10-2026: Google Maps (Apify), Booking (página da cidade)
 | Casa Jardim di Sol | Palmarejo | 4,7 (41) | 9,1 (210) | médio |
 | Chez Maria Júlia Boutique Hotel | Palmarejo | 4,4 (89) | 8,7 (350) | médio-alto |
 | Pestana Trópico | Prainha | 4,4 (1.417) | 8,5 (1.651) | alto |
-| Hotel Cesaria | perto do aeroporto (confirmar) | 4,2 (413) | 8,5 (1.029) | médio |
+| Hotel Cesaria | Fazenda (Booking) | 4,2 (413) | 8,5 (1.029) | médio |
 | Hotel Oásis Atlântico Praiamar | Prainha | 4,3 (1.623) | 8,1 (363) | alto |
-| Boutique Hotel Praia Maria | Platô | 4,0 (214) | 8,0 (1.078) | económico |
+| Boutique Hotel Praia Maria | Centro | 4,0 (214) | 8,0 (1.078) | económico |
 
-A confirmar: a Booking chama "Pousada Praia Maria" ao último, e o Google "Boutique Hotel Praia Maria". Parecem o mesmo, mas não está provado.
+Confirmado: "Pousada Praia Maria" na Booking é o mesmo hotel (página `boutique-praia-maria-praia`).
 
 Excluídos por nota da Booking abaixo de 8,0: Hotel VIP Praia, Vivi Hotel, Hotel Santa Maria, Hotel Happy Day, Beramar. Sem segunda fonte: O Jardim do Vinho, Cantinho C, Casa Privada do Plateau.
 
@@ -27,7 +27,7 @@ Excluídos por nota da Booking abaixo de 8,0: Hotel VIP Praia, Vivi Hotel, Hotel
 | Bistro Noventa 90 | Platô | 4,5 (523) | 4,5 (125) | n/d |
 | Restaurante Kaza Katxupa | Platô | 4,3 (706) | 4,4 (121) | n/d |
 | Cheff Teresa | Prainha | 4,4 (262) | 4,6 (78) | n/d |
-| Restaurante Punto d'Incontro | Achada Santo António | 4,2 (281) | 4,4 (213) | n/d |
+| Restaurante Punto d'Incontro | Avenida Cidade de Lisboa | 4,2 (281) | 4,4 (213) | n/d |
 | L'Atelier | Palmarejo | 4,8 (181) | 4,8 (31) | 1000–1500 CVE |
 | Churrasqueira Dragoeiro | Achada Santo António | 4,2 (874) | 4,1 (71) | 500–1000 CVE |
 | Restaurante Tambake (vegano) | Palmarejo | 4,7 (131) | 4,9 (10) | 500–1000 CVE |

@@ -8,6 +8,7 @@ import {
   luandaFacts,
   places,
   validateFact,
+  isFactStale,
   validatePlace,
   type Fact,
   type Place,
@@ -184,5 +185,47 @@ describe("luandaFacts", () => {
     expect(voos?.value.pt).toContain("ida e volta");
     expect(voos?.value.en).toContain("return");
     expect(voos?.value.pt).not.toContain("divergem");
+  });
+});
+
+describe("review fixes", () => {
+  const blankEn: Place = { ...place, why: { pt: "Bom", en: " " } };
+
+  it("does not publish a listing with missing English", () => {
+    expect(getPublishedPlaces("praia", "onde-ficar", [blankEn])).toEqual([]);
+  });
+
+  it("flags a fact checked over 6 months ago as stale", () => {
+    expect(isFactStale({ ...fact, checkedAt: "2026-04-30" }, today)).toBe(true);
+    expect(isFactStale(fact, today)).toBe(false);
+  });
+
+  it("links Booking ratings to the hotel page", () => {
+    const urls = places.flatMap((p) => p.ratings).filter((r) => r.source === "Booking").map((r) => r.url);
+    expect(urls).toHaveLength(7);
+    for (const url of urls) expect(url).toContain("/hotel/cv/");
+  });
+
+  it("does not show a price band without a source", () => {
+    for (const id of ["quintal-da-musica", "noventa-90", "kaza-katxupa", "cheff-teresa", "punto-d-incontro"]) {
+      expect(places.find((p) => p.id === id)?.priceBand).toBeUndefined();
+    }
+  });
+
+  it("maps hotel price bands to the validated report", () => {
+    const band = (id: string) => places.find((p) => p.id === id)?.priceBand;
+    expect(["oasis-praiamar", "barcelo-praia", "pestana-tropico"].map(band)).toEqual([4, 4, 4]);
+    expect(["casa-jardim-di-sol", "hotel-cesaria"].map(band)).toEqual([2, 2]);
+  });
+
+  it("places Hotel Cesaria in Fazenda", () => {
+    expect(places.find((p) => p.id === "hotel-cesaria")?.zone.pt).toBe("Fazenda");
+  });
+
+  it("does not overclaim in page copy", () => {
+    const copy = JSON.stringify([destinations, places]);
+    for (const claim of ["mais bem avaliados", "por tipo de refeição", "A nota mais alta desta selecção", "As melhores zonas", "melhores passeios", "praia urbana com melhor nota"]) {
+      expect(copy).not.toContain(claim);
+    }
   });
 });

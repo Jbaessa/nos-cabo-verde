@@ -477,7 +477,7 @@
     "ruleScore": "Hotels and restaurants: a score of at least 4.0 on two sources, such as Google Maps, Tripadvisor or Booking.",
     "ruleReviews": "At least 50 reviews on the main source. In categories with few places the minimum drops to 20, and the listing says so.",
     "ruleRecent": "Reviews in the last 12 months.",
-    "ruleOpen": "Confirmed as open, with a contact, website or phone number. Beaches and monuments need no contact of their own.",
+    "ruleOpen": "Recent reviews and no closure notice on Google Maps, with a contact, website or phone number. Beaches and monuments need no contact of their own.",
     "ruleReview": "Data is reviewed every 6 months, and each listing shows when it was checked.",
     "methodDisclosure": "We don't copy review text. Unless stated otherwise, the selection doesn't come from our own visits: we always show the source so you can check for yourself.",
     "updated": "Updated on {date}",
@@ -490,7 +490,7 @@
     "fewReviews": "Category with few places: 20-review minimum.",
     "tips": "Practical tips",
     "luandaTitle": "From Luanda to Praia: flights, visa and what to prepare",
-    "luandaDescription": "Everything for travelling from Angola to Cape Verde: TAAG Luanda–Praia flights, visa, EASE registration, fee, currency and best season.",
+    "luandaDescription": "The essentials for travelling from Angola to Cape Verde: TAAG Luanda–Praia flights, visa, EASE registration, fee, currency and best season.",
     "luandaIntro": "The essentials for planning your trip from Angola, with the source and date of each item.",
     "source": "Source",
     "unofficial": "Not directly confirmed by an official source: check with the airline or consulate before you travel.",
@@ -500,6 +500,7 @@
     "stayLong": "6 nights: arrive Monday, return Sunday. Adds Tarrafal and inland Santiago.",
     "exploreGuide": "See the Praia guide",
     "teaserAlt": "TAAG campaign for Praia: \"O Atlântico tem uma nova ponte\" (the Atlantic has a new bridge), with fares from 793,205 AOA, over an aerial view of a bay in Cape Verde.",
-    "ruleActivities": "In \"What to do\", where fewer sources have reviews, one source with a score of at least 4.0 and 50 reviews is enough. Each listing shows the sources used."
+    "ruleActivities": "In \"What to do\", where fewer sources have reviews, one source with a score of at least 4.0 and 50 reviews is enough. Each listing shows the sources used.",
+    "stale": "This was checked over 6 months ago and may be out of date."
   }
 }

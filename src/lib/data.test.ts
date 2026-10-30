@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import ptMessages from "../../messages/pt.json";
 import enMessages from "../../messages/en.json";
+import { readFileSync } from "node:fs";
 import { partners } from "./data";
 
 describe("partners", () => {
@@ -26,5 +27,12 @@ describe("footer guide links", () => {
       expect(m.footerFull.linkPraiaGuide).toBeTruthy();
       expect(m.footerFull.linkLuandaPraia).toBeTruthy();
     }
+  });
+});
+
+describe("experience structured data", () => {
+  it("does not publish hard-coded ratings", () => {
+    const source = readFileSync("src/app/[locale]/experiencias/[id]/page.tsx", "utf8");
+    expect(source).not.toContain("aggregateRating");
   });
 });

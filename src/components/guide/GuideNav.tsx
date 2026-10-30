@@ -21,6 +21,11 @@ export async function GuideNav({ locale, destinationId }: { locale: string; dest
           </li>
         ))}
         <li>
+          <Link className="inline-block py-2 underline underline-offset-4" href={`${prefix}/guia/luanda-praia`}>
+            {t("luandaTitle")}
+          </Link>
+        </li>
+        <li>
           <Link className="inline-block py-2 underline underline-offset-4" href={`${prefix}/guia/como-escolhemos`}>
             {t("methodTitle")}
           </Link>

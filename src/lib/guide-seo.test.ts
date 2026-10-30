@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { guideAlternates, guideArticleJsonLd, placesItemListJsonLd } from "./guide-seo";
+import { guideAlternates, guideArticleJsonLd, guideMetadata, placesItemListJsonLd } from "./guide-seo";
 import type { Place } from "./guide";
 
 const place: Place = {
@@ -48,5 +48,16 @@ describe("placesItemListJsonLd", () => {
     expect(json).toContain("Hotel");
     expect(json).not.toContain("aggregateRating");
     expect(json).not.toContain("4.5");
+  });
+});
+
+describe("guideMetadata", () => {
+  const meta = guideMetadata({ title: "T", description: "D", path: "/guia/praia", locale: "en" });
+
+  it("shares the page itself, not the home page", () => {
+    expect(meta.openGraph?.title).toBe("T");
+    expect(meta.openGraph?.url).toBe("https://noscaboverde.cv/en/guia/praia");
+    expect(meta.twitter?.title).toBe("T");
+    expect(meta.twitter?.description).toBe("D");
   });
 });

@@ -77,14 +77,15 @@ export const destinations: Destination[] = [
       "onde-ficar": {
         title: { pt: "Onde ficar na Praia, Cabo Verde", en: "Where to stay in Praia, Cape Verde" },
         description: {
-          pt: "As melhores zonas e hotéis da Praia por orçamento, escolhidos pelas avaliações de quem lá ficou.",
-          en: "The best areas and hotels in Praia by budget, chosen from guest reviews.",
+          pt: "Zonas e hotéis da Praia para vários orçamentos, seleccionados por avaliações públicas.",
+          en: "Areas and hotels in Praia for different budgets, selected from public reviews.",
         },
         intro: {
-          pt: "Escolhe primeiro a zona: o Platô para ficar no centro histórico, a Prainha para estar perto do mar, o Palmarejo para uma zona mais residencial.",
-          en: "Pick the area first: the Plateau for the historic centre, Prainha to be near the sea, Palmarejo for a more residential area.",
+          pt: "Escolhe primeiro a zona: o Platô para ficar no centro histórico, a Prainha e Quebra Canela para estar perto do mar, o Palmarejo e Achada Santo António para zonas mais residenciais e de serviços.",
+          en: "Pick the area first: the Plateau for the historic centre, Prainha and Quebra Canela to be near the sea, Palmarejo and Achada Santo António for more residential and business areas.",
         },
         tips: [
+          { pt: "Por orçamento nesta selecção: Praia Maria é a opção económica; Hotel Cesaria e Casa Jardim di Sol ficam a meio; Chez Maria Júlia, Barceló, Pestana Trópico e Oásis Praiamar são os mais caros.", en: "By budget in this selection: Praia Maria is the affordable option; Hotel Cesaria and Casa Jardim di Sol are mid-range; Chez Maria Júlia, Barceló, Pestana Trópico and Oásis Praiamar cost the most." },
           { pt: "Se vens pela primeira vez, o Platô e a Prainha deixam-te perto do centro e do mar.", en: "On a first visit, the Plateau and Prainha keep you close to the centre and the sea." },
           { pt: "Confirma o preço para as tuas datas: os valores variam muito ao longo do ano.", en: "Check prices for your dates: rates vary a lot through the year." },
         ],
@@ -92,14 +93,16 @@ export const destinations: Destination[] = [
       "o-que-fazer": {
         title: { pt: "O que fazer na Praia, Cabo Verde", en: "What to do in Praia, Cape Verde" },
         description: {
-          pt: "O essencial da cidade da Praia e os melhores passeios de um dia, como a Cidade Velha e o Tarrafal.",
-          en: "The essentials of Praia and the best day trips, including Cidade Velha and Tarrafal.",
+          pt: "O essencial da cidade da Praia, a Cidade Velha e operadores locais para passeios, seleccionados por avaliações públicas.",
+          en: "The essentials of Praia, Cidade Velha and local tour operators, selected from public reviews.",
         },
         intro: {
           pt: "Começa pelo Platô e pelo mercado de Sucupira, e reserva um dia para a Cidade Velha, Património Mundial da UNESCO.",
           en: "Start with the Plateau and Sucupira market, and keep a day for Cidade Velha, a UNESCO World Heritage Site.",
         },
         tips: [
+          { pt: "No centro, começa pelo Platô: a Praça Alexandre Albuquerque, a Rua 5 de Julho e o Museu Etnográfico ficam perto. O mercado de Sucupira é o outro ponto a não perder.", en: "In the centre, start with the Plateau: Praça Alexandre Albuquerque, Rua 5 de Julho and the Ethnographic Museum are close together. Sucupira market is the other must-see." },
+          { pt: "Com mais dias, o Tarrafal, no norte de Santiago, dá um passeio de um dia.", en: "With more days, Tarrafal, in the north of Santiago, makes a good day trip." },
           { pt: "Reserva um dia para a Cidade Velha, ou combina-a com a cidade num passeio guiado.", en: "Keep a day for Cidade Velha, or combine it with the city on a guided tour." },
           { pt: "Confirma o preço de entrada e o horário antes de ir, porque podem mudar.", en: "Check entry prices and opening hours before you go, as they can change." },
         ],
@@ -107,14 +110,15 @@ export const destinations: Destination[] = [
       "onde-comer": {
         title: { pt: "Onde comer na Praia, Cabo Verde", en: "Where to eat in Praia, Cape Verde" },
         description: {
-          pt: "Os restaurantes mais bem avaliados da Praia: cachupa, peixe e marisco, e opções económicas.",
-          en: "Praia's best-rated restaurants: cachupa, fish and seafood, and budget options.",
+          pt: "Restaurantes da Praia bem avaliados, da cozinha cabo-verdiana às opções económicas.",
+          en: "Well-rated restaurants in Praia, from Cape Verdean cooking to budget options.",
         },
         intro: {
-          pt: "Prova a cachupa, o prato nacional, e o peixe fresco. Abaixo estão os locais com as melhores avaliações, por tipo de refeição.",
-          en: "Try cachupa, the national dish, and fresh fish. Below are the best-rated places by type of meal.",
+          pt: "Prova a cachupa, o prato nacional, e o peixe fresco. Abaixo está a nossa selecção de locais bem avaliados.",
+          en: "Try cachupa, the national dish, and fresh fish. Below is our selection of well-rated places.",
         },
         tips: [
+          { pt: "Para comer de forma simples e barata, procura os mercados e a comida de rua nas avenidas principais.", en: "For simple, cheap food, look to the markets and street food on the main avenues." },
           { pt: "Prova a cachupa, o prato nacional, feita de milho, feijão e peixe ou carne.", en: "Try cachupa, the national dish, made with corn, beans and fish or meat." },
           { pt: "Ao jantar, sobretudo ao fim-de-semana, vale a pena reservar.", en: "For dinner, especially at weekends, it is worth booking." },
         ],
@@ -131,12 +135,12 @@ export const places: Place[] = [
     name: "Barceló Praia Cape Verde",
     zone: { pt: "Prainha", en: "Prainha" },
     bestFor: { pt: "Quem procura um hotel de cinco estrelas junto ao mar", en: "Travellers after a five-star hotel by the sea" },
-    why: { pt: "A nota mais alta entre os grandes hotéis da cidade, nas duas fontes.", en: "The highest score among the city's large hotels, on both sources." },
+    why: { pt: "Notas de 4,5 ou mais nas duas fontes.", en: "Scores of 4.5 or above on both sources." },
     priceBand: 4,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.7, reviews: 527, url: "https://www.google.com/maps/search/?api=1&query=Barcel%C3%B3%20Praia%20Cape%20Verde&query_place_id=ChIJG7nKomKZNQkRWCHj-qEavyQ", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.5, reviews: 863, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.5, reviews: 863, url: "https://www.booking.com/hotel/cv/barcelo-praia-cape-verde.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-29",
     website: "https://www.barcelo.com/pt-pt/barcelo-praia-cape-verde/",
@@ -151,10 +155,10 @@ export const places: Place[] = [
     zone: { pt: "Palmarejo", en: "Palmarejo" },
     bestFor: { pt: "Quem prefere uma casa de hóspedes tranquila", en: "Travellers who prefer a quiet guesthouse" },
     why: { pt: "A nota mais alta da Booking nesta selecção, numa casa de hóspedes em zona residencial.", en: "The highest Booking score in this selection, at a guesthouse in a residential area." },
-    priceBand: 3,
+    priceBand: 2,
     tags: [],
     ratings: [
-      { source: "Booking", score: 4.55, reviews: 210, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.55, reviews: 210, url: "https://www.booking.com/hotel/cv/casa-jardim-di-sol.html", checkedAt: "2026-10-30" },
       { source: "Google Maps", score: 4.7, reviews: 41, url: "https://www.google.com/maps/search/?api=1&query=Casa%20Jardim%20di%20Sol&query_place_id=ChIJXcjF_NeZNQkRZ2BRUBvldqM", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-26",
@@ -174,7 +178,7 @@ export const places: Place[] = [
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.4, reviews: 89, url: "https://www.google.com/maps/search/?api=1&query=Chez%20Maria%20J%C3%BAlia%20Boutique%20Hotel&query_place_id=ChIJQ_95LMWZNQkRkgFSEH7O720", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.35, reviews: 350, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.35, reviews: 350, url: "https://www.booking.com/hotel/cv/chez-maria-julia.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-25",
     website: "https://chezmariajulia.cv/",
@@ -193,7 +197,7 @@ export const places: Place[] = [
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.4, reviews: 1417, url: "https://www.google.com/maps/search/?api=1&query=Pestana%20Tr%C3%B3pico&query_place_id=ChIJOZUnZe6YNQkRJFIlLzkTQKg", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.25, reviews: 1651, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.25, reviews: 1651, url: "https://www.booking.com/hotel/cv/pestana-tropico.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-23",
     website: "https://www.pestana.com/en/hotel/pestana-tropico",
@@ -205,14 +209,14 @@ export const places: Place[] = [
     destinationId: "praia",
     category: "onde-ficar",
     name: "Hotel Cesaria",
-    zone: { pt: "Perto do aeroporto", en: "Near the airport" },
-    bestFor: { pt: "Quem chega tarde ou tem pouco tempo", en: "Travellers arriving late or short on time" },
+    zone: { pt: "Fazenda", en: "Fazenda" },
+    bestFor: { pt: "Quem procura um preço intermédio", en: "Travellers looking for a mid-range price" },
     why: { pt: "Preço intermédio e muitas avaliações positivas nas duas fontes.", en: "Mid-range prices and many positive reviews on both sources." },
     priceBand: 2,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.2, reviews: 413, url: "https://www.google.com/maps/search/?api=1&query=Hotel%20Cesaria&query_place_id=ChIJXYteIxyZNQkRwwY2lu2rW40", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.25, reviews: 1029, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.25, reviews: 1029, url: "https://www.booking.com/hotel/cv/cesaria.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-22",
     website: "https://hotelcesaria.com/",
@@ -227,11 +231,11 @@ export const places: Place[] = [
     zone: { pt: "Prainha", en: "Prainha" },
     bestFor: { pt: "Quem quer ficar na Prainha", en: "Travellers who want to stay in Prainha" },
     why: { pt: "O hotel com mais avaliações no Google nesta selecção, com nota acima de 4 nas duas fontes.", en: "The most-reviewed hotel on Google in this selection, scoring above 4 on both sources." },
-    priceBand: 3,
+    priceBand: 4,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.3, reviews: 1623, url: "https://www.google.com/maps/search/?api=1&query=Hotel%20O%C3%A1sis%20Atl%C3%A2ntico%20Praiamar&query_place_id=ChIJ4RedhO2YNQkR_hkc-SRlsYU", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.05, reviews: 363, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.05, reviews: 363, url: "https://www.booking.com/hotel/cv/oasis-praiamar.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-23",
     website: "https://oasisatlantico.com/en/destinos/cabo-verde/ilha-de-santiago/oasis-praiamar/",
@@ -243,14 +247,14 @@ export const places: Place[] = [
     destinationId: "praia",
     category: "onde-ficar",
     name: "Boutique Hotel Praia Maria",
-    zone: { pt: "Platô", en: "Plateau" },
+    zone: { pt: "Centro", en: "City centre" },
     bestFor: { pt: "Quem quer ficar no centro a preço económico", en: "Travellers who want a central stay on a budget" },
-    why: { pt: "A opção mais económica desta selecção, na Rua 5 de Julho, no centro histórico.", en: "The most affordable option in this selection, on Rua 5 de Julho in the historic centre." },
+    why: { pt: "A opção mais económica desta selecção, no centro da cidade.", en: "The most affordable option in this selection, in the city centre." },
     priceBand: 1,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.0, reviews: 214, url: "https://www.google.com/maps/search/?api=1&query=Boutique%20Hotel%20Praia%20Maria&query_place_id=ChIJNRyt1OOYNQkRCJ_xosAd0LA", checkedAt: "2026-10-30" },
-      { source: "Booking", score: 4.0, reviews: 1078, url: "https://www.booking.com/city/cv/praia.html", checkedAt: "2026-10-30" },
+      { source: "Booking", score: 4.0, reviews: 1078, url: "https://www.booking.com/hotel/cv/boutique-praia-maria-praia.html", checkedAt: "2026-10-30" },
     ],
     lastReviewAt: "2026-10-28",
     website: "https://gruposofia.net/",
@@ -265,7 +269,6 @@ export const places: Place[] = [
     zone: { pt: "Platô", en: "Plateau" },
     bestFor: { pt: "Um jantar com música ao vivo", en: "Dinner with live music" },
     why: { pt: "Muito avaliado nas duas fontes, com referências a música ao vivo.", en: "Heavily reviewed on both sources, with mentions of live music." },
-    priceBand: 3,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.5, reviews: 1488, url: "https://www.google.com/maps/search/?api=1&query=Restaurante%20Quintal%20da%20M%C3%BAsica&query_place_id=ChIJ82659OGYNQkRjZ8Z_Bz0X1k", checkedAt: "2026-10-30" },
@@ -303,7 +306,6 @@ export const places: Place[] = [
     zone: { pt: "Platô", en: "Plateau" },
     bestFor: { pt: "Um jantar no centro", en: "Dinner in the centre" },
     why: { pt: "A mesma nota alta nas duas fontes, com centenas de avaliações.", en: "The same high score on both sources, with hundreds of reviews." },
-    priceBand: 2,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.5, reviews: 523, url: "https://www.google.com/maps/search/?api=1&query=Bistro%20Noventa%2090&query_place_id=ChIJ6TAWjeGYNQkRNCupZ7G-Mbo", checkedAt: "2026-10-30" },
@@ -321,7 +323,6 @@ export const places: Place[] = [
     zone: { pt: "Platô", en: "Plateau" },
     bestFor: { pt: "Provar comida cabo-verdiana", en: "Trying Cape Verdean food" },
     why: { pt: "Restaurante de gastronomia cabo-verdiana, bem avaliado nas duas fontes.", en: "A Cape Verdean restaurant, well rated on both sources." },
-    priceBand: 1,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.3, reviews: 706, url: "https://www.google.com/maps/search/?api=1&query=Restaurante%20Kaza%20Katxupa&query_place_id=ChIJ_7wVNzeZNQkRJVW_iCRtJuA", checkedAt: "2026-10-30" },
@@ -340,7 +341,6 @@ export const places: Place[] = [
     zone: { pt: "Prainha", en: "Prainha" },
     bestFor: { pt: "Uma refeição especial", en: "A special meal" },
     why: { pt: "Notas altas nas duas fontes, com a melhor do Tripadvisor entre os muito avaliados.", en: "High scores on both sources, the best on Tripadvisor among the heavily reviewed." },
-    priceBand: 3,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.4, reviews: 262, url: "https://www.google.com/maps/search/?api=1&query=Cheff%20Teresa&query_place_id=ChIJ62Bv4e2YNQkReiZB1lVwEDw", checkedAt: "2026-10-30" },
@@ -356,9 +356,8 @@ export const places: Place[] = [
     category: "onde-comer",
     name: "Restaurante Punto d'Incontro",
     zone: { pt: "Avenida Cidade de Lisboa", en: "Avenida Cidade de Lisboa" },
-    bestFor: { pt: "Uma refeição de faixa de preço mais alta", en: "A higher-priced meal" },
+    bestFor: { pt: "Uma refeição bem avaliada na Avenida Cidade de Lisboa", en: "A well-rated meal on Avenida Cidade de Lisboa" },
     why: { pt: "Bem avaliado nas duas fontes, com mais de 200 opiniões em cada.", en: "Well rated on both sources, with over 200 reviews on each." },
-    priceBand: 4,
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.2, reviews: 281, url: "https://www.google.com/maps/search/?api=1&query=Restaurante%20Punto%20d'Incontro&query_place_id=ChIJicOAT-OYNQkRaHkIpbYUTgw", checkedAt: "2026-10-30" },
@@ -376,7 +375,7 @@ export const places: Place[] = [
     name: "L'Atelier",
     zone: { pt: "Palmarejo", en: "Palmarejo" },
     bestFor: { pt: "Boa comida a preço médio", en: "Good food at a mid-range price" },
-    why: { pt: "A nota mais alta desta selecção: 4,8 nas duas fontes.", en: "The highest score in this selection: 4.8 on both sources." },
+    why: { pt: "Nota de 4,8 nas duas fontes.", en: "A score of 4.8 on both sources." },
     priceBand: 2,
     tags: [],
     ratings: [
@@ -466,7 +465,7 @@ export const places: Place[] = [
     name: "Praia de Quebra Canela",
     zone: { pt: "Quebra Canela", en: "Quebra Canela" },
     bestFor: { pt: "Um dia de praia na cidade", en: "A beach day in the city" },
-    why: { pt: "A praia urbana com melhor nota nas fontes consultadas.", en: "The best-rated city beach on the sources we checked." },
+    why: { pt: "Praia urbana com nota de pelo menos 4,0 nas duas fontes.", en: "A city beach scoring at least 4.0 on both sources." },
     tags: [],
     ratings: [
       { source: "Google Maps", score: 4.5, reviews: 431, url: "https://www.google.com/maps/search/?api=1&query=Quebra%20Canela&query_place_id=ChIJx2PQufOYNQkRMlVyqt_vxq4", checkedAt: "2026-10-30" },
@@ -587,8 +586,8 @@ export const luandaFacts: Fact[] = [
     id: "moeda",
     label: { pt: "Moeda", en: "Currency" },
     value: {
-      pt: "A moeda é o escudo de Cabo Verde (CVE). O Banco de Cabo Verde indica 110,265 escudos por euro. Nas casas de câmbio e nos bancos, a taxa que recebes pode ser diferente.",
-      en: "The currency is the Cape Verdean escudo (CVE). The Bank of Cape Verde lists 110.265 escudos per euro. The rate you get at exchange offices and banks may differ.",
+      pt: "A moeda é o escudo de Cabo Verde (CVE). O Banco de Cabo Verde indica 110,265 escudos por euro. Nas casas de câmbio e nos bancos, a taxa que recebes pode ser diferente. Antes de partir, confirma com o teu banco se o cartão funciona em Cabo Verde e quanto custa levantar dinheiro, e pergunta onde podes trocar kwanzas.",
+      en: "The currency is the Cape Verdean escudo (CVE). The Bank of Cape Verde lists 110.265 escudos per euro. The rate you get at exchange offices and banks may differ. Before leaving, ask your bank whether your card works in Cape Verde and what withdrawals cost, and ask where you can exchange kwanzas.",
     },
     sourceUrl: "https://www.bcv.cv/pt",
     checkedAt: "2026-10-30",
@@ -639,12 +638,24 @@ export function validateFact(fact: Fact, today: Date): string[] {
   return errors;
 }
 
+export function isFactStale(fact: Fact, today: Date): boolean {
+  return isOlderThan(fact.checkedAt, FACT_MAX_AGE_MONTHS, today);
+}
+
 export function getDestination(id: string): Destination | undefined {
   return destinations.find((d) => d.id === id);
 }
 
 export function getPublishedPlaces(destinationId: string, category: CategoryId, from: Place[] = places): Place[] {
-  return from.filter((p) => p.destinationId === destinationId && p.category === category && p.validatedAt);
+  return from.filter(
+    (p) =>
+      p.destinationId === destinationId &&
+      p.category === category &&
+      p.validatedAt &&
+      !isBlank(p.zone) &&
+      !isBlank(p.bestFor) &&
+      !isBlank(p.why),
+  );
 }
 
 export function getPublishedCategories(destinationId: string, from: Place[] = places): CategoryId[] {
