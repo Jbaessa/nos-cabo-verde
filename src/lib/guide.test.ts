@@ -136,6 +136,8 @@ describe("luandaFacts", () => {
     expect(voos?.value.pt).toContain("12 de Dezembro de 2026");
     expect(voos?.value.pt).toContain("793.205 AOA");
     expect(voos?.value.en).toContain("793,205 AOA");
+    expect(voos?.value.pt).toContain("ida e volta");
+    expect(voos?.value.en).toContain("return");
     expect(voos?.value.pt).not.toContain("divergem");
   });
 });

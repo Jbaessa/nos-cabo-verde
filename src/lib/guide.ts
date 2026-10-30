@@ -118,8 +118,8 @@ export const luandaFacts: Fact[] = [
     id: "voos",
     label: { pt: "Voos", en: "Flights" },
     value: {
-      pt: "O primeiro voo da TAAG de Luanda para a Praia é a 12 de Dezembro de 2026. Estão anunciados dois voos por semana: de Luanda às segundas e aos sábados, da Praia às terças e aos domingos. A campanha da TAAG indica voos a partir de 793.205 AOA. Confirma o preço, as condições e o itinerário, incluindo eventuais escalas, ao reservar.",
-      en: "TAAG's first flight from Luanda to Praia is on 12 December 2026. Two flights a week have been announced: from Luanda on Mondays and Saturdays, from Praia on Tuesdays and Sundays. TAAG's campaign shows fares from 793,205 AOA. Check the price, conditions and itinerary, including any stops, when you book.",
+      pt: "O primeiro voo da TAAG de Luanda para a Praia é a 12 de Dezembro de 2026. Estão anunciados dois voos por semana: de Luanda às segundas e aos sábados, da Praia às terças e aos domingos. A campanha da TAAG indica voos de ida e volta a partir de 793.205 AOA. Confirma o preço, as condições e o itinerário, incluindo eventuais escalas, ao reservar.",
+      en: "TAAG's first flight from Luanda to Praia is on 12 December 2026. Two flights a week have been announced: from Luanda on Mondays and Saturdays, from Praia on Tuesdays and Sundays. TAAG's campaign shows return fares from 793,205 AOA. Check the price, conditions and itinerary, including any stops, when you book.",
     },
     sourceUrl: "https://www.verangola.net/va/pt/102026/Transportes/50571/TAAG-abre-venda-de-bilhetes-para-rota-Luanda-Cidade-da-Praia-que-arranca-em-Dezembro-com-dois-voos-por-semana.htm",
     checkedAt: "2026-10-30",
