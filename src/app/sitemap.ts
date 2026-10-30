@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { islands, editorialFeatures, experiences, events } from "@/lib/data";
+import { islands, editorialFeatures, experiences } from "@/lib/data";
 
 const BASE = "https://noscaboverde.cv";
 
@@ -35,12 +35,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const eventPages: MetadataRoute.Sitemap = events.map((e) => ({
-    url: `${BASE}/agenda/${e.id}`,
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: 0.65,
-  }));
-
-  return [...staticPages, ...islandPages, ...articlePages, ...experiencePages, ...eventPages];
+  return [...staticPages, ...islandPages, ...articlePages, ...experiencePages];
 }
