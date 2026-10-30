@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { localizedHref } from "@/lib/localized-href";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import Link from "next/link";
 import { Menu, X, Search, Globe } from "lucide-react";
@@ -66,7 +67,7 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" locale={locale} className="flex items-center gap-3 group">
+          <Link href={localizedHref("/", locale)} className="flex items-center gap-3 group">
             <div className="w-8 h-8 relative">
               <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="15" stroke="#C9A05E" strokeWidth="1.5" />
@@ -94,7 +95,7 @@ export function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizedHref(link.href, locale)}
                 className="text-white/70 hover:text-ncv-gold text-sm font-sans font-medium tracking-wide transition-colors duration-200"
               >
                 {link.label}
@@ -120,7 +121,7 @@ export function Navbar() {
 
             {/* Favorites icon */}
             <Link
-              href="/favoritos"
+              href={localizedHref("/favoritos", locale)}
               className="hidden lg:flex items-center justify-center w-9 h-9 rounded-full bg-white/8 hover:bg-white/15 text-white/60 hover:text-white transition-all relative"
               aria-label={t("favorites")}
             >
@@ -136,7 +137,7 @@ export function Navbar() {
 
             {/* Profile icon */}
             <Link
-              href="/perfil"
+              href={localizedHref("/perfil", locale)}
               className="hidden lg:flex items-center justify-center w-9 h-9 rounded-full bg-white/8 hover:bg-white/15 text-white/60 hover:text-white transition-all"
               aria-label={t("profile")}
             >
@@ -147,7 +148,7 @@ export function Navbar() {
             </Link>
 
             <Link
-              href="/experiencias"
+              href={localizedHref("/experiencias", locale)}
               className="hidden lg:inline-flex btn btn-gold text-xs font-bold px-5 py-2.5 tracking-wider uppercase"
             >
               {t("discover")}
@@ -183,7 +184,7 @@ export function Navbar() {
               {mobileLinks.map((link, i) => (
                 <motion.div key={link.href}>
                   <Link
-                    href={link.href}
+                    href={localizedHref(link.href, locale)}
                     onClick={() => setMenuOpen(false)}
                     className="block font-serif text-2xl sm:text-3xl text-white/80 hover:text-ncv-gold py-3 border-b border-white/5 transition-colors"
                   >

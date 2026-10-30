@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { localizedHref } from "@/lib/localized-href";
 import { Mail, MapPin } from "lucide-react";
 
 const SvgInstagram = () => (
@@ -36,6 +37,7 @@ const socials = [
 ];
 
 export function Footer() {
+  const locale = useLocale();
   const t = useTranslations("footerFull");
 
   const [email, setEmail] = useState("");
@@ -218,7 +220,7 @@ export function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <a
-                      href={link.href}
+                      href={localizedHref(link.href, locale)}
                       className="text-white/40 hover:text-white text-sm font-sans transition-colors"
                     >
                       {link.label}
