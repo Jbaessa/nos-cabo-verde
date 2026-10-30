@@ -463,5 +463,29 @@
     "free": "Free",
     "prevCommunity": "Previous community",
     "nextCommunity": "Next community"
+  },
+  "guide": {
+    "home": "Home",
+    "hubTitle": "{name}, Cape Verde: travel guide",
+    "relatedLabel": "More in this guide",
+    "relatedTitle": "Keep planning",
+    "methodTitle": "How we choose the places in this guide",
+    "methodIntro": "Nós Cabo Verde's selection is based on public reviews and on one rule applied to every place.",
+    "rulesTitle": "The entry rule",
+    "ruleScore": "A score of at least 4.0 on two sources, such as Google Maps, Tripadvisor or Booking.",
+    "ruleReviews": "At least 50 reviews on the main source. In categories with few places the minimum drops to 20, and the listing says so.",
+    "ruleRecent": "Reviews in the last 12 months.",
+    "ruleOpen": "Confirmed as open, with a contact or website.",
+    "ruleReview": "Data is reviewed every 6 months, and each listing shows when it was checked.",
+    "methodDisclosure": "We don't copy review text. Unless stated otherwise, the selection doesn't come from our own visits: we always show the source so you can check for yourself.",
+    "updated": "Updated on {date}",
+    "bestFor": "Best for",
+    "price": "Price band",
+    "website": "Official website",
+    "book": "Book",
+    "checked": "checked on",
+    "reviews": "reviews",
+    "fewReviews": "Category with few places: 20-review minimum.",
+    "tips": "Practical tips"
   }
 }

@@ -463,5 +463,29 @@
     "free": "Grátis",
     "prevCommunity": "Comunidade anterior",
     "nextCommunity": "Próxima comunidade"
+  },
+  "guide": {
+    "home": "Início",
+    "hubTitle": "Guia de {name}, Cabo Verde",
+    "relatedLabel": "Mais neste guia",
+    "relatedTitle": "Continua a planear",
+    "methodTitle": "Como escolhemos os locais deste guia",
+    "methodIntro": "A selecção do Nós Cabo Verde baseia-se em avaliações públicas e numa regra igual para todos os locais.",
+    "rulesTitle": "A regra de entrada",
+    "ruleScore": "Nota de pelo menos 4,0 em duas fontes, como Google Maps, Tripadvisor ou Booking.",
+    "ruleReviews": "Pelo menos 50 avaliações na fonte principal. Em categorias com poucos locais, o mínimo desce para 20, e a ficha indica-o.",
+    "ruleRecent": "Avaliações nos últimos 12 meses.",
+    "ruleOpen": "Local confirmado como aberto, com contacto ou site.",
+    "ruleReview": "Os dados são revistos de 6 em 6 meses, e cada ficha mostra a data da verificação.",
+    "methodDisclosure": "Não copiamos textos de avaliações. Salvo indicação em contrário, a selecção não resulta de visitas nossas aos locais: indicamos sempre a fonte, para poderes confirmar por ti.",
+    "updated": "Actualizado em {date}",
+    "bestFor": "Para quem",
+    "price": "Faixa de preço",
+    "website": "Site oficial",
+    "book": "Reservar",
+    "checked": "verificado em",
+    "reviews": "avaliações",
+    "fewReviews": "Categoria com poucos locais: mínimo de 20 avaliações.",
+    "tips": "Dicas práticas"
   }
 }

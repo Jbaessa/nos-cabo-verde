@@ -49,6 +49,8 @@ export type Destination = {
   >;
 };
 
+export const METHOD_UPDATED_AT = "2026-10-30";
+
 export const CATEGORY_IDS: CategoryId[] = ["onde-ficar", "o-que-fazer", "onde-comer"];
 
 const MIN_SCORE = 4;
