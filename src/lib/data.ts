@@ -793,128 +793,22 @@ export const experiences = [
   },
 ];
 
-export const partners = [
-  {
-    id: "hotel-morabeza",
-    name: "Hotel Morabeza",
-    type: "Hotel",
-    island: "Sal",
-    islandId: "sal",
-    description: "Boutique hotel junto à Praia de Santa Maria. Arquitectura local, piscina infinita e o melhor pôr do sol do Atlântico.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-    verified: true,
-    badge: "Parceiro Oficial",
-    website: "https://hotelmorabeza.cv",
-  },
-  {
-    id: "mindelo-resto-art",
-    name: "Mindelo Resto Art",
-    type: "Restaurante",
-    island: "São Vicente",
-    islandId: "sao-vicente",
-    description: "Restaurante no coração de Mindelo com cozinha crioula de autor. Pastel com diabo dentro, morna ao vivo às sextas.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
-    verified: true,
-    badge: "Recomendado",
-    website: "https://mindelorestoa.rt",
-  },
-  {
-    id: "cabo-verde-trek",
-    name: "Cabo Verde Trek",
-    type: "Operador Turístico",
-    island: "Santo Antão",
-    islandId: "santo-antao",
-    description: "Especialistas em trekking de montanha em Santo Antão. Guias locais com mais de 15 anos de experiência nos trilhos de Paul e Ribeira Grande.",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80",
-    verified: true,
-    badge: "Parceiro Oficial",
-    website: "https://caboverdetrek.cv",
-  },
-  {
-    id: "surf-zone-sal",
-    name: "Surf Zone Sal",
-    type: "Escola de Desporto",
-    island: "Sal",
-    islandId: "sal",
-    description: "Escola de kitesurf, windsurf e surf. Instrutores certificados IKO e VDWS. O melhor lugar para aprender com ventos aliseus constantes.",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
-    verified: true,
-    badge: "Certificado IKO",
-    website: "https://surfzonessal.cv",
-  },
-  {
-    id: "casa-velha-boutique",
-    name: "Casa Velha Boutique",
-    type: "Hotel",
-    island: "Santiago",
-    islandId: "santiago",
-    description: "Hotel boutique no centro histórico da Praia. Casa colonial restaurada com vista para o Platô. Café da manhã com produção local.",
-    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80",
-    verified: true,
-    badge: "Recomendado",
-    website: "https://casavelhacv.com",
-  },
-  {
-    id: "a-terra-fogo",
-    name: "A Terra — Enoturismo",
-    type: "Restaurante",
-    island: "Fogo",
-    islandId: "fogo",
-    description: "Restaurante da cooperativa vinícola da Chã das Caldeiras. Vinho do Fogo, queijo local e pratos feitos com legumes cultivados em solo vulcânico.",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
-    verified: true,
-    badge: "Experiência Única",
-    website: "https://aterrafogo.cv",
-  },
-  {
-    id: "atlantis-dive",
-    name: "Atlantis Dive Center",
-    type: "Operador Turístico",
-    island: "Boa Vista",
-    islandId: "boa-vista",
-    description: "Centro de mergulho PADI referência em Cabo Verde. Baptismos, cursos Open Water, mergulho nocturno e avistamento de mantas-raias.",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
-    verified: true,
-    badge: "PADI 5 Stars",
-    website: "https://atlantisdiiecv.com",
-  },
-  {
-    id: "windclub-boavista",
-    name: "Windclub Boa Vista",
-    type: "Escola de Desporto",
-    island: "Boa Vista",
-    islandId: "boa-vista",
-    description: "Kitesurf, windsurf e stand-up paddle nas dunas da Boa Vista. Aluguer de equipamento e aulas para todos os níveis.",
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80",
-    verified: false,
-    badge: "Parceiro",
-    website: "https://windclubboavista.cv",
-  },
-  {
-    id: "enoturismo-fogo",
-    name: "Caves du Fogo",
-    type: "Operador Turístico",
-    island: "Fogo",
-    islandId: "fogo",
-    description: "Tours de enoturismo na caldeira do vulcão. Visita às vinhas, adega, degustação guiada e piquenique entre lavas.",
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80",
-    verified: true,
-    badge: "Experiência Única",
-    website: "https://cavesdufogo.cv",
-  },
-  {
-    id: "pensao-brava",
-    name: "Pensão das Flores",
-    type: "Hotel",
-    island: "Brava",
-    islandId: "brava",
-    description: "Pensão familiar em Nova Sintra, a capital das flores. Vista para o vale, jardins de hortênsias e a hospitalidade autêntica da ilha mais pequena.",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
-    verified: false,
-    badge: "Parceiro",
-    website: "https://pensaodasflores.cv",
-  },
-];
+export type Partner = {
+  id: string;
+  name: string;
+  type: string;
+  island: string;
+  islandId: string;
+  description: string;
+  image: string;
+  verified: boolean;
+  badge: string;
+  website: string;
+  verifiedAt: string;
+  verificationSource: string;
+};
+
+export const partners: Partner[] = [];
 
 export const diasporaCommunities = [
   {

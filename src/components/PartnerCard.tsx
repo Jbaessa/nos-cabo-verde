@@ -1,19 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import type { Partner } from "@/lib/data";
 
-type Partner = {
-  id: string;
-  name: string;
-  type: string;
-  island: string;
-  islandId: string;
-  description: string;
-  image: string;
-  verified: boolean;
-  badge: string;
-  website: string;
-};
 
 type Props = { partner: Partner };
 

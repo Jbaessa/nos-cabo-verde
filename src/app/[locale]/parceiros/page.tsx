@@ -41,8 +41,6 @@ export default function ParceirosPage() {
     return typeMatch && islandMatch;
   });
 
-  const verified = partners.filter((p) => p.verified).length;
-
   return (
     <>
       <Navbar />
@@ -63,11 +61,13 @@ export default function ParceirosPage() {
               {t("heading")} <span className="text-ncv-gold">{t("headingHighlight")}</span>
             </h1>
             <p className="text-white/70 font-sans text-lg max-w-xl">
-              {t("desc", { count: verified })}
+              {t("desc")}
             </p>
           </div>
         </section>
 
+        {partners.length > 0 && (
+          <>
         {/* Filters */}
         <section className="max-w-7xl mx-auto px-6 lg:px-12 py-8 space-y-4">
           <div className="flex gap-2 flex-wrap">
@@ -134,6 +134,9 @@ export default function ParceirosPage() {
             </div>
           )}
         </section>
+
+          </>
+        )}
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-6 lg:px-12 pb-20">

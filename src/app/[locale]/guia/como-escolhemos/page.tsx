@@ -21,7 +21,7 @@ export default async function HowWeChoosePage({ params }: { params: Params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "guide" });
   const prefix = locale === "en" ? "/en" : "";
-  const rules = ["ruleScore", "ruleReviews", "ruleRecent", "ruleOpen", "ruleReview"] as const;
+  const rules = ["ruleScore", "ruleActivities", "ruleReviews", "ruleRecent", "ruleOpen", "ruleReview"] as const;
 
   return (
     <>

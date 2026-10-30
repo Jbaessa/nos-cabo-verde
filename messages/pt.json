@@ -342,10 +342,10 @@
     "breadcrumbStories": "Histórias"
   },
   "partnersPage": {
-    "eyebrow": "— Escolhidos a dedo",
+    "eyebrow": "— Nós Cabo Verde",
     "heading": "Parceiros",
-    "headingHighlight": "verificados",
-    "desc": "Hotéis, restaurantes, operadores e escolas de desporto seleccionados pela nossa equipa. {count} parceiros oficiais em todo o arquipélago.",
+    "headingHighlight": "em Cabo Verde",
+    "desc": "Estamos a preparar a rede de parceiros da plataforma. Tens um hotel, restaurante ou operador em Cabo Verde? Fala connosco.",
     "typeAll": "Todos",
     "typeHotel": "Hotel",
     "typeRestaurant": "Restaurante",
@@ -358,7 +358,7 @@
     "clearFilters": "Limpar filtros",
     "ctaEyebrow": "— Junta-te a nós",
     "ctaHeading": "O teu negócio merece estar aqui",
-    "ctaBody": "Partilha a tua paixão por Cabo Verde com viajantes de todo o mundo. Torna-te parceiro verificado da plataforma.",
+    "ctaBody": "Partilha a tua paixão por Cabo Verde com viajantes de todo o mundo. Candidata-te a parceiro da plataforma.",
     "ctaBtn": "Candidatar-me como parceiro"
   },
   "partnerCard": {
@@ -475,10 +475,10 @@
     "methodTitle": "Como escolhemos os locais deste guia",
     "methodIntro": "A selecção do Nós Cabo Verde baseia-se em avaliações públicas e numa regra igual para todos os locais.",
     "rulesTitle": "A regra de entrada",
-    "ruleScore": "Nota de pelo menos 4,0 em duas fontes, como Google Maps, Tripadvisor ou Booking.",
+    "ruleScore": "Hotéis e restaurantes: nota de pelo menos 4,0 em duas fontes, como Google Maps, Tripadvisor ou Booking.",
     "ruleReviews": "Pelo menos 50 avaliações na fonte principal. Em categorias com poucos locais, o mínimo desce para 20, e a ficha indica-o.",
     "ruleRecent": "Avaliações nos últimos 12 meses.",
-    "ruleOpen": "Local confirmado como aberto, com contacto ou site.",
+    "ruleOpen": "Local confirmado como aberto, com contacto, site ou telefone. Praias e monumentos não precisam de contacto próprio.",
     "ruleReview": "Os dados são revistos de 6 em 6 meses, e cada ficha mostra a data da verificação.",
     "methodDisclosure": "Não copiamos textos de avaliações. Salvo indicação em contrário, a selecção não resulta de visitas nossas aos locais: indicamos sempre a fonte, para poderes confirmar por ti.",
     "updated": "Actualizado em {date}",
@@ -500,6 +500,7 @@
     "stayShort": "3 noites: chegada ao sábado, regresso à terça. Dá para a cidade e a Cidade Velha.",
     "stayLong": "6 noites: chegada à segunda, regresso ao domingo. Acrescenta o Tarrafal e o interior de Santiago.",
     "exploreGuide": "Ver o guia da Praia",
-    "teaserAlt": "Campanha da TAAG para a Praia: «O Atlântico tem uma nova ponte», com voos a partir de 793.205 AOA, sobre uma vista aérea de uma baía em Cabo Verde."
+    "teaserAlt": "Campanha da TAAG para a Praia: «O Atlântico tem uma nova ponte», com voos a partir de 793.205 AOA, sobre uma vista aérea de uma baía em Cabo Verde.",
+    "ruleActivities": "Em «O que fazer», onde há menos avaliações em várias fontes, basta uma fonte com nota de pelo menos 4,0 e 50 avaliações. A ficha mostra as fontes usadas."
   }
 }

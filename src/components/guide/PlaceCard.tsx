@@ -16,9 +16,11 @@ export function PlaceCard({ place, lang, labels }: { place: Place; lang: "pt" | 
     <article className="bg-white rounded-2xl border border-ncv-basalt/10 p-5 lg:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="font-serif text-xl text-ncv-blue">{place.name}</h3>
-        <span className="text-sm text-ncv-basalt/60" aria-label={`${labels.price}: ${place.priceBand}/4`}>
-          {"$".repeat(place.priceBand)}
-        </span>
+        {place.priceBand && (
+          <span className="text-sm text-ncv-basalt/60" aria-label={`${labels.price}: ${place.priceBand}/4`}>
+            {"$".repeat(place.priceBand)}
+          </span>
+        )}
       </div>
       <p className="text-sm text-ncv-basalt/60 mt-1">{place.zone[lang]}</p>
       <p className="text-ncv-basalt/80 mt-3 leading-relaxed">{place.why[lang]}</p>
@@ -40,6 +42,11 @@ export function PlaceCard({ place, lang, labels }: { place: Place; lang: "pt" | 
         {place.website && (
           <a href={place.website} target="_blank" rel="nofollow noopener" className="inline-flex items-center gap-1.5 min-h-11">
             {labels.website} <ExternalLink size={14} />
+          </a>
+        )}
+        {place.phone && (
+          <a href={`tel:${place.phone.replace(/\s/g, "")}`} className="inline-flex items-center min-h-11">
+            {place.phone}
           </a>
         )}
         {place.bookingUrl && (

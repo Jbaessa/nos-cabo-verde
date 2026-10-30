@@ -66,6 +66,47 @@ describe("validatePlace", () => {
   });
 });
 
+describe("validatePlace for things to do", () => {
+  const activity: Place = { ...place, id: "forte", category: "o-que-fazer", ratings: [place.ratings[0]], priceBand: undefined };
+
+  it("accepts a single source", () => {
+    expect(validatePlace(activity, today)).toEqual([]);
+  });
+
+  it("still rejects a score below 4.0", () => {
+    expect(validatePlace({ ...activity, ratings: [{ ...place.ratings[0], score: 3.9 }] }, today).length).toBeGreaterThan(0);
+  });
+
+  it("still rejects under 50 reviews", () => {
+    expect(validatePlace({ ...activity, ratings: [{ ...place.ratings[0], reviews: 49 }] }, today).length).toBeGreaterThan(0);
+  });
+
+  it("exempts public places from contact details", () => {
+    const beach = { ...activity, website: undefined, publicPlace: true };
+    expect(validatePlace(beach, today)).toEqual([]);
+  });
+
+  it("requires contact details from operators", () => {
+    expect(validatePlace({ ...activity, website: undefined }, today).length).toBeGreaterThan(0);
+  });
+});
+
+describe("validatePlace contact", () => {
+  it("accepts a phone number as contact", () => {
+    expect(validatePlace({ ...place, website: undefined, phone: "+238 261 00 00" }, today)).toEqual([]);
+  });
+
+  it("requires two sources for hotels even when public", () => {
+    expect(validatePlace({ ...place, publicPlace: true, ratings: [place.ratings[0]] }, today).length).toBeGreaterThan(0);
+  });
+});
+
+describe("Praia selection", () => {
+  it.each([["onde-ficar", 7], ["onde-comer", 10], ["o-que-fazer", 6]] as const)("publishes %s with %i places", (category, count) => {
+    expect(getPublishedPlaces("praia", category)).toHaveLength(count);
+  });
+});
+
 describe("validateFact", () => {
   it("accepts a recent sourced fact", () => {
     expect(validateFact(fact, today)).toEqual([]);

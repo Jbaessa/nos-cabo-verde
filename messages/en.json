@@ -342,10 +342,10 @@
     "breadcrumbStories": "Stories"
   },
   "partnersPage": {
-    "eyebrow": "— Handpicked",
+    "eyebrow": "— Nós Cabo Verde",
     "heading": "Verified",
-    "headingHighlight": "Partners",
-    "desc": "Hotels, restaurants, operators and sports schools selected by our team. {count} official partners across the archipelago.",
+    "headingHighlight": "in Cape Verde",
+    "desc": "We're building the platform's partner network. Do you run a hotel, restaurant or tour company in Cape Verde? Talk to us.",
     "typeAll": "All",
     "typeHotel": "Hotel",
     "typeRestaurant": "Restaurant",
@@ -358,7 +358,7 @@
     "clearFilters": "Clear filters",
     "ctaEyebrow": "— Join us",
     "ctaHeading": "Your business deserves to be here",
-    "ctaBody": "Share your passion for Cape Verde with travellers from around the world. Become a verified partner of the platform.",
+    "ctaBody": "Share your passion for Cape Verde with travellers from all over the world. Apply to become a partner of the platform.",
     "ctaBtn": "Apply as a partner"
   },
   "partnerCard": {
@@ -475,10 +475,10 @@
     "methodTitle": "How we choose the places in this guide",
     "methodIntro": "Nós Cabo Verde's selection is based on public reviews and on one rule applied to every place.",
     "rulesTitle": "The entry rule",
-    "ruleScore": "A score of at least 4.0 on two sources, such as Google Maps, Tripadvisor or Booking.",
+    "ruleScore": "Hotels and restaurants: a score of at least 4.0 on two sources, such as Google Maps, Tripadvisor or Booking.",
     "ruleReviews": "At least 50 reviews on the main source. In categories with few places the minimum drops to 20, and the listing says so.",
     "ruleRecent": "Reviews in the last 12 months.",
-    "ruleOpen": "Confirmed as open, with a contact or website.",
+    "ruleOpen": "Confirmed as open, with a contact, website or phone number. Beaches and monuments need no contact of their own.",
     "ruleReview": "Data is reviewed every 6 months, and each listing shows when it was checked.",
     "methodDisclosure": "We don't copy review text. Unless stated otherwise, the selection doesn't come from our own visits: we always show the source so you can check for yourself.",
     "updated": "Updated on {date}",
@@ -500,6 +500,7 @@
     "stayShort": "3 nights: arrive Saturday, return Tuesday. Enough for the city and Cidade Velha.",
     "stayLong": "6 nights: arrive Monday, return Sunday. Adds Tarrafal and inland Santiago.",
     "exploreGuide": "See the Praia guide",
-    "teaserAlt": "TAAG campaign for Praia: \"O Atlântico tem uma nova ponte\" (the Atlantic has a new bridge), with fares from 793,205 AOA, over an aerial view of a bay in Cape Verde."
+    "teaserAlt": "TAAG campaign for Praia: \"O Atlântico tem uma nova ponte\" (the Atlantic has a new bridge), with fares from 793,205 AOA, over an aerial view of a bay in Cape Verde.",
+    "ruleActivities": "In \"What to do\", where fewer sources have reviews, one source with a score of at least 4.0 and 50 reviews is enough. Each listing shows the sources used."
   }
 }
