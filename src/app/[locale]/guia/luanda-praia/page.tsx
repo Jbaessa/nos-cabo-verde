@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
@@ -15,7 +16,12 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "guide" });
-  return { title: t("luandaTitle"), description: t("luandaDescription"), alternates: guideAlternates(PATH, locale) };
+  return {
+    title: t("luandaTitle"),
+    description: t("luandaDescription"),
+    alternates: guideAlternates(PATH, locale),
+    openGraph: { images: [{ url: "/images/taag-luanda-praia.jpg", width: 640, height: 778, alt: t("teaserAlt") }] },
+  };
 }
 
 export default async function LuandaPraiaPage({ params }: { params: Params }) {
@@ -45,6 +51,15 @@ export default async function LuandaPraiaPage({ params }: { params: Params }) {
           </div>
         </header>
         <div className="max-w-3xl mx-auto px-6 py-12 space-y-8">
+          <Image
+            src="/images/taag-luanda-praia.jpg"
+            alt={t("teaserAlt")}
+            width={640}
+            height={778}
+            sizes="(max-width: 640px) 100vw, 480px"
+            priority
+            className="w-full max-w-md h-auto rounded-2xl mx-auto"
+          />
           {luandaFacts.map((fact) => (
             <section key={fact.id}>
               <h2 className="font-serif text-2xl text-ncv-blue">{fact.label[lang]}</h2>

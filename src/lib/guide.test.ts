@@ -130,7 +130,12 @@ describe("luandaFacts", () => {
     for (const f of luandaFacts) expect([f.id, validateFact(f, new Date())]).toEqual([f.id, []]);
   });
 
-  it("does not present flights as officially confirmed until TAAG confirms them", () => {
-    expect(luandaFacts.find((f) => f.id === "voos")?.official).toBe(false);
+  it("states the confirmed first flight date and campaign price", () => {
+    const voos = luandaFacts.find((f) => f.id === "voos");
+    expect(voos?.official).toBe(true);
+    expect(voos?.value.pt).toContain("12 de Dezembro de 2026");
+    expect(voos?.value.pt).toContain("793.205 AOA");
+    expect(voos?.value.en).toContain("793,205 AOA");
+    expect(voos?.value.pt).not.toContain("divergem");
   });
 });
