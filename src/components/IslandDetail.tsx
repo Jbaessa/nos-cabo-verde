@@ -172,6 +172,11 @@ export function IslandDetail({
               <Link href={isEn ? "/en/#ilhas" : "/#ilhas"} className="btn btn-glass px-8 py-4 text-sm">
                 {t.viewMap}
               </Link>
+              {island.id === "santiago" && (
+                <Link href={isEn ? "/en/guia/praia" : "/guia/praia"} className="btn btn-glass px-8 py-4 text-sm">
+                  {isEn ? "Praia travel guide" : "Guia da Praia"}
+                </Link>
+              )}
             </div>
           </motion.div>
 

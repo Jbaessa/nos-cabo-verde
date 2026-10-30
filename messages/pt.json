@@ -11,7 +11,8 @@
     "favorites": "Favoritos",
     "profile": "Perfil",
     "discover": "Descobrir",
-    "slogan": "DESCOBRIR · SENTIR · PERTENCER"
+    "slogan": "DESCOBRIR · SENTIR · PERTENCER",
+    "guide": "Guia"
   },
   "hero": {
     "eyebrow": "Dez ilhas · Um povo · Uma alma",
@@ -102,7 +103,9 @@
     "cultureTitle": "Cultura",
     "infoTitle": "Informação",
     "allRights": "Todos os direitos reservados.",
-    "madeWith": "Feito com"
+    "madeWith": "Feito com",
+    "linkPraiaGuide": "Guia da Praia",
+    "linkLuandaPraia": "De Luanda à Praia"
   },
   "common": {
     "readMore": "Ler mais",

@@ -64,6 +64,8 @@ export function Footer() {
       title: t("discoverTitle"),
       links: [
         { label: t("linkTenIslands"), href: "/ilhas" },
+        { label: t("linkPraiaGuide"), href: "/guia/praia" },
+        { label: t("linkLuandaPraia"), href: "/guia/luanda-praia" },
         { label: t("linkCulture"), href: "/#cultura" },
         { label: t("linkCuisine"), href: "/#sabores" },
         { label: t("linkMusic"), href: "/#musica" },

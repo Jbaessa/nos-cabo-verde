@@ -21,6 +21,7 @@ export function Navbar() {
 
   const navLinks = [
     { label: t("islands"), href: "/ilhas" },
+    { label: t("guide"), href: "/guia/praia" },
     { label: t("culture"), href: "/#cultura" },
     { label: t("music"), href: "/#musica" },
     { label: t("flavors"), href: "/#sabores" },
@@ -31,6 +32,7 @@ export function Navbar() {
 
   const mobileLinks = [
     { label: t("islands"), href: "/ilhas" },
+    { label: t("guide"), href: "/guia/praia" },
     { label: t("culture"), href: "/#cultura" },
     { label: t("music"), href: "/#musica" },
     { label: t("flavors"), href: "/#sabores" },

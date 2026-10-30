@@ -11,7 +11,8 @@
     "favorites": "Favourites",
     "profile": "Profile",
     "discover": "Discover",
-    "slogan": "DISCOVER · FEEL · BELONG"
+    "slogan": "DISCOVER · FEEL · BELONG",
+    "guide": "Guide"
   },
   "hero": {
     "eyebrow": "Ten islands · One people · One soul",
@@ -102,7 +103,9 @@
     "cultureTitle": "Culture",
     "infoTitle": "Information",
     "allRights": "All rights reserved.",
-    "madeWith": "Made with"
+    "madeWith": "Made with",
+    "linkPraiaGuide": "Praia Guide",
+    "linkLuandaPraia": "From Luanda to Praia"
   },
   "common": {
     "readMore": "Read more",

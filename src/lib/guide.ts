@@ -243,3 +243,11 @@ export function guidePaths(from: Place[] = places): { path: string; lastModified
     ];
   });
 }
+
+export function guideAllPaths(from: Place[] = places): { path: string; lastModified: string }[] {
+  return [
+    { path: "/guia/como-escolhemos", lastModified: METHOD_UPDATED_AT },
+    { path: "/guia/luanda-praia", lastModified: LUANDA_UPDATED_AT },
+    ...guidePaths(from),
+  ];
+}
