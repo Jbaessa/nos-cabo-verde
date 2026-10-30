@@ -486,6 +486,16 @@
     "checked": "checked on",
     "reviews": "reviews",
     "fewReviews": "Category with few places: 20-review minimum.",
-    "tips": "Practical tips"
+    "tips": "Practical tips",
+    "luandaTitle": "From Luanda to Praia: flights, visa and what to prepare",
+    "luandaDescription": "Everything for travelling from Angola to Cape Verde: TAAG Luanda–Praia flights, visa, EASE registration, fee, currency and best season.",
+    "luandaIntro": "The essentials for planning your trip from Angola, with the source and date of each item.",
+    "source": "Source",
+    "unofficial": "Not directly confirmed by an official source: check with the airline or consulate before you travel.",
+    "stayTitle": "How long to stay",
+    "stayIntro": "With the announced flight days, and assuming you arrive on the day you leave, these are the most useful combinations:",
+    "stayShort": "3 nights: arrive Saturday, return Tuesday. Enough for the city and Cidade Velha.",
+    "stayLong": "6 nights: arrive Monday, return Sunday. Adds Tarrafal and inland Santiago.",
+    "exploreGuide": "See the Praia guide"
   }
 }

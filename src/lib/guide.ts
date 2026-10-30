@@ -111,6 +111,66 @@ export const destinations: Destination[] = [
 
 export const places: Place[] = [];
 
+export const LUANDA_UPDATED_AT = "2026-10-30";
+
+export const luandaFacts: Fact[] = [
+  {
+    id: "voos",
+    label: { pt: "Voos", en: "Flights" },
+    value: {
+      pt: "A TAAG anunciou a rota Luanda–Praia a partir de 12 de Dezembro de 2026, com dois voos por semana: de Luanda às segundas e aos sábados, da Praia às terças e aos domingos. As fontes divergem quanto à data e a uma escala em Dacar, por isso confirma o itinerário no bilhete.",
+      en: "TAAG has announced a Luanda–Praia route from 12 December 2026, with two flights a week: from Luanda on Mondays and Saturdays, from Praia on Tuesdays and Sundays. Sources differ on the date and on a stop in Dakar, so check the itinerary on your ticket.",
+    },
+    sourceUrl: "https://www.verangola.net/va/pt/102026/Transportes/50571/TAAG-abre-venda-de-bilhetes-para-rota-Luanda-Cidade-da-Praia-que-arranca-em-Dezembro-com-dois-voos-por-semana.htm",
+    checkedAt: "2026-10-30",
+    official: false,
+  },
+  {
+    id: "visto",
+    label: { pt: "Visto", en: "Visa" },
+    value: {
+      pt: "A página da Embaixada de Cabo Verde em Angola indica que os cidadãos angolanos estão isentos de visto em estadas até 30 dias. Para ficar mais tempo, é preciso comunicá-lo à Direcção de Emigração e Fronteiras.",
+      en: "The Cape Verde Embassy in Angola's page says Angolan citizens are visa-exempt for stays of up to 30 days. To stay longer, you must notify the Immigration and Borders Directorate.",
+    },
+    sourceUrl: "https://embaixada-de-cabo-verde-em-angola.odoo.com/pedidodevisto",
+    checkedAt: "2026-10-30",
+    official: false,
+  },
+  {
+    id: "ease",
+    label: { pt: "Registo e taxa à chegada", en: "Registration and arrival fee" },
+    value: {
+      pt: "Faz o pré-registo em ease.gov.cv, se possível até 5 dias antes da viagem, e paga a taxa de segurança aeroportuária (TSA) de 3.400 escudos. Crianças com menos de 2 anos estão isentas.",
+      en: "Pre-register at ease.gov.cv, ideally up to 5 days before you travel, and pay the 3,400-escudo airport security fee (TSA). Children under 2 are exempt.",
+    },
+    sourceUrl: "https://www.visit-caboverde.com/planear-viagem/visto-e-imigracao",
+    checkedAt: "2026-10-30",
+    official: true,
+  },
+  {
+    id: "moeda",
+    label: { pt: "Moeda", en: "Currency" },
+    value: {
+      pt: "A moeda é o escudo de Cabo Verde (CVE). O Banco de Cabo Verde indica 110,265 escudos por euro. Nas casas de câmbio e nos bancos, a taxa que recebes pode ser diferente.",
+      en: "The currency is the Cape Verdean escudo (CVE). The Bank of Cape Verde lists 110.265 escudos per euro. The rate you get at exchange offices and banks may differ.",
+    },
+    sourceUrl: "https://www.bcv.cv/pt",
+    checkedAt: "2026-10-30",
+    official: true,
+  },
+  {
+    id: "epoca",
+    label: { pt: "Quando ir", en: "When to go" },
+    value: {
+      pt: "As chuvas são irregulares e concentram-se sobretudo entre Agosto e Outubro. De Novembro a Junho, a probabilidade de chuva é menor.",
+      en: "Rain is irregular and mostly falls between August and October. From November to June, rain is less likely.",
+    },
+    sourceUrl: "https://www.onde-e-quando.net/when/africa/cabo-verde/ilha-de-santiago/",
+    checkedAt: "2026-10-30",
+    official: false,
+  },
+];
+
 function isOlderThan(date: string, months: number, today: Date): boolean {
   const limit = new Date(today);
   limit.setMonth(limit.getMonth() - months);

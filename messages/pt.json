@@ -486,6 +486,16 @@
     "checked": "verificado em",
     "reviews": "avaliações",
     "fewReviews": "Categoria com poucos locais: mínimo de 20 avaliações.",
-    "tips": "Dicas práticas"
+    "tips": "Dicas práticas",
+    "luandaTitle": "De Luanda à Praia: voos, visto e o que preparar",
+    "luandaDescription": "Tudo para viajar de Angola para Cabo Verde: voos TAAG Luanda–Praia, visto, registo EASE, taxa, moeda e melhor época.",
+    "luandaIntro": "O essencial para planear a viagem a partir de Angola, com a fonte e a data de cada informação.",
+    "source": "Fonte",
+    "unofficial": "Sem confirmação oficial directa: confirma junto da companhia aérea ou do consulado antes de viajar.",
+    "stayTitle": "Quantos dias ficar",
+    "stayIntro": "Com os dias de voo anunciados, e assumindo chegada no próprio dia da partida, estas são as combinações mais úteis:",
+    "stayShort": "3 noites: chegada ao sábado, regresso à terça. Dá para a cidade e a Cidade Velha.",
+    "stayLong": "6 noites: chegada à segunda, regresso ao domingo. Acrescenta o Tarrafal e o interior de Santiago.",
+    "exploreGuide": "Ver o guia da Praia"
   }
 }

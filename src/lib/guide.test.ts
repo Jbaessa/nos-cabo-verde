@@ -5,6 +5,7 @@ import {
   getPublishedCategories,
   getPublishedPlaces,
   guidePaths,
+  luandaFacts,
   places,
   validateFact,
   validatePlace,
@@ -120,5 +121,16 @@ describe("real data", () => {
 
   it("the Praia destination is defined", () => {
     expect(destinations.map((d) => d.id)).toContain("praia");
+  });
+});
+
+describe("luandaFacts", () => {
+  it("covers flights, visa, currency and season, and passes validation", () => {
+    expect(luandaFacts.map((f) => f.id)).toEqual(expect.arrayContaining(["voos", "visto", "ease", "moeda", "epoca"]));
+    for (const f of luandaFacts) expect([f.id, validateFact(f, new Date())]).toEqual([f.id, []]);
+  });
+
+  it("does not present flights as officially confirmed until TAAG confirms them", () => {
+    expect(luandaFacts.find((f) => f.id === "voos")?.official).toBe(false);
   });
 });
