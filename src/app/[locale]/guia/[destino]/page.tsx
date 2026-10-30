@@ -11,16 +11,6 @@ import { guideAlternates, guideArticleJsonLd } from "@/lib/guide-seo";
 
 type Params = Promise<{ locale: string; destino: string }>;
 
-export function generateStaticParams() {
-  return guidePaths()
-    .map((p) => p.path.split("/"))
-    .filter((parts) => parts.length === 3)
-    .flatMap(([, , destino]) => [
-      { locale: "pt", destino },
-      { locale: "en", destino },
-    ]);
-}
-
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, destino } = await params;
   const destination = getDestination(destino);
