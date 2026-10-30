@@ -103,9 +103,7 @@
     "cultureTitle": "Culture",
     "infoTitle": "Information",
     "allRights": "All rights reserved.",
-    "madeWith": "Made with",
-    "linkPraiaGuide": "Praia Guide",
-    "linkLuandaPraia": "From Luanda to Praia"
+    "madeWith": "Made with"
   },
   "common": {
     "readMore": "Read more",
@@ -251,7 +249,9 @@
     "linkFaq": "FAQ",
     "linkContact": "Contact",
     "linkTerms": "Terms of Use",
-    "linkPrivacy": "Privacy Policy"
+    "linkPrivacy": "Privacy Policy",
+    "linkPraiaGuide": "Praia Guide",
+    "linkLuandaPraia": "From Luanda to Praia"
   },
   "experienceCard": {
     "details": "Details",
@@ -343,7 +343,7 @@
   },
   "partnersPage": {
     "eyebrow": "— Nós Cabo Verde",
-    "heading": "Verified",
+    "heading": "Partners",
     "headingHighlight": "in Cape Verde",
     "desc": "We're building the platform's partner network. Do you run a hotel, restaurant or tour company in Cape Verde? Talk to us.",
     "typeAll": "All",
@@ -469,7 +469,6 @@
   },
   "guide": {
     "home": "Home",
-    "hubTitle": "{name}, Cape Verde: travel guide",
     "relatedLabel": "More in this guide",
     "relatedTitle": "Keep planning",
     "methodTitle": "How we choose the places in this guide",

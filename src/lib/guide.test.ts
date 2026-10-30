@@ -160,6 +160,10 @@ describe("real data", () => {
     for (const p of places) expect([p.id, validatePlace(p, new Date())]).toEqual([p.id, []]);
   });
 
+  it("titles the Praia guide with correct Portuguese", () => {
+    expect(destinations.find((d) => d.id === "praia")?.title.pt).toBe("Guia da Praia, Cabo Verde");
+  });
+
   it("the Praia destination is defined", () => {
     expect(destinations.map((d) => d.id)).toContain("praia");
   });

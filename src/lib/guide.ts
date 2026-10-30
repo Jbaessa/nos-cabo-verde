@@ -45,6 +45,7 @@ export type Fact = {
 export type Destination = {
   id: string;
   name: string;
+  title: Localized;
   intro: Localized;
   categories: Record<
     CategoryId,
@@ -67,6 +68,7 @@ export const destinations: Destination[] = [
   {
     id: "praia",
     name: "Praia",
+    title: { pt: "Guia da Praia, Cabo Verde", en: "Praia, Cape Verde: travel guide" },
     intro: {
       pt: "A capital de Cabo Verde, na ilha de Santiago: o centro histórico do Platô, a Cidade Velha aqui ao lado e uma vida urbana que as ilhas de resort não têm.",
       en: "Cape Verde's capital, on Santiago island: the historic Plateau, Cidade Velha next door and a city life the resort islands don't have.",

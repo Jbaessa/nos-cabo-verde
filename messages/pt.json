@@ -103,9 +103,7 @@
     "cultureTitle": "Cultura",
     "infoTitle": "Informação",
     "allRights": "Todos os direitos reservados.",
-    "madeWith": "Feito com",
-    "linkPraiaGuide": "Guia da Praia",
-    "linkLuandaPraia": "De Luanda à Praia"
+    "madeWith": "Feito com"
   },
   "common": {
     "readMore": "Ler mais",
@@ -251,7 +249,9 @@
     "linkFaq": "FAQ",
     "linkContact": "Contacto",
     "linkTerms": "Termos de Uso",
-    "linkPrivacy": "Privacidade"
+    "linkPrivacy": "Privacidade",
+    "linkPraiaGuide": "Guia da Praia",
+    "linkLuandaPraia": "De Luanda à Praia"
   },
   "experienceCard": {
     "details": "Detalhes",
@@ -469,7 +469,6 @@
   },
   "guide": {
     "home": "Início",
-    "hubTitle": "Guia de {name}, Cabo Verde",
     "relatedLabel": "Mais neste guia",
     "relatedTitle": "Continua a planear",
     "methodTitle": "Como escolhemos os locais deste guia",

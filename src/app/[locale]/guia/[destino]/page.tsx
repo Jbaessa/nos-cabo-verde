@@ -15,10 +15,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { locale, destino } = await params;
   const destination = getDestination(destino);
   if (!destination || getPublishedCategories(destino).length === 0) return {};
-  const t = await getTranslations({ locale, namespace: "guide" });
   const lang = locale === "en" ? "en" : "pt";
   return {
-    title: t("hubTitle", { name: destination.name }),
+    title: destination.title[lang],
     description: destination.intro[lang],
     alternates: guideAlternates(`/guia/${destino}`, locale),
   };
@@ -34,7 +33,7 @@ export default async function GuideDestinationPage({ params }: { params: Params 
   const lang = locale === "en" ? "en" : "pt";
   const prefix = locale === "en" ? "/en" : "";
   const path = `/guia/${destino}`;
-  const title = t("hubTitle", { name: destination.name });
+  const title = destination.title[lang];
   const updatedAt = guidePaths().find((p) => p.path === path)?.lastModified ?? "";
 
   return (

@@ -16,5 +16,15 @@ describe("partners", () => {
     expect(ptMessages.partnersPage.desc).not.toContain("{count}");
     expect(enMessages.partnersPage.desc).not.toContain("{count}");
     expect(ptMessages.partnersPage.headingHighlight).not.toBe("verificados");
+    expect(enMessages.partnersPage.heading.toLowerCase()).not.toContain("verified");
+  });
+});
+
+describe("footer guide links", () => {
+  it("has the guide labels in the namespace the footer reads", () => {
+    for (const m of [ptMessages, enMessages]) {
+      expect(m.footerFull.linkPraiaGuide).toBeTruthy();
+      expect(m.footerFull.linkLuandaPraia).toBeTruthy();
+    }
   });
 });
