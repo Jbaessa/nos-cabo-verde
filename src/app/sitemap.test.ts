@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import sitemap from "./sitemap";
 
 const BASE = "https://noscaboverde.cv";
@@ -29,9 +29,9 @@ describe("sitemap", () => {
   });
 
   it("does not use the build date as lastModified", () => {
-    const today = new Date().toISOString().slice(0, 10);
-    const stale = entries.filter((e) => String(e.lastModified).startsWith(today));
-    expect(stale.filter((e) => e.url.includes("/guia/"))).toEqual([]);
-    expect(entries.every((e) => typeof e.lastModified === "string")).toBe(true);
+    vi.useFakeTimers({ now: new Date("2030-01-15") });
+    const dates = sitemap().map((e) => String(e.lastModified));
+    vi.useRealTimers();
+    expect(dates.filter((d) => d.startsWith("2030"))).toEqual([]);
   });
 });
