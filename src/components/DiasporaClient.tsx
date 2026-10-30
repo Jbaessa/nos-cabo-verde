@@ -220,7 +220,7 @@ export function DiasporaClient() {
                     </p>
 
                     <div className="flex items-start gap-2 p-3 rounded-xl bg-white/5 border-l-2 border-ncv-gold/40">
-                      <span className="text-ncv-gold/50 font-serif text-lg leading-none mt-0.5">"</span>
+                      <span className="text-ncv-gold/50 font-serif text-lg leading-none mt-0.5">&quot;</span>
                       <p className="text-white/50 text-xs font-sans italic leading-relaxed">
                         {community.highlight}
                       </p>

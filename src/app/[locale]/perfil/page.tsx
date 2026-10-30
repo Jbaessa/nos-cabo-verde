@@ -46,6 +46,8 @@ export default function PerfilPage() {
   useEffect(() => {
     try {
       const p = localStorage.getItem(PROFILE_KEY);
+      // localStorage só existe no cliente: ler depois de montar evita erro de hidratação
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (p) setProfile(JSON.parse(p));
       const b = localStorage.getItem(BOOKINGS_KEY);
       if (b) setBookings(JSON.parse(b));

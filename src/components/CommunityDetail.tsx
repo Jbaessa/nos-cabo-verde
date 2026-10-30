@@ -148,7 +148,7 @@ export function CommunityDetail({
             </p>
 
             <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/8 border-l-4 border-l-ncv-gold mb-10">
-              <span className="text-ncv-gold font-serif text-4xl leading-none mt-1 flex-shrink-0">"</span>
+              <span className="text-ncv-gold font-serif text-4xl leading-none mt-1 flex-shrink-0">&quot;</span>
               <p className="text-white/70 font-sans italic text-base leading-relaxed">
                 {community.highlight}
               </p>
