@@ -40,13 +40,15 @@ export function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80"
-          alt="Cabo Verde"
-          className="w-full h-full object-cover object-center"
+          src="/images/hero-praia.webp"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          className="w-full h-full object-cover object-[70%_center] lg:object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ncv-night/75 via-ncv-night/35 to-ncv-night/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/60 via-transparent to-ncv-night/30" />
-        <div className="absolute inset-0 bg-ncv-blue/15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ncv-night/50 via-transparent to-ncv-night/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/70 via-ncv-night/20 to-transparent" />
+        <div className="absolute inset-0 bg-ncv-night/35 lg:hidden" />
       </div>
 
       <div
