@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume2, VolumeX, ChevronDown, Play } from "lucide-react";
@@ -17,10 +17,46 @@ const diasporaCountriesEn = [
   "Switzerland", "Sweden", "Germany", "United Kingdom", "Belgium",
 ];
 
+// The hero video is only mounted on the client, and never for users who prefer
+// reduced motion or have data-saver on — they keep the static poster.
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
+function subscribeReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia(REDUCED_MOTION);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function canPlayHeroVideo() {
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+  return !window.matchMedia(REDUCED_MOTION).matches && !saveData;
+}
+
 export function HeroSection() {
   const t = useTranslations("hero");
   const [soundOn, setSoundOn] = useState(false);
   const [currentCountry, setCurrentCountry] = useState(0);
+  const playVideo = useSyncExternalStore(subscribeReducedMotion, canPlayHeroVideo, () => false);
+  const [videoReady, setVideoReady] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  // "Escuta Cabo Verde": loops the wave ambience from the hero video.
+  const toggleSound = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (soundOn) {
+      audio.pause();
+      setSoundOn(false);
+      return;
+    }
+    try {
+      audio.volume = 0.6;
+      await audio.play();
+      setSoundOn(true);
+    } catch {
+      setSoundOn(false);
+    }
+  };
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 600], [1, 0]);
   const y = useTransform(scrollY, [0, 600], [0, 120]);
@@ -37,15 +73,33 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background image */}
+      {/* Background: poster image (instant paint + reduced-motion fallback) with looping video on top */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero-praia.webp"
+          src="/videos/hero-ondas-poster.webp"
           alt=""
           aria-hidden="true"
           fetchPriority="high"
-          className="w-full h-full object-cover object-[70%_center] lg:object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[70%_center] lg:object-center"
         />
+        {playVideo && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            poster="/videos/hero-ondas-poster.webp"
+            onPlaying={() => setVideoReady(true)}
+            className={`absolute inset-0 w-full h-full object-cover object-[70%_center] lg:object-center transition-opacity duration-1000 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src="/videos/hero-ondas-720.mp4" type="video/mp4" media="(max-width: 1023px)" />
+            <source src="/videos/hero-ondas-1080.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-ncv-night/50 via-transparent to-ncv-night/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-ncv-night/70 via-ncv-night/20 to-transparent" />
         <div className="absolute inset-0 bg-ncv-night/35 lg:hidden" />
@@ -138,7 +192,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-24 left-6 lg:left-12 z-20"
+        className="hidden lg:block absolute bottom-24 left-12 z-20"
       >
         <p className="text-white/30 text-xs font-sans mb-1.5 tracking-widest uppercase">
           {t("presentIn")}
@@ -154,13 +208,17 @@ export function HeroSection() {
         </motion.p>
       </motion.div>
 
+      {/* Wave ambience, played only when the visitor turns sound on */}
+      <audio ref={audioRef} src="/videos/hero-ondas-audio.m4a" loop preload="none" onEnded={() => setSoundOn(false)} />
+
       {/* Sound button */}
       <motion.button
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.5 }}
-        onClick={() => setSoundOn(!soundOn)}
-        className="absolute bottom-16 right-6 lg:bottom-24 lg:right-12 z-20 flex items-center gap-3 bg-white/5 border border-white/15 text-white rounded-full px-5 py-3 hover:bg-ncv-gold/10 hover:border-ncv-gold/40 transition-all backdrop-blur-sm group"
+        onClick={toggleSound}
+        aria-pressed={soundOn}
+        className="absolute bottom-6 right-6 lg:bottom-24 lg:right-12 z-20 flex items-center gap-3 bg-white/5 border border-white/15 text-white rounded-full px-5 py-3 hover:bg-ncv-gold/10 hover:border-ncv-gold/40 transition-all backdrop-blur-sm group"
       >
         <span className="text-xs font-sans tracking-wider text-white/60 group-hover:text-white transition-colors">
           {t("listen")}
@@ -182,7 +240,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
